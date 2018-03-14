@@ -21,12 +21,7 @@ gulp.task('js', function(){
             './bower_components/tether/dist/js/tether.min.js',
             './bower_components/bootstrap/dist/js/bootstrap.min.js',
             './bower_components/retinajs/dist/retina.min.js',
-            // './bower_components/owl.carousel/dist/owl.carousel.min.js',
-            
-            //custom
-            './src/js/_lib/Spin2WinWheel__--__debug.js',
-            './src/js/_lib/ThrowPropsPlugin.min.js',
-            './src/js/_lib/Spin2WinWheel.js',
+            './bower_components/owl.carousel/dist/owl.carousel.min.js',
 
             './src/js/global.js'
         ])
