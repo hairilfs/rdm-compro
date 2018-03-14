@@ -1,0 +1,371 @@
+/* COMPONENTS
+-------------------------------------------- */
+
+
+
+
+
+/* COMPONENTS
+-------------------------------------------- */
+.no-margin {
+    margin: 0;
+}
+
+.has-ver-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.has-ver-margin {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.has-bg-ornament {
+	background-size: auto;
+    background-repeat: no-repeat;
+}
+
+.fheight {
+	height: 100%;
+}
+
+
+.container {
+    @media (max-width: $bp-md - 1px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    &.container-narrow {
+        @media (min-width: $bp-xl) {
+            width: 960px;
+        }
+    }
+
+    &.container-med {
+        @media (min-width: $bp-xl) {
+            width: 1000px;
+        }
+    }
+}
+
+.row-xs {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+
+    > * {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+.row-lg {
+    @media (min-width: $bp-xl) {
+        margin-left: -40px !important;
+        margin-right: -40px !important;
+
+        > * {
+            padding-left: 40px !important;
+            padding-right: 40px !important;
+        }
+    }
+}
+
+
+
+
+/* FLEXBOX
+-------------------------------------------- */
+.flexed {
+    -webkit-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: box;
+    display: flex;
+}
+
+.flexed.justify {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.flexed-desktop {
+    @media (min-width: $bp-md) {
+        -webkit-box-align: center;
+        -o-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: box;
+        display: flex;
+    }
+}
+
+.flexed-desktop.justify {
+    @media (min-width: $bp-md) {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    } 
+}
+
+
+
+
+/* BUTTONS & LINKS
+-------------------------------------------- */
+.css-close {
+    position: absolute;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    z-index: 5;
+    overflow: hidden;
+
+    &:hover {
+        &::before, &::after {
+            background: #fff;
+        }
+    }
+
+    &::before, &::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        top: 50%;
+        left: 0;
+        margin-top: -1px;
+        background: #9b9b9b;
+    }
+
+    &::before {
+        @include transform(rotate(45deg));
+    }
+
+    &::after {
+        @include transform(rotate(-45deg));
+    }
+
+    &.thin {
+        &::before, &::after {
+            height: 1px;
+        }
+    }
+}
+
+.btn,
+.link {
+    @include transition(all 150ms ease);
+    border-radius: 0;
+    outline: 0;
+    text-decoration: none !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.btn {
+	padding: 1rem;
+
+	&.pad-lg {
+		padding-left: 4rem;
+		padding-right: 4rem;
+	}
+
+	&.curved {
+		border-radius: 30px;
+	}
+}
+
+.btn.btn-red {
+    @include btncolor(#fff, $red, darken($red, 5%), 1px);
+}
+
+.btn.btn-yellow {
+	@include btncolor($darkBlue, $yellow, darken($yellow, 5%), 1px);
+}
+
+.btn.btn-magenta {
+    @include btncolor($yellow, $magenta, darken($magenta, 5%), 1px);
+}
+
+.btn-block-xs {
+    @media (max-width: $bp-md - 1px) {
+        display: block;
+        width: 100%;
+    }
+}
+
+.link.link-opaque {
+    @include opacity(0.8);
+
+    &:hover {
+        @include opacity(1);
+    }
+}
+
+
+
+
+/* FORMS
+-------------------------------------------- */
+.rdm-form {
+	border: none;
+    border-bottom: 1px solid $red !important;
+    color: #fff !important;
+    opacity: 0.65;
+    font-size: 16px;
+    background-color: transparent !important;
+    border-radius: 0;
+    padding: 0.5rem 0;
+    height: auto !important;
+    @include transition(opacity 200ms ease);
+
+    @include placeholder {
+        font-weight: 400;
+        font-size: 14px;
+    }
+
+    &:focus {
+    	opacity: 1;
+    }
+}
+
+.check-custom {
+    input {
+        display: none;
+
+        &:checked + label i {
+            color: #fff;
+        }
+
+        &:checked + label:before {
+            background-color: $red;
+        }
+    }
+
+    label {
+        vertical-align: middle;
+        cursor: pointer;
+        position: relative;
+        font-size: 13px;
+        padding-left: 20px;
+        letter-spacing: 1px;
+
+        i {
+            font-size: 8px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: transparent;
+
+            &:before {
+                margin: 0;
+                width: 12px;
+                display: block;
+                line-height: 12px;
+            }
+        }
+
+        &:before {
+            content: '';
+            font-size: 10px;
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 12px;
+            height: 12px;
+            background: transparent;
+            border: 2px solid $red;
+        }
+    }
+
+    &.rounded {
+        label {
+            &:before {
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+
+
+/* MODAL
+-------------------------------------------- */
+.modal-backdrop.show {
+    @include opacity(0.7);
+}
+
+.modal {
+    .modal-dialog {
+    	max-width: none;
+
+        @media (min-width: $bp-xl) {
+            max-width: 1000px;
+        }
+
+        button.close {
+            padding: 15px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 2;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            @include appearance(none);
+
+            .css-close {
+                position: relative;
+            }
+        }
+    }
+
+    @media (min-width: $bp-md) {
+        .modal-dialog {
+            margin: 0;
+            width: 90%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            @include transform(translate(-50%, -50%));
+        }
+
+        &.fade {
+            .modal-dialog {
+                @include transform(translate(-50%, -75%));
+            }
+        }
+
+        &.show {
+            .modal-dialog {
+                @include transform(translate(-50%, -50%));
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

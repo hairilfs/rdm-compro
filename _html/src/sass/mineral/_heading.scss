@@ -1,0 +1,15 @@
+/* HEADING
+-------------------------------------------- */
+@media (max-width: $bp-md - 1px) {
+	h1, .h1 {
+		font-size: 2.25rem;
+	}
+
+	h2, .h2 {
+		font-size: 1.15rem;
+	}
+
+	h3, .h3 {
+		font-size: 1rem;
+	}
+}

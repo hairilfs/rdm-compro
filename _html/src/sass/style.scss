@@ -1,0 +1,67 @@
+@import "compass/reset";
+@import "compass/layout";
+@import "compass/css3";
+@import "mineral/mineral";
+
+
+/* GLOBAL
+-------------------------------------------- */ 
+html {
+    position: relative;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: $darkBlue;
+}
+
+body, input, textarea, select, button {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+}
+
+
+/* HEADER
+-------------------------------------------- */
+#header {
+	
+}
+
+/* FOOTER
+-------------------------------------------- */
+#footer {
+	
+}
+
+/* CONTENT
+-------------------------------------------- */
+#content {
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,408 @@
+@@include('partials/meta.html')
+
+<body class="starter">
+
+@@include('partials/header.html')
+
+<main>
+    <div class="starter-template">
+
+        <div class="container">
+            <div class="starter-heading">
+                <h1>Bootstrap 4 Starter Template</h1>
+                <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <section>
+                <h1>Bootstrap grid examples</h1>
+                <p class="lead">Basic grid layouts to get you familiar with building within the Bootstrap grid system.</p>
+            </section>
+
+            <section>
+                <h3>Five grid tiers</h3>
+                <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
+
+                <div class="row">
+                    <div class="col-4">.col-4</div>
+                    <div class="col-4">.col-4</div>
+                    <div class="col-4">.col-4</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">.col-sm-4</div>
+                    <div class="col-sm-4">.col-sm-4</div>
+                    <div class="col-sm-4">.col-sm-4</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4">.col-lg-4</div>
+                    <div class="col-lg-4">.col-lg-4</div>
+                    <div class="col-lg-4">.col-lg-4</div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4">.col-xl-4</div>
+                    <div class="col-xl-4">.col-xl-4</div>
+                    <div class="col-xl-4">.col-xl-4</div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Three equal columns</h3>
+                <p>Get three equal-width columns <strong>starting at desktops and scaling to large desktops</strong>. On mobile devices, tablets and below, the columns will automatically stack.</p>
+                <div class="row">
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                    <div class="col-md-4">.col-md-4</div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Three unequal columns</h3>
+                <p>Get three columns <strong>starting at desktops and scaling to large desktops</strong> of various widths. Remember, grid columns should add up to twelve for a single horizontal block. More than that, and columns start stacking no matter the viewport.</p>
+                <div class="row">
+                    <div class="col-md-3">.col-md-3</div>
+                    <div class="col-md-6">.col-md-6</div>
+                    <div class="col-md-3">.col-md-3</div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Two columns</h3>
+                <p>Get two columns <strong>starting at desktops and scaling to large desktops</strong>.</p>
+                <div class="row">
+                    <div class="col-md-8">.col-md-8</div>
+                    <div class="col-md-4">.col-md-4</div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Full width, single column</h3>
+                <p class="text-warning">No grid classes are necessary for full-width elements.</p>
+            </section>
+
+            
+
+            <section>
+                <h3>Two columns with two nested columns</h3>
+                <p>Per the documentation, nesting is easy—just put a row of columns within an existing column. This gives you two columns <strong>starting at desktops and scaling to large desktops</strong>, with another two (equal widths) within the larger column.</p>
+                <p>At mobile device sizes, tablets and down, these columns and their nested columns will stack.</p>
+                <div class="row">
+                    <div class="col-md-8">
+                        .col-md-8
+                        <div class="row">
+                            <div class="col-md-6">.col-md-6</div>
+                            <div class="col-md-6">.col-md-6</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">.col-md-4</div>
+                </div>
+            </section>
+
+            
+
+            <section>
+                <h3>Mixed: mobile and desktop</h3>
+                <p>The Bootstrap v4 grid system has five tiers of classes: xs (extra small), sm (small), md (medium), lg (large), and xl (extra large). You can use nearly any combination of these classes to create more dynamic and flexible layouts.</p>
+                <p>Each tier of classes scales up, meaning if you plan on setting the same widths for xs and sm, you only need to specify xs.</p>
+                <div class="row">
+                    <div class="col-12 col-md-8">.col-12 .col-md-8</div>
+                    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+                    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+                    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
+                </div>
+                <div class="row">
+                    <div class="col-6">.col-6</div>
+                    <div class="col-6">.col-6</div>
+                </div>
+            </section>
+
+            
+
+            <section>
+                <h3>Mixed: mobile, tablet, and desktop</h3>
+                <p></p>
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-8">.col-12 .col-sm-6 .col-lg-8</div>
+                    <div class="col-6 col-lg-4">.col-6 .col-lg-4</div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                    <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                    <div class="col-6 col-sm-4">.col-6 .col-sm-4</div>
+                </div>
+            </section>
+
+            
+
+            <section>
+                <h3>Column clearing</h3>
+                <p><a href="../../layout/grid/#example-responsive-column-resets">Clear floats</a> at specific breakpoints to prevent awkward wrapping with uneven content.</p>
+                <div class="row">
+                    <div class="col-6 col-sm-3">
+                        .col-6 .col-sm-3
+                        <br> Resize your viewport or check it out on your phone for an example.
+                    </div>
+                    <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+
+                    <!-- Add the extra clearfix for only the required viewport -->
+                    <div class="clearfix hidden-sm-up"></div>
+
+                    <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                    <div class="col-6 col-sm-3">.col-6 .col-sm-3</div>
+                </div>
+            </section>
+
+            
+
+            <section>
+                <h3>Offset, push, and pull resets</h3>
+                <p>Reset offsets, pushes, and pulls at specific breakpoints.</p>
+                <div class="row">
+                    <div class="col-sm-5 col-md-6">.col-sm-5 .col-md-6</div>
+                    <div class="col-sm-5 offset-sm-2 col-md-6 offset-md-0">.col-sm-5 .offset-sm-2 .col-md-6 .offset-md-0</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-md-5 col-lg-6">.col-sm-6 .col-md-5 .col-lg-6</div>
+                    <div class="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">.col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0</div>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="container">
+            <section>
+                <h1>Bootstrap typography examples</h1>
+                <p class="lead">Basic typography example to get you familiar with building within the Bootstrap typography system.</p>
+            </section>
+
+            <section>
+                <h1>h1. Bootstrap heading</h1>
+                <h2>h2. Bootstrap heading</h2>
+                <h3>h3. Bootstrap heading</h3>
+                <h4>h4. Bootstrap heading</h4>
+                <h5>h5. Bootstrap heading</h5>
+                <h6>h6. Bootstrap heading</h6>
+            </section>
+        </div>
+
+        <div class="container">
+
+            <section>
+                <h1>Figure</h1>
+                <p class="lead">Anytime you need to display a piece of content—like an image with an optional caption, consider using a <code>&lt;figure&gt;</code>.</p>
+            </section>
+
+            <section>
+                <figure class="figure">
+                    <img src="holder.js/400x300?random=yes" class="figure-img img-fluid">
+                    <figcaption class="figure-caption">A caption for the above image.</figcaption>
+                </figure>
+            </section>
+
+        </div>
+
+        <div class="container">
+            <section>
+                <h1>Bootstrap Tables</h1>
+                <p class="lead">All table styles are inherited in Bootstrap 4, meaning any nested tables will be styled in the same manner as the parent.</p>
+            </section>
+
+            <section>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3>Five grid tiers</h3>
+                <p>There are five tiers to the Bootstrap grid system, one for each range of devices we support. Each tier starts at a minimum viewport size and automatically applies to the larger devices unless overridden.</p>
+
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="table">
+                    <thead class="thead-default">
+                        <tr>
+                            <th>#</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h3>Responsive Table</h3>
+                <p>Responsive tables make use of overflow-y: hidden, which clips off any content that goes beyond the bottom or top edges of the table. In particular, this can clip off dropdown menus and other third-party widgets.</p>
+
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Table heading</th>
+                            <th>Table heading</th>
+                            <th>Table heading</th>
+                            <th>Table heading</th>
+                            <th>Table heading</th>
+                            <th>Table heading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                            <td>Table cell</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+    </div>
+
+    
+</main>
+
+@@include('partials/footer.html')
+
+<script>
+    $(document).ready(function(){
+        // $('.owl-carousel').owlCarousel({
+        //     loop:true,
+        //     margin:10,
+        //     nav:true,
+        //     responsive:{
+        //         0:{
+        //             items:1
+        //         },
+        //         600:{
+        //             items:3
+        //         },
+        //         1000:{
+        //             items:5
+        //         }
+        //     }
+        // });
+    });
+
+    $(window).load(function(){
+        
+    });
+
+    $(window).resize(function(){
+        
+    });
+</script>
+</body>
+</html>
