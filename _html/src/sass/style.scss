@@ -1,7 +1,7 @@
 @import "compass/reset";
 @import "compass/layout";
 @import "compass/css3";
-@import "mineral/mineral";
+@import "components/base";
 
 
 /* GLOBAL
@@ -12,7 +12,11 @@ html {
 
 body {
     overflow-x: hidden;
-    background-color: $darkBlue;
+
+    &.inversed {
+    	background-color: $darkGray;
+    	color: #fff;
+    }
 }
 
 body, input, textarea, select, button {

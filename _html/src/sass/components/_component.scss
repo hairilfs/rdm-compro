@@ -5,7 +5,7 @@
 
 
 
-/* COMPONENTS
+/* BASE
 -------------------------------------------- */
 .no-margin {
     margin: 0;
@@ -167,6 +167,7 @@
     @include transition(all 150ms ease);
     border-radius: 0;
     outline: 0;
+    font-size: .875rem;
     text-decoration: none !important;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -186,18 +187,6 @@
 	}
 }
 
-.btn.btn-red {
-    @include btncolor(#fff, $red, darken($red, 5%), 1px);
-}
-
-.btn.btn-yellow {
-	@include btncolor($darkBlue, $yellow, darken($yellow, 5%), 1px);
-}
-
-.btn.btn-magenta {
-    @include btncolor($yellow, $magenta, darken($magenta, 5%), 1px);
-}
-
 .btn-block-xs {
     @media (max-width: $bp-md - 1px) {
         display: block;
@@ -205,8 +194,14 @@
     }
 }
 
+.link.link-primary {
+    &:hover {
+        color: $teal;
+    }
+}
+
 .link.link-opaque {
-    @include opacity(0.8);
+    @include opacity(0.65);
 
     &:hover {
         @include opacity(1);
@@ -244,13 +239,7 @@
     input {
         display: none;
 
-        &:checked + label i {
-            color: #fff;
-        }
-
-        &:checked + label:before {
-            background-color: $red;
-        }
+        &:checked + label {}
     }
 
     label {
@@ -285,7 +274,7 @@
             width: 12px;
             height: 12px;
             background: transparent;
-            border: 2px solid $red;
+            // border: 2px solid $red;
         }
     }
 
