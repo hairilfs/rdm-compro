@@ -1,0 +1,62 @@
+@@include('partials/meta.html')
+
+<body class="home inversed">
+
+@@include('partials/header.html')
+
+<main style="height: 1000px;">
+    <section id="home-hero" class="">
+        <div class="section--inner fheight">
+            <div id="sliderHome" class="owl-carousel slider">
+                <div class="item">
+                    <figure class="no-margin fullheight-js">
+                        <picture class="image-ad">
+                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1.jpg">
+                            <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
+                            <img src="uploads/_temp/img-dummy-1.jpg" alt="">
+                        </picture>
+                        <span class="overlay black"></span>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="hero-heading text-center">
+                <h1>Creativity Meets Reality</h1>
+                <p class="no-margin f-bold">Licensing &amp; Brand Innovation</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+@@include('partials/footer.html')
+
+<script>
+    $(document).ready(function(){
+        // $('.owl-carousel').owlCarousel({
+        //     loop:true,
+        //     margin:10,
+        //     nav:true,
+        //     responsive:{
+        //         0:{
+        //             items:1
+        //         },
+        //         600:{
+        //             items:3
+        //         },
+        //         1000:{
+        //             items:5
+        //         }
+        //     }
+        // });
+    });
+
+    $(window).load(function(){
+        
+    });
+
+    $(window).resize(function(){
+        
+    });
+</script>
+</body>
+</html>

@@ -7,15 +7,81 @@ optgroup,
 select,
 textarea,
 a {
-	// font-family: 'Lato', Arial, sans-serif;
+	font-family: 'Aktiv Grotesk', Arial, sans-serif;
 	color: inherit;
 	font-weight: normal;
 }
 
+.f-thin {
+  font-weight: 300;
+}
+
 .f-reg {
-	font-weight: 400;
+  font-weight: normal;
 }
 
 .f-bold {
-	font-weight: 700;
+  font-weight: bold;
+}
+
+
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('fonts/AktivGrotesk-Light.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AktivGrotesk-Light.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AktivGrotesk-Light.woff') format('woff'), /* Modern Browsers */
+       url('fonts/AktivGrotesk-Light.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/AktivGrotesk-Light.svg#AktivGrotesk-Light') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  300;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('fonts/AktivGrotesk-Regular.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AktivGrotesk-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AktivGrotesk-Regular.woff') format('woff'), /* Modern Browsers */
+       url('fonts/AktivGrotesk-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/AktivGrotesk-Regular.svg#AktivGrotesk-Regular') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  normal;
+}
+
+@font-face {
+  font-family: 'Aktiv Grotesk';
+  src: url('fonts/AktivGrotesk-Bold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/AktivGrotesk-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/AktivGrotesk-Bold.woff') format('woff'), /* Modern Browsers */
+       url('fonts/AktivGrotesk-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/AktivGrotesk-Bold.svg#AktivGrotesk-Bold') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  bold;
+}
+
+@font-face {
+  font-family: 'ClanPro-News';
+  src: url('fonts/ClanPro-News.eot'); /* IE9 Compat Modes */
+  src: url('fonts/ClanPro-News.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/ClanPro-News.woff') format('woff'), /* Modern Browsers */
+       url('fonts/ClanPro-News.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/ClanPro-News.svg#ClanPro-News') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  normal;
+}
+
+@font-face {
+  font-family: 'ClanPro';
+  src: url('fonts/ClanPro-Bold.eot'); /* IE9 Compat Modes */
+  src: url('fonts/ClanPro-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('fonts/ClanPro-Bold.woff') format('woff'), /* Modern Browsers */
+       url('fonts/ClanPro-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('fonts/ClanPro-Bold.svg#ClanPro-Bold') format('svg'); /* Legacy iOS */
+       
+  font-style:   normal;
+  font-weight:  bold;
 }
