@@ -116,20 +116,15 @@ var rdm = (function(){
     var sliderOptions = function(){
         var option1 = {
             items              : 1,
-            // animateOut         : 'fadeOut',
+            animateOut         : 'fadeOut',
 
             autoplay           : true,
-            autoplayTimeout    : 5000,
+            autoplayTimeout    : 6000,
             loop               : true,
 
-            autoplaySpeed      : 600,
-            slideSpeed         : 600,
-            navSpeed           : 600,
-            dotsSpeed          : 600,
-            dragEndSpeed       : 600,
-
             dots               : true,
-            mouseDrag          : true,
+            mouseDrag          : false,
+            touchDrag          : false,
 
             nav                : false,
             // navText: [

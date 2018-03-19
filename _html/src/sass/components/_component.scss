@@ -187,6 +187,10 @@
     letter-spacing: 1px;
     box-shadow: none !important;
 
+    &.small-text {
+        font-size: 14px;
+    }
+
 	&.pad-lg {
 		padding-left: 4rem;
 		padding-right: 4rem;

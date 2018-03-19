@@ -162,7 +162,7 @@ body.home {
 					padding-left: 20px;
 					padding-right: 20px;
 					max-width: 700px;
-					top: 50%;
+					top: 45%;
 					left: 50%;
 					@include transform(translate(-50%, -50%));
 
@@ -170,6 +170,38 @@ body.home {
 						text-transform: uppercase;
 						font-size: 16px;
 						letter-spacing: 1.5px;
+					}
+				}
+
+				.hero-cta {
+					position: absolute;
+					z-index: 2;
+					padding-left: 20px;
+					padding-right: 20px;
+					bottom: 10%;
+					left: 50%;
+					@include transform(translateX(-50%));
+
+					.btn-cta {
+						padding-right: 2rem;
+						padding-left: 2rem;
+					}
+
+					.link-scroll {
+						margin-top: 1rem;
+						display: inline-block;
+						font-size: 28px;
+						
+						i {
+							display: block;
+							@include transition(all 200ms ease-out);
+						}
+
+						&:hover {
+							i {
+								@include transform(translateY(5px));
+							}
+						}
 					}
 				}
 			}
