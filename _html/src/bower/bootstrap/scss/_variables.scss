@@ -249,7 +249,7 @@ $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
 
-$font-size-base: 1.25rem !default; // Assumes the browser default, typically `16px`
+$font-size-base: 1.1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:   1.75rem !default;
 $font-size-sm:   1rem !default;
 $font-size-xs:   .875rem !default;
@@ -264,7 +264,7 @@ $font-size-h1: 3rem !default;
 $font-size-h2: 2.5rem !default;
 $font-size-h3: 2.125rem !default;
 $font-size-h4: 1.875rem !default;
-$font-size-h5: 1rem !default;
+$font-size-h5: 1.5rem !default;
 $font-size-h6: 0.875rem !default;
 
 $headings-margin-bottom: ($spacer / 2) !default;

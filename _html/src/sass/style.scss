@@ -12,6 +12,7 @@ html {
 
 body {
     overflow-x: hidden;
+    position: relative;
 
     &.inversed {
     	background-color: $darkGray;
@@ -130,7 +131,11 @@ body, input, textarea, select, button {
 /* FOOTER
 -------------------------------------------- */
 #footer {
-	
+	.container {
+		.footer--inner {
+			font-size: 14px;
+		}
+	}
 }
 
 /* CONTENT

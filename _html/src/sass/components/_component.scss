@@ -493,13 +493,14 @@
 }
 
 .link.link-white {
-    &:hover {
+    &:hover,
+    &:focus {
         color: #fff;
     }
 }
 
 .link.link-opaque {
-    @include opacity(0.8);
+    @include opacity(0.7);
 
     &:hover {
         @include opacity(1);
@@ -640,6 +641,23 @@
                 @include transform(translate(-50%, -50%));
             }
         }
+    }
+}
+
+
+/* ANIMATE
+-------------------------------------------- */
+@include keyframes(jump){
+    0% {
+        @include transform(translateY(0));
+    }
+
+    50% {
+        @include transform(translateY(-10px));
+    }
+    
+    100% {
+        @include transform(translateY(0));
     }
 }
 

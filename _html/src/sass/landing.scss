@@ -1,0 +1,609 @@
+@import "compass/reset";
+@import "compass/layout";
+@import "compass/css3";
+@import "components/base";
+
+
+/* GLOBAL
+-------------------------------------------- */ 
+html {
+    position: relative;
+}
+
+body {
+    overflow-x: hidden;
+    opacity: 0;
+    @include transition(opacity 200ms ease-out);
+
+    &.loaded {
+    	opacity: 1;
+    }
+
+    &.inversed {
+    	background-color: $darkGray;
+    	color: #fff;
+    }
+}
+
+body, input, textarea, select, button {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-moz-font-feature-settings: "liga", "kern";
+}
+
+
+/* HEADER
+-------------------------------------------- */
+#header {
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: $darkGray;
+
+	&.scrolled {
+		.header-brand a img {
+			@media (min-width: $bp-md) {
+				width: 70px !important;
+			}
+		}
+	}
+
+	.header--inner {
+		.navbar {
+			.header-main {
+				// width: calc(100% - 40px);
+
+				.header-brand {
+
+					a {
+						display: block;
+						@include transition(all 200ms ease-out);
+
+						@media (max-width: $bp-md - 1px) {
+							max-width: 70px !important;
+						}
+
+						img {
+							@media (min-width: $bp-md) {
+								width: 110px;
+							}
+
+							@include transition(all 200ms ease-out);
+						}
+					}
+				}
+
+				.header-menu {
+
+					ul.headnav-list {
+						li {
+							font-size: 16px;
+
+							& + li {
+								@media (min-width: $bp-md) {
+									margin-left: 2rem;
+								}
+
+								@media (max-width: $bp-s - 1px) {
+									margin-left: 10px !important;
+								}
+							}
+
+							a {
+								&.btn-trigger-talk {
+									font-size: 12px;
+									padding: 7px 12px;
+									line-height: 1;
+									opacity: 0.8;
+
+									&:hover {
+										opacity: 1;
+									}
+								}
+
+								&.active {
+									opacity: 1;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.header-button {
+				position: relative;
+				width: 40px;
+				height: 40px;
+
+				#burger {
+					position: fixed;
+					z-index: 2;
+				    width: 40px;
+				    height: 40px;
+				    cursor: pointer;
+				    outline: 0;
+				    background-color: transparent;
+				    padding: 0;
+
+				    &:before,
+				    &:after {
+				    	content: '';
+				    	position: absolute;
+				    	left: 10px;
+				    	width: 20px;
+				    	height: 2px;
+				    	background-color: #fff;
+				    	@include transition(all 250ms ease-out);
+				    }
+
+				    &:before {
+				    	top: 15px;
+				    }
+
+				    &:after {
+				    	bottom: 15px;
+				    }
+
+				    &.active {
+				    	&:before {
+				    		@include transform(translateY(3px) rotate(135deg));
+				    	}
+
+				    	&:after {
+				    		@include transform(translateY(-3px) rotate(45deg));
+				    	}
+				    }
+				}
+			}
+
+			@media (max-width: $bp-md - 1px) {
+				.container {
+					width: 100%;
+					padding: 0 4px;
+
+					.header-main {
+						width: 100%;
+
+						.header-menu {
+
+							ul.headnav-list {
+								li {
+									font-size: 14px;
+
+									& + li {
+										margin-left: 15px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* FOOTER
+-------------------------------------------- */
+#footer {
+	.container {
+		.footer--inner {
+			padding: 1rem 0;
+			font-size: 12px;
+
+			@media (max-width: $bp-s - 1px) {
+				font-size: 11px;
+			}
+		}
+	}
+}
+
+/* CONTENT
+-------------------------------------------- */
+body.landing {
+	main {
+		.section-title {
+			color: $darkBlue;
+		}
+
+		#landing-intro {
+			margin-top: 2rem;
+
+			.section--inner {
+				position: relative;
+
+				.hero-heading {
+					h1 {
+						line-height: 1.25;
+
+						span {
+							opacity: 0.5;
+						}
+					}
+				}
+			}
+		}
+
+		#project-featured {
+			background-color: #fff;
+			color: $darkBlue;
+
+			.section--inner {
+				.feature-top {
+					background-image: url(img/bg-product.jpg);
+		    		background-position: 0% 100%;
+		    		background-size: 100%;
+		    		background-repeat: no-repeat;
+
+		    		.ag-logo {
+    					max-width: 350px;
+	    				margin-left: auto;
+	    				margin-right: auto;
+		    		}
+
+		    		@media (max-width: $bp-lg - 1px) {
+		    			max-height: 600px;
+		    		}
+
+		    		@media (max-width: $bp-md - 1px) {
+		    			max-height: 400px;
+
+	    				.ag-logo {
+	    					max-width: 250px;
+		    				margin-left: auto;
+		    				margin-right: auto;
+			    		}
+	    			}
+
+					h4 {
+						padding: 10px 20px;
+						display: inline-block;
+						margin-top: 2rem;
+						color: #fff;
+						background-color: $red;
+					}
+				}
+
+				.store-locator {
+					.store-locator-head {
+						background-color: $darkBlue;
+						padding-top: 30px;
+						padding-bottom: 30px;
+
+						h3 {
+							color: #fff;
+						}
+					}
+
+					.store-locator-body {
+						.store-location {
+							background-image: url(img/bg-pattern-1.png), url(img/orn-flower.png);
+				    		background-position: 100% 0, 10% 90%;
+				    		background-size: auto 340px, auto auto;
+
+				    		@media (max-width: $bp-lg - 1px) {
+				    			background-size: auto 180px, auto auto;
+				    		}
+
+							.location-col {
+								padding-top: 10px;
+								padding-bottom: 10px;
+
+								h5 {
+									margin-bottom: 1rem;
+								}
+
+								ul {
+									li {
+										text-transform: uppercase;
+										font-size: 1rem;
+										padding: 2px 0;
+
+										@media (max-width: $bp-md - 1px) {
+											font-size: 14px;
+										}
+
+										@media (max-width: $bp-s - 1px) {
+											font-size: 13px;
+										}
+
+										&:before {
+											content: '-';
+											margin-right: 5px;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+
+				.project-video {
+					.section--inner {
+						padding-bottom: 3rem;
+
+						.video {
+							position: relative;
+							background-color: $darkBlue;
+
+							.thumb-container {
+								position: absolute;
+								top: 0;
+								left: 0;
+								right: 0;
+								bottom: 0;
+								background-size: cover;
+								background-repeat: no-repeat;
+								background-position: 50% 50%;
+
+								.start-video {
+									position: absolute;
+									display: block;
+									top: 50%;
+									left: 50%;
+									width: 60px;
+									height: 60px;
+									padding: 20px;
+									text-align: center;
+									font-size: 20px;
+									color: #fff;
+									background-color: #0e8de4;
+									text-decoration: none;
+									@include opacity(0.75);
+									@include transition(opacity .2s ease-out);
+									@include transform(translate(-50%, -50%));
+
+									i:before {
+										display: block;
+										margin: 0 auto;
+									}
+
+									&:hover {
+										@include opacity(1);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#about {
+			background-color: #fff;
+
+			.about-top {
+				color: $darkBlue;
+
+				background-image: url(img/orn-flower.png);
+	    		background-position: 0 90%;
+	    		background-size: auto auto;
+			}
+
+			.about-bottom {
+				.about-image {
+					a {
+						width: 100%;
+						height: 0;
+						position: relative;
+
+						figure {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+
+							img {
+								width: 100%;
+								height: 100%;
+								object-fit: cover;
+							}
+						}
+
+						figcaption {
+							position: absolute;
+							top: 0;
+							left: 0;
+							width: 100%;
+							height: 100%;
+							padding: 1.5rem 3rem;
+							background-color: rgba(0, 0, 0, 0.45);
+							opacity: 0;
+							@include transition(opacity 200ms ease-out);
+
+							@media (max-width: $bp-xl - 1px) {
+								padding: 1rem 2rem;
+								opacity: 1;
+							}
+
+							p {
+								color: #fff;
+								margin: 0;
+
+								&:first-child {
+									position: relative;
+
+									&:before {
+										content: '';
+										display: block;
+										position: absolute;
+										top: 10px;
+										left: -20px;
+										width: 8px;
+										height: 8px;
+										background-color: #02feb2;
+									}
+								}
+							}
+						}
+
+						&:hover {
+							figcaption {
+								opacity: 1;
+							}
+						}
+					}
+				}
+
+				.col-left {
+					.about-image {
+						a {
+							padding-bottom: 133.334%;
+						}
+					}
+				}
+
+				.col-right {
+					.about-image {
+						a {
+							padding-bottom: calc(66.67% - 15px);
+						}
+
+						&:last-child {
+							margin-top: 30px;
+						}
+					}
+				}
+			}
+		}
+
+		#contact {
+			background-color: #fff;
+
+			.container {
+				background-image: url(img/orn-flower.png);
+	    		background-position: 0 90%;
+	    		background-size: auto 200px;
+			}
+
+			.section-content {
+				color: #1a1a1a;
+			}
+		}
+
+		#landing-license {
+	    	background-color: #1c213e;
+
+	    	.section--inner {
+	    		.license-top {
+	    			padding-left: 20px;
+	    			padding-right: 20px;
+	    			color: #fff;
+
+	    			h5 {
+	    				margin-bottom: 2rem;
+	    			}
+	    		}
+
+	    		.license-bottom {
+	    			.license-bottom-holder {
+	    				margin-left: 0;
+	    				margin-right: 0;
+	    				-webkit-box-pack: center;
+	    				-ms-flex-pack: center;
+	    				justify-content: center;
+
+		    			.item {
+		    				flex: 0 0 20%;
+		    				max-width: 20%;
+
+							@media (max-width: $bp-md - 1px) {
+								flex: 0 0 33.334%;
+		    					max-width: 33.334%;
+							}
+
+		    				figure img {
+		    					display: block;
+		    					width: 100%;
+		    				}
+		    			}
+	    			}
+
+	    			.btn-holder {
+	    				margin-top: 2rem;
+
+	    				a {
+	    					font-size: 12px;
+	    				}
+	    			}
+	    		}
+	    	}
+	    }
+
+	    #bottom-section {
+	    	position: relative;
+
+	    	#back-top {
+	    		position: absolute;
+	    		z-index: 2;
+	    		font-size: 2.5rem;
+	    		left: 50%;
+	    		margin-left: -20px;
+
+	    		@include opacity(0.5);
+
+    			&:hover {
+			        @include opacity(1);
+
+			        -webkit-animation: jump .5s 2 linear;
+				    -moz-animation: jump .5s 2 linear;
+				    -o-animation: jump .5s 2 linear;
+				    animation: jump .5s 2 linear;
+			    }
+
+	    		i {
+	    			display: block;
+	    			@include transform(rotate(-90deg));
+
+	    			&:before {
+	    				display: block;
+	    				margin: 0 auto;
+	    			}
+	    		}
+	    	}
+
+	    	figure {
+	    		max-width: 75px;
+	    	}
+
+	    	.social {
+	    		a {
+	    			@include opacity(0.5);
+
+	    			&:hover {
+				        @include opacity(1);
+				    }
+	    		}
+	    	}
+	    }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

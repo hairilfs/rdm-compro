@@ -1,39 +1,17 @@
 <header id="header" class="">
     <div class="header--inner">
         <div class="navbar header-main">
-            <div class="container flexed justify">
 
-                <div class="header-main flexed-desktop justify">
-                	<div class="header-brand flexed-mobile justify">
-	                    <a href="#" class="brand"><img src="assets/img/rdm-logo.png" alt="RDM"></a>
-	                </div>
+        	@@if (!landing) {
+        		<div class="container flexed justify">
 
-	                <div class="header-menu" id="navbarMenu">
+	                <div class="header-main flexed-desktop justify">
+	                	<div class="header-brand flexed-mobile justify">
+		                    <a href="#" class="brand"><img src="assets/img/rdm-logo.png" alt="RDM"></a>
+		                </div>
 
-	                    <ul class="headnav-list no-margin flexed-desktop">
-	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">Projects</a>
-	                        </li>
-
-	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">About</a>
-	                        </li>
-
-	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">Contact</a>
-	                        </li>
-
-	                        <li>
-	                        	<a href="#" class="link link-white link-opaque"><i class="icon-phone"></i></a>
-	                        </li>
-
-	                        <li>
-	                        	<a href="#" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
-	                        </li>
-	                    </ul>
-
-	                    @@if (!landing){
-						    <ul class="headnav-list no-margin flexed-desktop">
+		                <div class="header-menu" id="navbarMenu">
+		                    <ul class="headnav-list no-margin flexed-desktop">
 		                        <li>
 		                        	<a href="#" class="link link-white link-opaque">Projects</a>
 		                        </li>
@@ -54,33 +32,48 @@
 		                        	<a href="#" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
 		                        </li>
 		                    </ul>
-					    }
 
-					    @@if (landing){
-						    <ul class="headnav-list no-margin flexed-desktop">
+		                </div>
+	                </div>
+
+	                <div class="header-button">
+	                	<button type="button" id="burger" class="btn"></button>
+	                </div>
+	            </div>
+        	}
+
+        	@@if (landing) {
+        		<div class="container">
+
+	                <div class="header-main flexed justify">
+	                	<div class="header-brand">
+		                    <a href="#" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
+		                </div>
+
+		                <div class="header-menu" id="navbarMenu">
+						    <ul class="headnav-list no-margin flexed">
 		                        <li>
-		                        	<a href="#" class="link link-white link-opaque">Projects</a>
+		                        	<a href="#project-featured" class="link link-scroll link-white link-opaque">Projects</a>
 		                        </li>
 
 		                        <li>
-		                        	<a href="#" class="link link-white link-opaque">About</a>
+		                        	<a href="#about" class="link link-scroll link-white link-opaque">About</a>
 		                        </li>
 
 		                        <li>
-		                        	<a href="#" class="link link-white link-opaque">Contact</a>
+		                        	<a href="#contact" class="link link-scroll link-white link-opaque">Contact</a>
 		                        </li>
 
 		                        <li>
-		                        	<a href="#" class="link link-white link-opaque"><i class="icon-phone"></i></a>
+		                        	<a href="tel:021-5502637" class="link link-white link-opaque"><i class="icon-phone"></i></a>
 		                        </li>
 		                    </ul>
-					    }
+
+		                </div>
 	                </div>
-                </div>
-                <div class="header-button">
-                	<button type="button" id="burger" class="btn"></button>
-                </div>
-            </div>
+	            </div>
+        	}
+            
         </div>
     </div>
 </header>

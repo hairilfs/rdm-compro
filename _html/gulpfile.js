@@ -10,7 +10,7 @@ var gulp        = require('gulp'),
     rev         = require('gulp-rev-mtime'),
     rename      = require('gulp-rename'),
     imageResize = require('gulp-image-resize'),     // $ brew install graphicsmagick && brew install imagemagick
-    gulpSequence = require('gulp-sequence');
+    gulpSequence = require('gulp-sequence'),
     image       = require('gulp-image');
 
 
@@ -32,10 +32,26 @@ gulp.task('js', function(){
         }}))
         .pipe(concatJS('script.js'))
         .pipe(gulp.dest('./app/assets'));
+
+    gulp.src([
+            './bower_components/jquery/jquery.min.js',
+            './bower_components/tether/dist/js/tether.min.js',
+            './bower_components/bootstrap/dist/js/bootstrap.min.js',
+            './bower_components/retinajs/dist/retina.min.js',
+            './src/js/landing.js'
+        ])
+        .pipe(plumber({
+          errorHandler: function (error) {
+            console.log(error.message);
+            this.emit('end');
+        }}))
+        .pipe(concatJS('landing.js'))
+        // .pipe(uglify())
+        .pipe(gulp.dest('./app/assets'));
 });
 
 gulp.task('compass', function() {
-    gulp.src('./src/sass/style.scss')
+    gulp.src(['./src/sass/style.scss','./src/sass/landing.scss'])
         .pipe(plumber({
           errorHandler: function (error) {
             console.log(error.message);
@@ -50,14 +66,13 @@ gulp.task('compass', function() {
 });
 
 gulp.task('html', function() {
-    gulp.src(
-        './src/html/*.html')
-            .pipe(plumber())
-            .pipe(fileinclude({
-                prefix: '@@',
-                basepath: '@file'
-            }))
-            .pipe(gulp.dest('./app'));
+    gulp.src(['./src/html/*.html'])
+        .pipe(plumber())
+        .pipe(fileinclude({
+            prefix: '@@',
+            basepath: '@file'
+        }))
+        .pipe(gulp.dest('./app'));
 });
 
 gulp.task('delete-app', function(){
@@ -138,20 +153,6 @@ gulp.task('minify-js-css', function(){
 gulp.task('clean', gulpSequence('bower','delete-app','compass','js','html','assets'));
 
 gulp.task('minify', gulpSequence('minify-js-css','delete-img','image'));
-
-gulp.task('build', function () {
-    gulp.src('./app/*.html')
-        .pipe(plumber({
-          errorHandler: function (error) {
-            console.log(error.message);
-            this.emit('end');
-        }}))
-        .pipe(rev({
-          'cwd': './app',
-          'suffix': 'build'
-        }))
-        .pipe(gulp.dest('./app'));
-});
 
 gulp.task('watch',function(){
     browserSync.init({
@@ -320,4 +321,18 @@ gulp.task('icon', function(){
         }))
         .pipe(rename('icon-16.png'))
         .pipe(gulp.dest('./app/assets/icon'))
+});
+
+gulp.task('build', function () {
+    gulp.src('./app/*.html')
+        .pipe(plumber({
+          errorHandler: function (error) {
+            console.log(error.message);
+            this.emit('end');
+        }}))
+        .pipe(rev({
+          'cwd': './app',
+          'suffix': 'build'
+        }))
+        .pipe(gulp.dest('./app'));
 });
