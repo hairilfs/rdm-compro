@@ -148,7 +148,7 @@ var rdm = (function(){
 
         onYouTubeIframeAPIReady = function () {
             player = new YT.Player('player', {
-                videoId: 'X0JeAvp_B24',  // youtube video id
+                videoId: 'Oy9nUaoHoJw',  // youtube video id
                 playerVars: {
                     'autoplay': 0,
                     'rel': 0,
@@ -167,7 +167,7 @@ var rdm = (function(){
 
         var t = document.getElementById ("thumb-container");
         $(t).css({
-            'background-image' : 'url(http://img.youtube.com/vi/X0JeAvp_B24/maxresdefault.jpg)'
+            'background-image' : 'url(http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg)'
         })
 
         onPlayerStateChange = function (event) {
