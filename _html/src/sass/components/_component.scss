@@ -43,6 +43,11 @@
     background-repeat: no-repeat;
 }
 
+.w-fit {
+    width: 100%;
+    display: block;
+}
+
 .left-diagonal {
     position: relative;
 
@@ -88,6 +93,16 @@
         @media (min-width: $bp-xl) {
             width: 1000px;
         }
+    }
+}
+
+.row-no-margin {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+
+    > * {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 }
 

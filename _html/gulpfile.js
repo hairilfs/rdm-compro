@@ -22,6 +22,7 @@ gulp.task('js', function(){
             './bower_components/bootstrap/dist/js/bootstrap.min.js',
             './bower_components/retinajs/dist/retina.min.js',
             './bower_components/owl.carousel/dist/owl.carousel.min.js',
+            './bower_components/isotope-layout/dist/isotope.pkgd.min.js',
 
             './src/js/global.js'
         ])
