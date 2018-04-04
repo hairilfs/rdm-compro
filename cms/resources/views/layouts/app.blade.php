@@ -83,6 +83,9 @@
                             <button class="btn btn-link text-gray pull-right hidden-md hidden-lg" type="button" data-toggle="layout" data-action="sidebar_close">
                                 <i class="fa fa-times"></i>
                             </button>
+                            <a class="h5 text-white pull-right" href="{{ url('/') }}" title="See website" target="_blank">
+                                <i class="si si-globe"></i>
+                            </a>
                             <a class="h5 text-white" href="{{ url('/') }}">
                                 <span class="h4 font-w600 sidebar-mini-hide">OneRDM</span>
                             </a>

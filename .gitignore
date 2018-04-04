@@ -6,7 +6,7 @@ node_modules
 bower_components
 
 #Folder
-app
+_html/app
 
 #OSX
 .DS_Store
