@@ -40,6 +40,10 @@ $(function(){
     if($('.has-filtering').length) {
         rdm.projects();
     };
+
+    // if($('body.contact').length){
+    //     rdm.contact();
+    // }
 });
 
 $(window).load(function(){
@@ -385,7 +389,231 @@ var rdm = (function(){
             itemSelector: '.item',
             layoutMode: 'masonry'
         });
-    }
+    };
+
+    var contact = function(){
+        google.maps.event.addDomListener(window, 'load', contact);
+
+        // map styling here
+        var defaultStyle = 
+            [
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels.text.fill",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.country",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.country",
+                    "elementType": "labels.text",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.province",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.province",
+                    "elementType": "geometry.stroke",
+                    "stylers": [
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.neighborhood",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative.land_parcel",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#ffffff"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "landscape.natural.terrain",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "saturation": -100
+                        },
+                        {
+                            "lightness": 45
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "labels.icon",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "all",
+                    "stylers": [
+                        {
+                            "color": "#0e0e0e"
+                        }
+                    ]
+                }
+            ]
+
+        /* ==================== */
+
+        // map center whole province here
+        var province_center = new google.maps.LatLng(-6.082397, 85.457160);
+
+        // locations & name detail
+        var locations = [
+          [-33.775948, 151.009349],
+          [-6.169689, 106.808122],
+          ];
+
+        var mapOptions = {
+            center: province_center,
+            scrollwheel: false,
+            styles: defaultStyle,
+            zoom: 3,
+            // draggable: false,
+            disableDefaultUI: true
+        };
+
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        setMarkers(map,locations)
+
+
+        // set markers coordinate
+        function setMarkers(map,locations){
+            var marker, i
+
+            for (i = 0; i < locations.length; i++){
+                var lat = locations[i][0]
+                    long = locations[i][1]
+
+                coordinate = new google.maps.LatLng(lat, long);
+
+                var marker = new google.maps.Marker({  
+                    map: map,
+                    position: coordinate,
+                    icon: 'assets/img/marker.png',
+                    optimized: false
+                    
+                });
+
+                map.setCenter(province_center)
+            }
+        }
+
+        /* ==================== */
+
+    };
 
     return{
         equalheight      : equalheight,
@@ -401,7 +629,8 @@ var rdm = (function(){
         aboutInteraction : aboutInteraction,
         video            : video,
         talk             : talk,
-        projects         : projects
+        projects         : projects,
+        contact          : contact
     }
 
 })();
