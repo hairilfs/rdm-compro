@@ -109,7 +109,7 @@
         	<div class="container">
                 <div class="header-main flexed justify">
                 	<div class="header-brand">
-	                    <a href="#" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
+	                    <a href="{{ url('/') }}" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
 	                </div>
 
 	                <div class="header-menu" id="navbarMenu">
@@ -139,21 +139,21 @@
 
 	            <div class="header-main flexed-desktop justify">
 	            	<div class="header-brand flexed-mobile justify">
-	                    <a href="#" class="brand"><img src="assets/img/rdm-logo.png" alt="RDM"></a>
+	                    <a href="{{ url('/') }}" class="brand"><img src="assets/img/rdm-logo.png" alt="RDM"></a>
 	                </div>
 
 	                <div class="header-menu" id="navbarMenu">
 	                    <ul class="headnav-list no-margin flexed-desktop">
 	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">Projects</a>
+	                        	<a href="{{ url('projects') }}" class="link link-white link-opaque">Projects</a>
 	                        </li>
 
 	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">About</a>
+	                        	<a href="{{ url('about') }}" class="link link-white link-opaque">About</a>
 	                        </li>
 
 	                        <li>
-	                        	<a href="#" class="link link-white link-opaque">Contact</a>
+	                        	<a href="{{ url('contact') }}" class="link link-white link-opaque">Contact</a>
 	                        </li>
 
 	                        <li>
