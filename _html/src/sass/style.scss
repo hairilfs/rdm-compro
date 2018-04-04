@@ -1130,6 +1130,71 @@ body.contact {
 
 		#contact-body {
 			background-color: #000;
+			padding-top: 2rem;
+
+			.contact-top {
+				.col-left {
+					@media (max-width: $bp-md - 1px) {
+						margin-bottom: 4rem;
+					}
+				}
+				.col-right {
+					.contact-reach {
+						margin-bottom: 3rem;
+
+						h5 {
+							margin-bottom: 1rem;
+						}
+					}
+				}
+			}
+
+			.contact-bottom {
+				.mood-holder {
+					position: relative;
+
+					.mood-text {
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						width: 75%;
+						@include transform(translate(-50%, -50%));
+					}
+				}
+			}
+		}
+
+		#contact-location {
+			background-color: #000;
+
+			.location-top {
+				.col-left {
+					@media (max-width: $bp-md - 1px) {
+						margin-bottom: 4rem;
+					}
+				}
+				.col-right {
+					.loc {
+						margin-bottom: 3rem;
+
+						h5 {
+							margin-bottom: 1rem;
+						}
+
+						address {
+							color: #89949D;
+
+							strong {
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#contact-talk {
+			background-color: #000;
 		}
 	}
 }
