@@ -101,19 +101,76 @@
     </div>
 </script>
 
+<script type="text/template" data-template="header-menu">
+	<div id="header-menu">
+		<nav class="header-menu--inner fheight">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3 menu-main">
+						<ul class="menu-main-list">
+							<li><a href="#" class="link">Projects</a></li>
+							<li><a href="#" class="link">About</a></li>
+							<li><a href="#" class="link">Contact</a></li>
+						</ul>
+					</div>
+					<div class="col-md-2 push-md-1 menu-content">
+						<div class="content-holder">
+							<p class="small-title f-med no-margin">Contents</p>
+
+							<ul class="social-list">
+								<li><a href="#" class="link f-med">Twitter</a></li>
+								<li><a href="#" class="link f-med">Instagram</a></li>
+								<li><a href="#" class="link f-med">Facebook</a></li>
+								<li><a href="#" class="link f-med">Linkedin</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-3 push-md-3 menu-places">
+						<div class="places-holder">
+							<p class="small-title f-med no-margin">Places</p>
+
+							<ul class="places-list">
+								<li>
+									<h5>Indonesia</h5>
+									<address>
+										Rukan Crown Blok H No.1<br/>
+	                                    Green Lake City<br/>
+	                                    Cipondoh - Tangerang,<br/>
+	                                    Indonesia.
+									</address>
+								</li>
+
+								<li>
+									<h5>Australia</h5>
+									<address>
+										Rukan Crown Blok H No.1<br/>
+	                                    Green Lake City<br/>
+	                                    Cipondoh - Tangerang,<br/>
+	                                    Indonesia.
+									</address>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+	</div>
+</script>
+
 <header id="header" class="">
     <div class="header--inner">
-        <div class="navbar header-main">
+        <div class="navbar">
 
         	@@if (!landing) {
         		<div class="container flexed justify">
 
 	                <div class="header-main flexed-desktop justify">
 	                	<div class="header-brand flexed-mobile justify">
-		                    <a href="#" class="brand"><img src="assets/img/rdm-logo.png" alt="RDM"></a>
+		                    <a href="#" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
 		                </div>
 
-		                <div class="header-menu" id="navbarMenu">
+		                <div id="navbarMenu" class="header-menu hidden-md-down" hidden>
 		                    <ul class="headnav-list no-margin flexed-desktop">
 		                        <li>
 		                        	<a href="#" class="link link-white link-opaque">Projects</a>
