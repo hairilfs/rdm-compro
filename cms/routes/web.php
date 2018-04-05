@@ -15,7 +15,10 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('home');
+
+Route::get('/slider/{category}', 'SliderController@index');
+Route::post('/slider/{category}', 'SliderController@save');
 
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
