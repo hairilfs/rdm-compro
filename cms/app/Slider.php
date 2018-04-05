@@ -14,4 +14,9 @@ class Slider extends Model
         'updated_at',
         'published_at',
     ];
+
+    public function getImgUrl()
+    {
+    	return env('WEB_BASE_URL')."uploads/slider/{$this->category}/{$this->img_url}";
+    }
 }

@@ -34,51 +34,39 @@ class SliderController extends Controller
     public function index(Request $request, $category='home')
     {
         $this->data['category'] = title_case($category);
+        $this->data['images'] = Slider::where('category', $category)->get();
         return view('slider', $this->data);
     }
 
-    public function save(Request $request)
+    public function save(Request $request, $category='home')
     {
-        $loop = $request->all();
-        array_shift($loop); // remove _token 
-        // dd($loop) ;
+        $storage = Storage::disk('web');
 
-        $storage = Storage::disk('public');
+        if ($request->hasFile('file')) {
 
-        foreach ($loop as $key => $value) 
-        {
-            $slider = Slider::where('slider_key', $key)->first();
+            $img_temp = $request->file('file');
+            $file_type = $img_temp->getClientMimeType();
 
-            if (!$slider) continue; 
+            $slider = new Slider;
+            $slider->img_url = $img_temp->getClientOriginalName();
+            $slider->category = $category;
+            $slider->is_publish = 1;
+            $slider->published_at = date('Y-m-d H:i:s');
 
-            if ($slider->slider_type != config('extra.slider_type.file')) 
-            {
-                $slider->content = $value;
-                $slider->save();
+            // uploading...
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($img_temp));
+                $image = $image->stream()->__toString();
+
+                $storage->put("slider/{$category}/".$slider->img_url, $image);
             }
-            else if ($slider->slider_type == config('extra.slider_type.file')) // file handling
-            {
-                if ($request->hasFile($key)) {
 
-                    $slider->content = $request->{$key}->getClientOriginalName();
-                    $slider->file_type = $request->{$key}->getClientMimeType();
-                    $slider->size = $request->{$key}->getClientSize();
+            $slider->save();
 
-                    // uploading...
-                    if (str_contains($slider->file_type, 'image')) {
-                        $image = Image::make(file_get_contents($request->{$key}));
-                        $image = $image->stream()->__toString();
-
-                        $storage->put("slider/{$key}/".$slider->content, $image);
-                    }
-
-                    $slider->save();
-
-                    // dd($ext);
-                }
-            }
+            return response()->json([
+                'slider_id' => $slider->slider_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/slider/{$category}/".$slider->img_url,
+            ]);
         }
-
-        return redirect('slider')->with('success', 'Slider saved!');
     }
 }

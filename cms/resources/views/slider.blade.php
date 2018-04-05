@@ -31,21 +31,36 @@
                         <h3 class="block-title">Images</h3>
                     </div>
 
-                    <div class="block-content">
+                    <div class="block-content" id="sortable_wrapper">
+                        {{-- <p v-if="empty">No images, please upload &raquo;</p> --}}
+
+                        <div v-for="data in images" class="block block-bordered block-rounded block-slider-item">
+                            <div class="block-content bg-gray-light" style="padding-bottom: 20px;">
+                                <ul class="block-options">
+                                    <li>
+                                        <button type="button" title="Delete" :data-id="data.id"><i class="fa fa-trash text-danger"></i></button>
+                                    </li>
+                                    <li title="Move..." style="cursor: move;">
+                                        <i class="fa fa-arrows"></i>
+                                    </li>
+                                </ul>
+                                <img :src="data.url" style="height: 120px;">
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="block block-bordered">
                     <div class="block-header">
-                        <h3 class="block-title">Action</h3>
+                        <h3 class="block-title">Drop Image</h3>
                     </div>
                     <div class="block-content">
                         <div class="form-group">
-                            <form class="dropzone" action="{{ url()->current() }}"></form>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-sm btn-primary" type="button" onclick="return document.getElementById('form_slider').submit();">Save</button>
+                            <form class="dropzone" id="slider-dropzone" action="{{ url()->current() }}" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -59,15 +74,32 @@
 @push('scripts')
 
 <script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
+<script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script type="text/javascript">
-    CKEDITOR.config.toolbar = [
-       ['Format'],
-       ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
-       ['Source']
-    ];
+    Dropzone.options.sliderDropzone = {
+        paramName: 'file',
+        maxFilesize: 5, // MB
+        maxFiles: 10,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+        init: function() {
+            this.on("success", function(file, server) {
+                console.log(file, server); 
+                vue_slider.images.push({ id: server.slider_id, url: server.image_url});
+            });
+        }
+    };
+
+    var vue_slider = new Vue({
+        el: '#sortable_wrapper',
+        data: {
+            images: [],
+            empty: true
+        }
+    });
+
     jQuery(function () {
-        // Init page helpers (BS Datepicker + BS Datetimepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs + AutoNumeric plugins)
-        App.initHelpers(['datepicker', 'datetimepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs', 'autonumeric']);
+        $( "#sortable_wrapper").sortable();        
     });
 </script>
 

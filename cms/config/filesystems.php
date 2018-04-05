@@ -57,7 +57,7 @@ return [
 
         'web' => [
             'driver' => 'local',
-            'root'   => base_path('../web/uploads'),
+            'root'   => base_path('../web/public/uploads'),
             'visibility' => 'public',
         ],
 
