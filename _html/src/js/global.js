@@ -2,6 +2,7 @@ $(function(){
     //Init on all pages
 
     rdm.ready();
+    rdm.headerMenu();
     rdm.talk();
 
     rdm.fullHeight('.fullheight-js');
@@ -265,6 +266,45 @@ var rdm = (function(){
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag); 
     };
+
+    var headerMenu = function(){
+        var btn      = $('#burger'),
+            template = $('script[data-template="header-menu"]').html();
+
+        function hideTalkModal(){
+            $('#header-menu').removeClass('active');
+
+            setTimeout(function(){
+                $('#header-menu').remove();
+                $('html').removeClass('menu-active');
+            }, 600);
+        };
+
+        function showTalkModal(){
+            $('html').addClass('menu-active');
+            $('body').append(template);
+
+            setTimeout(function(){
+                $('#header-menu').addClass('active');
+            }, 20);
+        };
+
+        btn.click(function(e){
+            e.preventDefault();
+            
+
+            if($('html').hasClass('menu-active')){
+                hideTalkModal();
+            } else {
+                showTalkModal();
+            }
+
+            // if($('body').find('#header-menu').html().length > 0){
+            //     alert('sdsd');
+            //     hideTalkModal();
+            // }
+        });
+    }
 
     var talk = function(){
         var btn      = $('#trigger-talk'),
@@ -567,7 +607,7 @@ var rdm = (function(){
         /* ==================== */
 
         // map center whole province here
-        var province_center = new google.maps.LatLng(-6.082397, 85.457160);
+        var province_center = new google.maps.LatLng(-12.516544, 127.230560);
 
         // locations & name detail
         var locations = [
@@ -628,6 +668,7 @@ var rdm = (function(){
 
         aboutInteraction : aboutInteraction,
         video            : video,
+        headerMenu       : headerMenu,
         talk             : talk,
         projects         : projects,
         contact          : contact

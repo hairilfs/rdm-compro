@@ -78,6 +78,11 @@
 
 
 .container {
+    @media (min-width: $bp-xxl) {
+        width: 1200px;
+        max-width: 100%;
+    }
+
     @media (max-width: $bp-md - 1px) {
         padding-left: 20px;
         padding-right: 20px;
