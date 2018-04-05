@@ -120,6 +120,12 @@ var rdm = (function(){
         //     'padding-top': $('#header').height() + 'px'
         // });
 
+        if($('body.company').length){
+            $('main').css({
+                'padding-top': $('#header').height() + 'px'
+            });
+        }
+
         setTimeout(function(){
             $('body').addClass('loaded');
         }, 400);
@@ -304,7 +310,7 @@ var rdm = (function(){
             //     hideTalkModal();
             // }
         });
-    }
+    };
 
     var talk = function(){
         var btn      = $('#trigger-talk'),
@@ -430,6 +436,16 @@ var rdm = (function(){
             layoutMode: 'masonry'
         });
     };
+
+    var company = function(){
+        var textOffsetLeft = $('.intro-text h1').offset().left;
+
+        console.log(textOffsetLeft);
+
+        $('.intro-image').css({
+            'margin-left': textOffsetLeft + 'px'
+        })
+    }
 
     var contact = function(){
         google.maps.event.addDomListener(window, 'load', contact);
@@ -671,6 +687,7 @@ var rdm = (function(){
         headerMenu       : headerMenu,
         talk             : talk,
         projects         : projects,
+        company          : company,
         contact          : contact
     }
 

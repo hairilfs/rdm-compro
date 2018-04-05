@@ -1,11 +1,43 @@
 @@include('partials/meta.html',{"landing":false})
 
-<body class="company what">
+<body class="company what inversed">
 
 @@include('partials/header.html',{"landing":false})
 
 <main>
-    
+	@@include('partials/company-nav.html')
+    <section id="company-intro" class="has-ver-padding">
+    	<div class="section--inner">
+    		<div class="intro-text">
+    			<div class="container">
+    				<h1 class="f-reg">
+	    				We strategize, design
+	    				<span class="opaque d-block">and create content and do all the things.</span>
+	    			</h1>
+    			</div>
+    		</div>
+
+    		<div class="intro-image">
+    			<figure class="no-margin">
+    				<img class="w-fit" src="uploads/what-hero.jpg">
+    			</figure>
+    		</div>
+    	</div>
+    </section>
+
+    <section id="company-content">
+    	<div class="content-block has-ver-padding">
+    		<div class="container">
+    			<div class="row">
+    				<div class="col-md-6 content-head">
+    					<h4 class="content-header f-reg">We create brands</h4>
+    				</div>
+
+    				<div class="col-md-6 content-body">sdsd</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
 </main>
 
 @@include('partials/bottom-section.html')
@@ -13,7 +45,7 @@
 
 <script>
     $(document).ready(function(){
-        
+        rdm.company();
     });
 
     $(window).load(function(){
@@ -21,7 +53,7 @@
     });
 
     $(window).resize(function(){
-        
+        rdm.company();
     });
 </script>
 </body>
