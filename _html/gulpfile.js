@@ -24,6 +24,13 @@ gulp.task('js', function(){
             './bower_components/owl.carousel/dist/owl.carousel.min.js',
             './bower_components/isotope-layout/dist/isotope.pkgd.min.js',
 
+            './src/js/_lib/fancybox/core.js',
+            './src/js/_lib/fancybox/fullscreen.js',
+            './src/js/_lib/fancybox/guestures.js',
+            './src/js/_lib/fancybox/media.js',
+            './src/js/_lib/fancybox/slideshow.js',
+            './src/js/_lib/fancybox/thumbs.js',
+
             './src/js/global.js'
         ])
         .pipe(plumber({
