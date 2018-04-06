@@ -34,7 +34,6 @@ class SliderController extends Controller
     public function index(Request $request, $category='home')
     {
         $this->data['category'] = title_case($category);
-        $this->data['images'] = Slider::where('category', $category)->get();
         return view('slider', $this->data);
     }
 
@@ -68,5 +67,35 @@ class SliderController extends Controller
                 'image_url' => env('WEB_BASE_URL')."uploads/slider/{$category}/".$slider->img_url,
             ]);
         }
+    }
+
+    public function list(Request $request, $category='home')
+    {
+        $data = array();
+        $list = Slider::where('category', $category)->orderBy('sort', 'asc')->get();
+        foreach ($list as $slider) {
+            $data[] = [
+                'slider_id' => $slider->slider_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/slider/{$category}/".$slider->img_url,
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function sort(Request $request, $category='home')
+    {
+        // dd($request->all());
+        $counter = 0;
+        foreach ($request->input('sorting') as $value) {
+            $slider = Slider::find($value['slider_id']);
+            $slider->sort = $value['sort'];
+            $slider->save();
+            $counter++;
+        }
+
+        return response()->json([
+            'counter' => $counter
+        ]);
     }
 }

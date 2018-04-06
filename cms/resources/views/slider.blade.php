@@ -34,7 +34,7 @@
                     <div class="block-content" id="sortable_wrapper">
                         {{-- <p v-if="empty">No images, please upload &raquo;</p> --}}
 
-                        <div v-for="data in images" class="block block-bordered block-rounded block-slider-item">
+                        <div v-for="data in images" class="block block-bordered block-rounded block-slider-item" :data-id="data.id">
                             <div class="block-content bg-gray-light" style="padding-bottom: 20px;">
                                 <ul class="block-options">
                                     <li>
@@ -76,7 +76,16 @@
 <script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
 <script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script type="text/javascript">
+<script src="https://cdn.jsdelivr.net/npm/lodash"></script>
+<script type="text/javascript">    
+    jQuery(function () {
+        $( "#sortable_wrapper").sortable({
+            update: function( event, ui ) {
+                vue_slider.sorting();
+            }
+        });        
+    });
+
     Dropzone.options.sliderDropzone = {
         paramName: 'file',
         maxFilesize: 5, // MB
@@ -84,8 +93,11 @@
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         init: function() {
             this.on("success", function(file, server) {
-                console.log(file, server); 
-                vue_slider.images.push({ id: server.slider_id, url: server.image_url});
+                console.log(file.status, file.name); 
+                vue_slider.images.push({ id: server.slider_id, url: file.dataURL });
+                setTimeout(function(){
+                    vue_slider.sorting();
+                }, 1000);
             });
         }
     };
@@ -95,12 +107,42 @@
         data: {
             images: [],
             empty: true
+        },
+        mounted: function() {
+            this.$nextTick(function () {
+                this.getList();
+            });
+        },
+        methods: {
+            getList: function() {
+                $.get('{{ url()->current().'/list' }}', function(response){
+                    if(response.length) {
+                        _.forEach(response, function(value, key){
+                            vue_slider.images.push({ id: value.slider_id, url: value.image_url});
+                        })
+                    }
+                });
+            },
+            sorting: function() {
+                var sorting = [];
+
+                _.forEach($('#sortable_wrapper').find('.block-slider-item'), function(value, key){
+                    sorting.push({ slider_id: $(value).data('id'), sort: key+1 });
+                })
+
+                console.log(sorting)
+
+                $.post('{{ url()->current().'/sort' }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
+                    if(response.length) {
+                        _.forEach(response, function(value, key){
+                            vue_slider.images.push({ id: value.slider_id, url: value.image_url});
+                        })
+                    }
+                });
+            }
         }
     });
 
-    jQuery(function () {
-        $( "#sortable_wrapper").sortable();        
-    });
 </script>
 
 @endpush
