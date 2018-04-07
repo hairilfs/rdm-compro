@@ -45,9 +45,10 @@ class SliderController extends Controller
 
             $img_temp = $request->file('file');
             $file_type = $img_temp->getClientMimeType();
+            $ext = $img_temp->extension();
 
             $slider = new Slider;
-            $slider->img_url = $img_temp->getClientOriginalName();
+            $slider->img_url = str_slug(str_replace('.', time().'.', $img_temp->getClientOriginalName()));
             $slider->category = $category;
             $slider->is_publish = 1;
             $slider->published_at = date('Y-m-d H:i:s');
@@ -99,7 +100,7 @@ class SliderController extends Controller
         ]);
     }
 
-    public function delete(Request $request)
+    public function delete(Request $request, $category='home')
     {
         $retval = ['status' => false];
         $id = (int)$request->input('id');
@@ -107,7 +108,10 @@ class SliderController extends Controller
         if ($id) {
             $slider = Slider::find($id);
             if (count($slider)) {
+
+                Storage::disk('web')->delete("slider/{$category}/".$slider->img_url);
                 $slider->delete();
+
                 $retval['id'] = $id;
                 $retval['status'] = true;
                 $retval['message'] = "Slider id: {$id} has been deleted!";

@@ -16,6 +16,14 @@
             </ul>
         </li>
         <li>
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span class="sidebar-mini-hide">Projects</span></a>
+            <ul>
+                <li>
+                    <a href="{{ url('project-category') }}">Category</a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wrench"></i><span class="sidebar-mini-hide">Setting</span></a>
             <ul>
                 <li>
