@@ -19,6 +19,7 @@ Route::get('/dashboard', 'HomeController@index')->name('home');
 
 Route::get('/slider/{category}/list', 'SliderController@list');
 Route::post('/slider/{category}/sort', 'SliderController@sort');
+Route::post('/slider/{category}/delete', 'SliderController@delete');
 Route::get('/slider/{category}', 'SliderController@index');
 Route::post('/slider/{category}', 'SliderController@save');
 

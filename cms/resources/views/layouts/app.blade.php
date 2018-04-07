@@ -196,41 +196,48 @@
         <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
         <script src="assets/js/oneui.min.js"></script>
         <!-- Page JS Plugins + Page JS Code -->
+        {{-- <script src="assets/js/app.js"></script> --}}
         <script src="assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+
         @stack('scripts')
+
         <script type="text/javascript">
+            function popup_notif(icon, message, type) {
+                jQuery.notify({
+                icon: icon,
+                message: message,
+                url: ''
+                },
+                {
+                    element: 'body',
+                    type: type,
+                    allow_dismiss: true,
+                    newest_on_top: true,
+                    showProgressbar: false,
+                    placement: {
+                        from: 'top',
+                        align: 'right'
+                    },
+                    offset: 20,
+                    spacing: 10,
+                    z_index: 1033,
+                    delay: 5000,
+                    timer: 1000,
+                    animate: {
+                        enter: 'animated fadeIn',
+                        exit: 'animated fadeOutDown'
+                    }
+                });
+            }
+
             @if (Session::has('success') || Session::has('fail'))
             @php
-                $message = Session::has('success') ?  Session::get('success') : Session::get('fail');
                 $icon = Session::has('success') ?  'fa fa-check' : 'fa fa-times';
+                $message = Session::has('success') ?  Session::get('success') : Session::get('fail');
                 $type = Session::has('success') ?  'success' : 'danger';
             @endphp
-            jQuery.notify({
-                icon: '{!! $icon !!}',
-                message: '{{ $message }}',
-                url: ''
-            },
-            {
-                element: 'body',
-                type: '{{ $type }}',
-                allow_dismiss: true,
-                newest_on_top: true,
-                showProgressbar: false,
-                placement: {
-                    from: 'top',
-                    align: 'right'
-                },
-                offset: 20,
-                spacing: 10,
-                z_index: 1033,
-                delay: 5000,
-                timer: 1000,
-                animate: {
-                    enter: 'animated fadeIn',
-                    exit: 'animated fadeOutDown'
-                }
-            });
-            @endif
+                popup_notif('{{ $icon }}', '{{ $message }}', '{{ $type }}');
+            @endif            
         </script>
     </body>
 </html>

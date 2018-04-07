@@ -98,4 +98,22 @@ class SliderController extends Controller
             'counter' => $counter
         ]);
     }
+
+    public function delete(Request $request)
+    {
+        $retval = ['status' => false];
+        $id = (int)$request->input('id');
+
+        if ($id) {
+            $slider = Slider::find($id);
+            if (count($slider)) {
+                $slider->delete();
+                $retval['id'] = $id;
+                $retval['status'] = true;
+                $retval['message'] = "Slider id: {$id} has been deleted!";
+            }
+        }
+
+        return response()->json($retval);
+    }
 }
