@@ -2,6 +2,14 @@
 
 @section('title', 'Project Category')
 
+@section('head')
+<style type="text/css">
+    [v-cloak] {
+        display: none;
+    }
+</style>
+@endsection
+
 @section('content')
 <main id="main-container">
     <!-- Page Header -->
@@ -23,21 +31,24 @@
                 <div class="block block-bordered">
                     <div class="block-header">
                         <div class="block-options-simple block-options">
-                            <button v-show="!empty" class="btn btn-xs btn-primary" type="button" v-on:click="sorting" :disabled="isSorting"><i class="fa fa-refresh" :class="{ 'fa-spin': isSorting }"></i> Save change</button>
+                            <button v-if="!empty" class="btn btn-xs btn-primary" type="button" v-on:click="sorting" :disabled="isSorting"><i class="fa fa-fw fa-refresh" :class="{ 'fa-spin': isSorting }"></i> Save change</button>
                         </div>
                         <h3 class="block-title">Project Category Lists</h3>
                     </div>
 
-                    <div class="block-content" id="sortable_wrapper">
+                    <div class="block-content" id="sortable_wrapper" v-cloak>
 
                         <div v-for="data in category" class="block block-bordered block-rounded block-project-item" :data-id="data.project_category_cid">
                             <div class="block-content bg-gray-light">
                                 <ul class="block-options">
                                     <li>
-                                        <button type="button" title="Delete" v-on:click="return deleteCategory(data.project_category_cid)"><i class="fa fa-trash text-danger"></i></button>
+                                        <button type="button" title="Delete" v-on:click="return deleteCategory(data.project_category_cid)"><i class="fa fa-fw fa-trash text-danger"></i></button>
+                                    </li>
+                                    <li>
+                                        <a :href="'project-category/'+data.project_category_cid+'/edit'" title="Edit"><i class="fa fa-fw fa-pencil text-primary"></i></a>
                                     </li>
                                     <li title="Move..." style="cursor: move;">
-                                        <i class="fa fa-arrows"></i>
+                                        <i class="fa fa-fw fa-arrows"></i>
                                     </li>
                                 </ul>
                                 <p>@{{ data.name }}</p>
@@ -50,17 +61,17 @@
             <div class="col-md-4">
                 <div class="block block-bordered">
                     <div class="block-header">
-                        <h3 class="block-title">New Category</h3>
+                        <h3 class="block-title">{{ $category ? 'Edit' : 'New' }} Category</h3>
                     </div>
                     <div class="block-content">
-                        <form action="{{ url()->current() }}" method="post" v-on:submit.prevent="onSubmit('save', $event)">
+                        <form action="" method="post">
                             {{ csrf_field() }}
-                            <div class="form-group">
+                            <div class="form-group{{ $category ? ' has-info' : '' }}">
                                 <label for="new_procat">Project Category</label>
-                                <input class="form-control" type="text" id="new_procat" name="name" placeholder="Enter new project category.." required>
+                                <input class="form-control" type="text" id="new_procat" name="name" placeholder="Enter new project category.." value="{{ $category->name or '' }}" {{ $category ? 'autofocus' : '' }} required>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-sm btn-primary" type="submit">Save</button>
+                                <button class="btn btn-sm btn-primary" type="submit">Save {{ $category ? 'changes' : '' }}</button>
                             </div>
                         </form>
                     </div>
@@ -105,7 +116,7 @@
         },
         methods: {
             getList: function() {
-                $.get('{{ url()->current().'/list' }}', function(response){
+                $.get('{{ url('project-category/list') }}', function(response){
                     if(response) {
                         vue_project_category.category = response;
                     }
@@ -119,7 +130,7 @@
                     sorting.push({ project_category_cid: $(value).data('id'), sort: key+1 });
                 })
 
-                $.post('{{ url()->current().'/sort' }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
+                $.post('{{ url('project-category/sort') }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
                     if(response.counter) {
                         vue_project_category.empty = true;
                         vue_project_category.isSorting = false;
@@ -138,30 +149,10 @@
                     confirmButtonColor: '#d33',
                     confirmButtonText: 'Yes, delete it!'
                 }).then((result) => {
-                    if (result.value) {            
-
-                        $.post('{{ url()->current().'/delete' }}', { _token: '{{ csrf_token() }}', id: id }, function(response){
-                            if(response.status) {
-
-                                var idx = _.findIndex(vue_project_category.category, ['id', id]);
-                                vue_project_category.category.splice(idx, 1);
-
-                                popup_notif('fa fa-check', 'Delete success!', 'success');
-                            }
-                        }, 'json');
+                    if (result.value) { 
+                        window.location = '{{ url('project-category') }}/'+id+'/delete';
                     }
                 });
-            },
-            onSubmit: function(message, event) {
-
-                $.post('{{ url()->current() }}', $(event.target).serialize(), function(response){
-                    if(response) {
-                        vue_project_category.category.push(response);
-                        popup_notif('fa fa-check', 'New category added!', 'success');
-
-                        $('#new_procat').val('');
-                    }
-                }, 'json');
             }
         }
     });

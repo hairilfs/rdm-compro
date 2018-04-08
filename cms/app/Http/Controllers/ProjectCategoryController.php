@@ -29,34 +29,31 @@ class ProjectCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $cid="", $edit="")
     {
+        $this->data['category'] = $cid && $edit ? ProjectCategory::find($cid) : array();
         return view('project-category', $this->data);
     }
 
-    public function save(Request $request)
+    public function save(Request $request, $cid="", $edit="")
     {
-        $category = new ProjectCategory;
-        $category->project_category_cid = str_random(5);
+        $category = $cid && $edit ? ProjectCategory::find($cid) : new ProjectCategory;
+        if(!$cid && $edit) $category->project_category_cid = str_random(5);
         $category->name = $request->input('name');
         $category->slug = str_slug($request->input('name'));
         $category->save();
 
-        return response()->json([
-            'name' => $category->name,
-            'project_category_cid' => $category->project_category_cid,
-        ]);
+        return redirect('/project-category')->with('success', 'Category saved!');
     }
 
     public function list(Request $request)
     {
-        $list = ProjectCategory::all();
+        $list = ProjectCategory::orderBy('sort')->get();
         return response()->json($list);
     }
 
-    public function sort(Request $request, $category='home')
+    public function sort(Request $request)
     {
-        // dd($request->all());
         $counter = 0;
         foreach ($request->input('sorting') as $value) {
             $project_category = ProjectCategory::find($value['project_category_cid']);
@@ -70,24 +67,17 @@ class ProjectCategoryController extends Controller
         ]);
     }
 
-    public function delete(Request $request, $category='home')
+    public function delete(Request $request, $cid='')
     {
-        $retval = ['status' => false];
-        $id = (int)$request->input('id');
+        if (!$cid) return redirect('project-category');
 
-        if ($id) {
-            $project_category = Project_category::find($id);
-            if (count($project_category)) {
+        $project_category = ProjectCategory::find($cid);
+        if (count($project_category)) {
+            $project_category->delete();
+            return redirect('project-category')->with('success', 'Category deleted!');
+        } else {
+            return redirect('project-category')->with('fail', 'Category not found!');
 
-                Storage::disk('web')->delete("project_category/{$category}/".$project_category->img_url);
-                $project_category->delete();
-
-                $retval['id'] = $id;
-                $retval['status'] = true;
-                $retval['message'] = "Project_category id: {$id} has been deleted!";
-            }
         }
-
-        return response()->json($retval);
     }
 }

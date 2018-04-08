@@ -25,9 +25,9 @@ Route::post('/slider/{category}', 'SliderController@save');
 
 Route::get('/project-category/list', 'ProjectCategoryController@list');
 Route::post('/project-category/sort', 'ProjectCategoryController@sort');
-Route::post('/project-category/delete', 'ProjectCategoryController@delete');
-Route::get('/project-category', 'ProjectCategoryController@index');
-Route::post('/project-category', 'ProjectCategoryController@save');
+Route::get('/project-category/{cid}/delete', 'ProjectCategoryController@delete');
+Route::get('/project-category/{cid?}/{edit?}', 'ProjectCategoryController@index');
+Route::post('/project-category/{cid?}/{edit?}', 'ProjectCategoryController@save');
 
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
