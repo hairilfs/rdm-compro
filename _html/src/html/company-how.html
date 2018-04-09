@@ -5,7 +5,25 @@
 @@include('partials/header.html',{"landing":false})
 
 <main>
-    
+    @@include('partials/company-nav.html')
+    <section id="company-intro" class="has-ver-padding">
+    	<div class="section--inner">
+    		<div class="intro-text">
+    			<div class="container">
+    				<h1 class="f-reg">
+	    				We strategize, design
+	    				<span class="opaque d-block">and create content and do all the things.</span>
+	    			</h1>
+    			</div>
+    		</div>
+
+    		<div class="intro-image">
+    			<figure class="no-margin">
+    				<img class="w-fit" src="uploads/what-hero.jpg">
+    			</figure>
+    		</div>
+    	</div>
+    </section>
 </main>
 
 @@include('partials/bottom-section.html')
@@ -13,7 +31,7 @@
 
 <script>
     $(document).ready(function(){
-        
+        rdm.company();
     });
 
     $(window).load(function(){
@@ -21,7 +39,7 @@
     });
 
     $(window).resize(function(){
-        
+        rdm.company();
     });
 </script>
 </body>
