@@ -31,159 +31,15 @@
         <div class="row">
             <div class="block">
                 <div class="block-content">
-                    <!-- DataTables init on table by adding .js-dataTable-full-pagination class, functionality initialized in js/pages/base_tables_datatables.js -->
-                    <table class="table table-bordered table-striped js-dataTable-full-pagination">
+                    <table class="table table-bordered table-striped js-dataTable-custom">
                         <thead>
                             <tr>
-                                <th class="text-center">No</th>
-                                <th>Name</th>
-                                <th class="hidden-xs">Email</th>
-                                <th class="hidden-xs" style="width: 15%;">Access</th>
+                                <th>Title</th>
+                                <th>Status</th>
+                                <th>Published Date</th>
                                 <th class="text-center" style="width: 10%;">Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td class="font-w600">Donald Barnes</td>
-                                <td class="hidden-xs">client1@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-danger">Disabled</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">2</td>
-                                <td class="font-w600">Laura Bell</td>
-                                <td class="hidden-xs">client2@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-primary">Personal</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">3</td>
-                                <td class="font-w600">Ann Parker</td>
-                                <td class="hidden-xs">client3@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-warning">Trial</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">4</td>
-                                <td class="font-w600">Evelyn Willis</td>
-                                <td class="hidden-xs">client4@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-warning">Trial</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">5</td>
-                                <td class="font-w600">Roger Hart</td>
-                                <td class="hidden-xs">client5@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-danger">Disabled</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">6</td>
-                                <td class="font-w600">Eric Lawson</td>
-                                <td class="hidden-xs">client6@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">7</td>
-                                <td class="font-w600">Emma Cooper</td>
-                                <td class="hidden-xs">client7@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-primary">Personal</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">8</td>
-                                <td class="font-w600">Roger Hart</td>
-                                <td class="hidden-xs">client8@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">9</td>
-                                <td class="font-w600">Judy Alvarez</td>
-                                <td class="hidden-xs">client9@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-success">VIP</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">10</td>
-                                <td class="font-w600">Joshua Munoz</td>
-                                <td class="hidden-xs">client10@example.com</td>
-                                <td class="hidden-xs">
-                                    <span class="label label-danger">Disabled</span>
-                                </td>
-                                <td class="text-center">
-                                    <div class="btn-group">
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Edit Client"><i class="fa fa-pencil"></i></button>
-                                        <button class="btn btn-xs btn-default" type="button" data-toggle="tooltip" title="Remove Client"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
@@ -204,13 +60,21 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash"></script>
 
 <script type="text/javascript">    
-    jQuery(function () {
-        $("#sortable_wrapper").sortable({
-            update: function( event, ui ) {
-                vue_project_category.empty = false;
-            }
-        });        
-    });
+
+    var dt_conf =  {
+        'ajax' : '{{ url("project/datatables") }}',
+        'columns' : [
+            { data: 'title', name: 'title' },
+            { data: 'is_publish', name: 'is_publish' },
+            { data: 'published_at', name: 'published_at' },
+            { data: 'action', name: 'action', orderable: false, searchable: false}
+        ],
+        'order': [[ 2, 'desc' ]],
+        'columnDefs' : [ { orderable: false, targets: [ 3 ] } ],
+        'pageLength' : 10,
+        'lengthMenu' : [[5, 10, 15, 20], [5, 10, 15, 20]],
+        'formUrl': '{{ url('project/form') }}'
+    };
 
     var vue_project_category = new Vue({
         el: '#vue_project_category',
@@ -265,6 +129,14 @@
                 });
             }
         }
+    });
+
+    jQuery(function () {
+        $("#sortable_wrapper").sortable({
+            update: function( event, ui ) {
+                vue_project_category.empty = false;
+            }
+        });        
     });
 
 </script>
