@@ -111,6 +111,8 @@
 }
 
 .right-diagonal {
+    position: relative;
+    
     &:before {
         content: '';
         display: block;

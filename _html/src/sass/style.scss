@@ -1455,6 +1455,17 @@ body.company {
 		#company-intro {
 			.intro-text {
 				margin-bottom: 3rem;
+
+				@media (min-width: $bp-md) {
+					h1, p {
+						max-width: 670px;
+					}
+
+					h1 {
+						font-size: 34px;
+						margin-bottom: 2rem;
+					}
+				}
 			}
 		}
 
@@ -1531,63 +1542,156 @@ body.company {
 		}
 
 		#company-nav {
-			.prev, .next {
-				a {
-					height: 0;
-					padding-bottom: 66.6667%;
-					position: relative;
+			.section--inner {
+				.row {
+					> * {
+						a {
+							height: 0;
+							padding-bottom: 66.6667%;
+							position: relative;
 
-					figure {
-						position: absolute;
-						top: 0;
-						left: 0;
-						width: 100%;
-						height: 100%;
-						overflow: hidden;
+							figure {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								overflow: hidden;
 
-						img {
-							width: 100%;
-							height: 100%;
-							object-fit: cover;
-							@include transform(scale(1));
-							@include transition(transform 1000ms ease-in-out);
-						}
+								img {
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+									@include transform(scale(1));
+									@include transition(transform 1000ms ease-in-out);
+								}
 
-						.overlay {
-							@include transition(all 300ms ease-in-out);
-						}
-					}
-
-					.nav-text {
-						position: absolute;
-						top: 20px;
-						left: 20px;
-
-						p {
-							color: #fff !important;
-							margin: 0;
-							font-family: 'ClanPro-News', Arial, sans-serif;
-
-							&.nav-title {
-								@extend .h2;
-								font-weight: normal;
-							}
-						}
-					}
-
-					&:hover {
-						figure {
-							img {
-								@include transform(scale(1.05));
+								.overlay {
+									@include transition(all 300ms ease-in-out);
+								}
 							}
 
-							.overlay {
-								opacity: 0;
+							.nav-text {
+								position: absolute;
+								top: 20px;
+								left: 20px;
+
+								p {
+									color: #fff !important;
+									margin: 0;
+									font-family: 'ClanPro-News', Arial, sans-serif;
+
+									&.nav-title {
+										@extend .h2;
+										font-weight: normal;
+									}
+								}
+							}
+
+							&:hover {
+								figure {
+									img {
+										@include transform(scale(1.05));
+									}
+
+									.overlay {
+										opacity: 0;
+									}
+								}
 							}
 						}
 					}
 				}
 			}
+		}
+	}
+}
+
+body.company.who {
+	main {
+		#company-intro {
+			.intro-image.has-video {
+				.video {
+					border-radius: 5px;
+					overflow: hidden;
+				}
+			}
+		}
+
+		#company-scopes {
+			.scopes-item {
+				padding-top: 15px;
+				padding-bottom: 15px;
+
+				figure {
+					margin-bottom: 2rem;
+				}
+
+				figcaption {
+					h5 {
+						margin-bottom: 1rem;
+					}
+
+					a.link {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+
+		#company-people {
+			.team-holder {
+				margin-top: 4rem;
+				margin-bottom: 4rem;
+
+				.profile-item {
+					figcaption {
+						.profile-position {
+							color: #666;
+						}
+					}
+				}
+			}
+
+			.job-cta {
+				font-size: 14px;
+			}
+		}
+
+		#company-mood {
+			background-color: #000;
+
+			&:before {
+				margin: 0;
+				position: relative;
+				top: 50px;
+			}
+		}
+
+		#company-location {
+			background-color: #000;
+
+			h3 {
+				margin-bottom: 4rem;
+			}
+
+			figure {
+				margin-bottom: 2rem;
+			}
+
+			figcaption {
+				h5 {
+					margin-bottom: 1rem;
+				}
+			}
+		}
+
+		#company-talk {
+			background-color: #1b1b1b;
+		}
+
+		#company-nav {
+			padding: 0;
 		}
 	}
 }

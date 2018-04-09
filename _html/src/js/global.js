@@ -418,7 +418,7 @@ var rdm = (function(){
 
         console.log(textOffsetLeft);
 
-        $('.intro-image').css({
+        $('.intro-image.image-offset').css({
             'margin-left': textOffsetLeft + 'px'
         })
     }
