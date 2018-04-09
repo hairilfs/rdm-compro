@@ -37,48 +37,87 @@ class SliderController extends Controller
         return view('slider', $this->data);
     }
 
-    public function save(Request $request)
+    public function save(Request $request, $category='home')
     {
-        $loop = $request->all();
-        array_shift($loop); // remove _token 
-        // dd($loop) ;
+        $storage = Storage::disk('web');
 
-        $storage = Storage::disk('public');
+        if ($request->hasFile('file')) {
 
-        foreach ($loop as $key => $value) 
-        {
-            $slider = Slider::where('slider_key', $key)->first();
+            $img_temp = $request->file('file');
+            $file_type = $img_temp->getClientMimeType();
+            $ext = $img_temp->extension();
 
-            if (!$slider) continue; 
+            $slider = new Slider;
+            $slider->img_url = str_slug(str_replace('.', time().'.', $img_temp->getClientOriginalName()));
+            $slider->category = $category;
+            $slider->is_publish = 1;
+            $slider->published_at = date('Y-m-d H:i:s');
 
-            if ($slider->slider_type != config('extra.slider_type.file')) 
-            {
-                $slider->content = $value;
-                $slider->save();
+            // uploading...
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($img_temp));
+                $image = $image->stream()->__toString();
+
+                $storage->put("slider/{$category}/".$slider->img_url, $image);
             }
-            else if ($slider->slider_type == config('extra.slider_type.file')) // file handling
-            {
-                if ($request->hasFile($key)) {
 
-                    $slider->content = $request->{$key}->getClientOriginalName();
-                    $slider->file_type = $request->{$key}->getClientMimeType();
-                    $slider->size = $request->{$key}->getClientSize();
+            $slider->save();
 
-                    // uploading...
-                    if (str_contains($slider->file_type, 'image')) {
-                        $image = Image::make(file_get_contents($request->{$key}));
-                        $image = $image->stream()->__toString();
+            return response()->json([
+                'slider_id' => $slider->slider_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/slider/{$category}/".$slider->img_url,
+            ]);
+        }
+    }
 
-                        $storage->put("slider/{$key}/".$slider->content, $image);
-                    }
+    public function list(Request $request, $category='home')
+    {
+        $data = array();
+        $list = Slider::where('category', $category)->orderBy('sort', 'asc')->get();
+        foreach ($list as $slider) {
+            $data[] = [
+                'slider_id' => $slider->slider_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/slider/{$category}/".$slider->img_url,
+            ];
+        }
 
-                    $slider->save();
+        return response()->json($data);
+    }
 
-                    // dd($ext);
-                }
+    public function sort(Request $request, $category='home')
+    {
+        // dd($request->all());
+        $counter = 0;
+        foreach ($request->input('sorting') as $value) {
+            $slider = Slider::find($value['slider_id']);
+            $slider->sort = $value['sort'];
+            $slider->save();
+            $counter++;
+        }
+
+        return response()->json([
+            'counter' => $counter
+        ]);
+    }
+
+    public function delete(Request $request, $category='home')
+    {
+        $retval = ['status' => false];
+        $id = (int)$request->input('id');
+
+        if ($id) {
+            $slider = Slider::find($id);
+            if (count($slider)) {
+
+                Storage::disk('web')->delete("slider/{$category}/".$slider->img_url);
+                $slider->delete();
+
+                $retval['id'] = $id;
+                $retval['status'] = true;
+                $retval['message'] = "Slider id: {$id} has been deleted!";
             }
         }
 
-        return redirect('slider')->with('success', 'Slider saved!');
+        return response()->json($retval);
     }
 }

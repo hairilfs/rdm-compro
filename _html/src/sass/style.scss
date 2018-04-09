@@ -1,6 +1,7 @@
 @import "compass/reset";
 @import "compass/layout";
 @import "compass/css3";
+@import "fancybox/fancybox";
 @import "components/base";
 
 
@@ -212,15 +213,24 @@ body, input, textarea, select, button {
     		@include transform(translateY(-10px) translateZ(0));
     		@include transition(transform .6s cubic-bezier(.23,1,.32,1) 0s, opacity .6s cubic-bezier(.23,1,.32,1) 0s);
 
+    		.brand {
+    			padding: 1.15rem 0 0;
+
+    			@media (max-width: $bp-md - 1px) {
+					max-width: 70px;
+				}
+    		}
+
     		.menu-main-list {
     			@media (min-width: $bp-md) {
-		    		margin-top: 10rem;
+		    		margin-top: 4.5rem;
 		    	}
 
     			li {
     				margin-bottom: 10px;
 
     				a {
+    					color: #fff;
     					display: inline-block;
     					border-bottom: 1px solid transparent;
 
@@ -247,6 +257,7 @@ body, input, textarea, select, button {
 		    	}
 
 		    	li a {
+		    		color: #fff;
 		    		display: block;
 		    		padding: 5px 0;
 		    	}
@@ -265,6 +276,7 @@ body, input, textarea, select, button {
 
 		    	li {
 		    		padding: 10px 0;
+		    		color: #fff;
 
 		    		address {
 			    		font-size: 14px;
@@ -812,49 +824,6 @@ body.home {
 							.video-card {
 								border-radius: 6px;
 								overflow: hidden;
-
-								.video {
-									position: relative;
-									background-color: $darkBlue;
-
-									.thumb-container {
-										position: absolute;
-										top: 0;
-										left: 0;
-										right: 0;
-										bottom: 0;
-										background-size: cover;
-										background-repeat: no-repeat;
-										background-position: 50% 50%;
-
-										.start-video {
-											position: absolute;
-											display: block;
-											top: 50%;
-											left: 50%;
-											width: 60px;
-											height: 60px;
-											padding: 20px;
-											text-align: center;
-											font-size: 20px;
-											color: #fff;
-											background-color: #0e8de4;
-											text-decoration: none;
-											@include opacity(0.75);
-											@include transition(opacity .2s ease-out);
-											@include transform(translate(-50%, -50%));
-
-											i:before {
-												display: block;
-												margin: 0 auto;
-											}
-
-											&:hover {
-												@include opacity(1);
-											}
-										}
-									}
-								}
 							}
 						}
 					}
@@ -1258,7 +1227,191 @@ body.projects {
 	}
 }
 
+body.project-detail {
+	main {
+		#project-name {
+			background-color: #000;
+			color: #fff;
+
+			p {
+				font-size: 14px;
+			}
+
+			h1 {
+				font-weight: normal;
+			}
+		}
+
+		#project-intro {
+			figure {
+				position: relative;
+
+				img {
+					display: block;
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+
+			.intro-text {
+				.project-intro-info {
+					ul {
+						li {
+							margin-bottom: 20px;
+
+							p {
+								font-size: 16px;
+							}
+						}
+					}
+				}
+
+				.project-intro-content {
+					h5 {
+						margin-bottom: 1rem;
+					}
+				}
+			}
+		}
+
+		#project-video {
+			background-color: #151F50;
+
+			.video {
+				border-radius: 10px;
+				background-color: #000;
+				overflow: hidden;
+			}
+		}
+
+		#project-preview {
+			.preview-intro {
+				margin-bottom: 3rem;
+
+				@media (min-width: $bp-md) {
+					max-width: 600px;
+				}
+			}
+
+			.preview-row {
+				margin-bottom: 30px;
+
+				a {
+					outline: none !important;
+				}
+
+				&[data-columns="false"] {
+					.row {
+						> * {
+							@extend .col-12;
+						}
+					}
+				}
+
+				&[data-columns="true"] {
+					.row {
+						@extend .flexed-desktop;
+
+						> * {
+							@extend .col-md-6;
+
+							@media (max-width: $bp-md - 1px) {
+								&:nth-child(2) {
+									margin-top: 30px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.back-to-top {
+				margin-top: 4rem;
+				
+				#back-top {
+					font-size: 2.5rem;
+					display: inline-block;
+
+					@include opacity(0.5);
+
+					&:hover {
+				        @include opacity(1);
+
+				        -webkit-animation: jump .5s 2 linear;
+					    -moz-animation: jump .5s 2 linear;
+					    -o-animation: jump .5s 2 linear;
+					    animation: jump .5s 2 linear;
+				    }
+
+					i {
+						display: inline-block;
+						@include transform(rotate(-90deg));
+
+						&:before {
+							display: block;
+							margin: 0 auto;
+						}
+					}
+				}
+			}
+		}
+
+		#next-project {
+			position: relative;
+			
+			background-color: #000;
+			color: #fff;
+			
+			.section--inner {
+				a {
+					position: relative;
+					padding: 5rem 0;
+
+					figure {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						overflow: hidden;
+
+						img {
+							display: block;
+							width: 100%;
+							height: 100%;
+							object-fit: cover;
+							@include transform(scale(1));
+							@include transition(transform 1000ms ease-in-out);
+						}
+					}
+
+					.next-project-title {
+						h6 {
+							margin-bottom: 2rem;
+						}
+						
+						p:not(.h1) {
+							font-size: 16px;
+						}
+					}
+
+					&:hover {
+						figure {
+							img {
+								@include transform(scale(1.05));
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 body.company {
+	background-color: #000;
+
 	main {
 		#company-nav {
 			padding: 20px 0;
@@ -1302,6 +1455,17 @@ body.company {
 		#company-intro {
 			.intro-text {
 				margin-bottom: 3rem;
+
+				@media (min-width: $bp-md) {
+					h1, p {
+						max-width: 670px;
+					}
+
+					h1 {
+						font-size: 34px;
+						margin-bottom: 2rem;
+					}
+				}
 			}
 		}
 
@@ -1313,6 +1477,247 @@ body.company {
 
 				.content-head {
 					margin-bottom: 2rem;
+				}
+
+				.content-body {
+					.content-body--inner {
+						p, ul, blockquote, figure, .video {
+							margin-bottom: 3rem;
+						}
+
+						.section-large-text {
+							color: #89949D;
+						}
+
+						.video {
+							border-radius: 5px;
+							overflow: hidden;
+						}
+
+						blockquote {
+							@extend .h5;
+							font-weight: normal;
+						}
+
+						ul {
+							li {
+								margin-bottom: 0.65rem;
+
+								&:before {
+					    			content: '';
+					    			display: inline-block;
+					    			vertical-align: middle;
+					    			width: 15px;
+					    			height: 1px;
+					    			margin-right: 10px;
+					    			background-color: #fff;
+					    		}
+							}
+
+							&.two-col {
+								@media (min-width: $bp-md) {
+									-webkit-column-count: 2;
+								    -moz-column-count: 2;
+								    column-count: 2;
+								    -moz-column-fill: balance;
+       								column-fill: balance;
+								}
+
+								li {
+									border-bottom: 1px solid #fff;
+
+									&:before {
+										content: none;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#company-talk {
+			background-color: #000;
+		}
+
+		#company-nav {
+			.section--inner {
+				.row {
+					> * {
+						a {
+							height: 0;
+							padding-bottom: 66.6667%;
+							position: relative;
+
+							figure {
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 100%;
+								height: 100%;
+								overflow: hidden;
+
+								img {
+									width: 100%;
+									height: 100%;
+									object-fit: cover;
+									@include transform(scale(1));
+									@include transition(transform 1000ms ease-in-out);
+								}
+
+								.overlay {
+									@include transition(all 300ms ease-in-out);
+								}
+							}
+
+							.nav-text {
+								position: absolute;
+								top: 20px;
+								left: 20px;
+
+								p {
+									color: #fff !important;
+									margin: 0;
+									font-family: 'ClanPro-News', Arial, sans-serif;
+
+									&.nav-title {
+										@extend .h2;
+										font-weight: normal;
+									}
+								}
+							}
+
+							&:hover {
+								figure {
+									img {
+										@include transform(scale(1.05));
+									}
+
+									.overlay {
+										opacity: 0;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+body.company.who {
+	main {
+		#company-intro {
+			.intro-image.has-video {
+				.video {
+					border-radius: 5px;
+					overflow: hidden;
+				}
+			}
+		}
+
+		#company-scopes {
+			.scopes-item {
+				padding-top: 15px;
+				padding-bottom: 15px;
+
+				figure {
+					margin-bottom: 2rem;
+				}
+
+				figcaption {
+					h5 {
+						margin-bottom: 1rem;
+					}
+
+					a.link {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+
+		#company-people {
+			.team-holder {
+				margin-top: 4rem;
+				margin-bottom: 4rem;
+
+				.profile-item {
+					figcaption {
+						.profile-position {
+							color: #666;
+						}
+					}
+				}
+			}
+
+			.job-cta {
+				font-size: 14px;
+			}
+		}
+
+		#company-mood {
+			background-color: #000;
+
+			&:before {
+				margin: 0;
+				position: relative;
+				top: 50px;
+			}
+		}
+
+		#company-location {
+			background-color: #000;
+
+			h3 {
+				margin-bottom: 4rem;
+			}
+
+			figure {
+				margin-bottom: 2rem;
+			}
+
+			figcaption {
+				h5 {
+					margin-bottom: 1rem;
+				}
+			}
+		}
+
+		#company-talk {
+			background-color: #1b1b1b;
+		}
+
+		#company-nav {
+			padding: 0;
+		}
+	}
+}
+
+body.company.why {
+	main {
+		#company-content {
+			.content-block {
+				.content-body {
+					@media (min-width: $bp-md) {
+						max-width: 500px;
+						margin-left: auto;
+						margin-right: auto;
+					}
+
+					@media (min-width: $bp-xxl) {
+						max-width: 600px;
+						margin-left: auto;
+						margin-right: auto;
+					}
+					
+					.content-body--inner {
+						.content-header {
+							margin-bottom: 2rem;
+						}
+					}
 				}
 			}
 		}
