@@ -20,6 +20,12 @@
                     Project Category
                 </h1>
             </div>
+            <div class="col-sm-5 text-right hidden-xs">
+                <ol class="breadcrumb push-10-t">
+                    <li>Projects</li>
+                    <li><a class="link-effect" href="javascript:void(0)">Category</a></li>
+                </ol>
+            </div>
         </div>
     </div>
     <!-- END Page Header -->

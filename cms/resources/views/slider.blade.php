@@ -19,6 +19,12 @@
                     Slider - {{ $category }} <small>All summary here.</small>
                 </h1>
             </div>
+            <div class="col-sm-5 text-right hidden-xs">
+                <ol class="breadcrumb push-10-t">
+                    <li>Slider</li>
+                    <li><a class="link-effect" href="javascript:void(0)">{{ $category }}</a></li>
+                </ol>
+            </div>
         </div>
     </div>
     <!-- END Page Header -->

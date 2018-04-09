@@ -12,6 +12,11 @@
                     Setting <small>All summary here.</small>
                 </h1>
             </div>
+            <div class="col-sm-5 text-right hidden-xs">
+                <ol class="breadcrumb push-10-t">
+                    <li><a class="link-effect" href="javascript:void(0)">Setting</a></li>
+                </ol>
+            </div>
         </div>
     </div>
     <!-- END Page Header -->
