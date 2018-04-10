@@ -166,6 +166,10 @@ body, input, textarea, select, button {
 	width: 100%;
 	height: 90%;
 
+	@media (max-width: $bp-s - 1px) {
+		height: 95%;
+	}
+
 	&:before {
         position: absolute;
         content: "";
@@ -195,6 +199,10 @@ body, input, textarea, select, button {
 	    		color: $gray-light;
 	    		font-size: 14px;
 
+	    		@media (max-width: $bp-md - 1px) {
+					padding: 1rem 0 0;
+				}
+
 	    		&:before {
 	    			content: '';
 	    			display: inline-block;
@@ -223,6 +231,8 @@ body, input, textarea, select, button {
     		}
 
     		.menu-main-list {
+    			margin-top: 1rem;
+
     			@media (min-width: $bp-md) {
 		    		margin-top: 4.5rem;
 		    	}
@@ -237,10 +247,15 @@ body, input, textarea, select, button {
 
     					@extend .h2;
     					font-weight: normal;
+    					margin-bottom: 0;
 
     					&:hover {
     						color: $teel;
     						border-color: rgba(255,255,255,0.85);
+    					}
+
+    					@media (max-width: $bp-md - 1px) {
+    						font-size: 1.5rem;
     					}
     				}
     			}
@@ -253,14 +268,49 @@ body, input, textarea, select, button {
     		@include transition(transform .6s cubic-bezier(.23,1,.32,1) 0s, opacity .6s cubic-bezier(.23,1,.32,1) 0s);
 
     		.social-list {
-    			@media (min-width: $bp-md) {
-		    		margin-top: 6rem;
+
+		    	li {
+		    		display: inline-block;
+
+		    		a {
+			    		color: #fff;
+			    		display: block;
+			    		padding: 5px 0;
+			    	}
+
+			    	&.talk-menu {
+			    		margin-left: 10px;
+
+			    		.btn-trigger-talk {
+							font-size: 12px;
+							padding: 7px 12px;
+							line-height: 1;
+							opacity: 0.8;
+
+							&:hover {
+								opacity: 1;
+								color: #000;
+							}
+						}
+			    	}
 		    	}
 
-		    	li a {
-		    		color: #fff;
-		    		display: block;
-		    		padding: 5px 0;
+		    	@media (min-width: $bp-md) {
+		    		margin-top: 6rem;
+
+		    		li {
+		    			display: block;
+
+		    			&.talk-menu {
+		    				margin-top: 2rem;
+		    				margin-left: -12px;
+		    				display: inline-block;
+
+		    				.btn-trigger-talk {
+			    				padding: 10px 25px !important;
+			    			}
+		    			}
+		    		}
 		    	}
     		}
     	}
@@ -282,6 +332,16 @@ body, input, textarea, select, button {
 		    		address {
 			    		font-size: 14px;
 			    		color: #89949D;
+			    	}
+
+			    	@media (max-width: $bp-md - 1px) {
+			    		h5 {
+			    			font-size: 1rem;
+			    		}
+
+			    		address {
+			    			margin-bottom: 0;
+			    		}
 			    	}
 		    	}
     		}
@@ -1861,7 +1921,7 @@ body.company.who {
 				.profile-item {
 					padding-top: 15px;
 					padding-bottom: 15px;
-					
+
 					figure {
 						overflow: hidden;
 

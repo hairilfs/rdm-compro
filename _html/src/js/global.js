@@ -383,10 +383,20 @@ var rdm = (function(){
             }, 20);
         };
 
-        btn.click(function(e){
+        $('body').on('click', '#trigger-talk', function(e){
             e.preventDefault();
 
-            showTalkModal();
+            $('#header-menu').removeClass('active');
+
+            setTimeout(function(){
+                $('#header-menu').remove();
+                $('#burger').toggleClass('active');
+                $('html').removeClass('menu-active');
+            }, 600);
+
+            setTimeout(function(){
+                showTalkModal();
+            }, 600);
 
             if($('body').find('#talk-modal').html().length > 0){
                 var field = $('.modal-field');

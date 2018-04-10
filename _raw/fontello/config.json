@@ -59,6 +59,12 @@
       "css": "right",
       "code": 59397,
       "src": "mfglabs"
+    },
+    {
+      "uid": "e9107949dd6c9e8ab2b29ae07156e38c",
+      "css": "linkedin",
+      "code": 61665,
+      "src": "fontawesome"
     }
   ]
 }
