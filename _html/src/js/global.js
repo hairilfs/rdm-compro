@@ -15,7 +15,7 @@ $(function(){
         e.preventDefault();
 
         $('html, body').animate({
-            scrollTop: $('#landing-instructions').offset().top - $('#header').height()
+            scrollTop: $('#home-about').offset().top - $('#header').height()
         }, 500);
     });
 
@@ -125,6 +125,12 @@ var rdm = (function(){
 
         if($('body.project-detail').length){
             $('main #project-name').css({
+                'padding-top': $('#header').height() + 'px'
+            });
+        };
+
+        if($('body.project.ongoing').length){
+            $('main #landing-intro').css({
                 'padding-top': $('#header').height() + 'px'
             });
         };
@@ -350,7 +356,7 @@ var rdm = (function(){
     };
 
     var talk = function(){
-        var btn      = $('#trigger-talk'),
+        var btn      = $('.btn-trigger-talk'),
             template = $('script[data-template="talk-modal"]').html();
 
         function hideTalkModal(){
@@ -381,24 +387,9 @@ var rdm = (function(){
                     $('input.form-control').focus();
                 }, 600);
             }, 20);
-        };
 
-        $('body').on('click', '#trigger-talk', function(e){
-            e.preventDefault();
-
-            $('#header-menu').removeClass('active');
-
-            setTimeout(function(){
-                $('#header-menu').remove();
-                $('#burger').toggleClass('active');
-                $('html').removeClass('menu-active');
-            }, 600);
-
-            setTimeout(function(){
-                showTalkModal();
-            }, 600);
-
-            if($('body').find('#talk-modal').html().length > 0){
+            if($(document).find('#talk-modal').html().length){
+                console.log('talk modal appended');
                 var field = $('.modal-field');
 
                 field.keypress(function(e){
@@ -407,7 +398,7 @@ var rdm = (function(){
                         console.log('sdsd');
                         nextInput();
                     }
-                })
+                });
 
                 // next input field
                 $('#talk-modal').on('click', '.btn-next', function(e){
@@ -436,7 +427,7 @@ var rdm = (function(){
                 };
 
                 function ddShow(elem){
-                    elem.each(function(){
+                    elem.each(function(e){
                         var $this = $(this);
 
                         if($this.hasClass('is-active') && $(e.target).parents(".custom-dropdown").length == 0){
@@ -464,6 +455,24 @@ var rdm = (function(){
                     });
                 };
             }
+        };
+
+        $('body').on('click', '.btn-trigger-talk', function(e){
+            e.preventDefault();
+
+            $('#header-menu').removeClass('active');
+
+            setTimeout(function(){
+                $('#header-menu').remove();
+                $('#burger').removeClass('active');
+                $('html').removeClass('menu-active');
+            }, 600);
+
+            setTimeout(function(){
+                showTalkModal();
+            }, 600);
+
+            
 
         });
 
@@ -481,6 +490,26 @@ var rdm = (function(){
             // options
             itemSelector: '.item',
             layoutMode: 'masonry'
+        });
+
+        // bind filter button click
+        $('.filter-list').on('click', '.filter-js', function(e) {
+            e.preventDefault();
+            var filterValue = $(this).attr('data-filter');
+
+            grid.isotope({
+                filter: filterValue
+            });
+        });
+
+        // change is-checked class on buttons
+        $('.filter-list').each(function(i, buttonGroup) {
+            var $buttonGroup = $(buttonGroup);
+
+            $buttonGroup.on('click', '.filter-js', function() {
+                $buttonGroup.find('.active').removeClass('active');
+                $(this).addClass('active');
+            });
         });
     };
 
