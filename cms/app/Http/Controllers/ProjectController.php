@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Project;
-use DataTables;
+use App\{ Project, ProjectCategory };
+use DataTables, Storage, Image;
 
 class ProjectController extends Controller
 {
@@ -57,6 +57,7 @@ class ProjectController extends Controller
     public function show(Request $request, $cid="")
     {
         $this->data['project'] = $cid ? Project::find($cid) : new Project;
+        $this->data['category'] = ProjectCategory::all();
         return view('project-form', $this->data);
     }
 
@@ -74,13 +75,49 @@ class ProjectController extends Controller
         $project->project_status = $request->input('project_status');
         $project->year = $request->input('year');
         $project->youtube_url = $request->input('youtube_url');
-        $project->project_category = $request->input('project_category');
+        $project->project_category = implode(',', $request->input('project_category'));
         $project->published_at = date('Y-m-d H:i:s', strtotime($request->input('published_at')));
         $project->is_publish = $request->input('is_publish') ? 1 : 0;
 
-        $project->save();
+        $storage = Storage::disk('web');
 
-        return redirect('/project')->with('success', 'Project saved!');
+        if ($request->hasFile('img_portrait')) 
+        {
+            $portrait_temp = $request->file('img_portrait');
+            $file_type = $portrait_temp->getClientMimeType();
+
+            $project->img_portrait_url = str_replace('.', time().'.', $portrait_temp->getClientOriginalName());
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($portrait_temp));
+                $image->fit(580, 743, function ($constraint) {
+                    $constraint->upsize();
+                });
+                $image = $image->stream()->__toString();
+
+                $storage->put("project/{$project->project_cid}/".$project->img_portrait_url, $image);
+            }
+        }
+
+        if ($request->hasFile('img_landscape')) 
+        {
+            $landscape_temp = $request->file('img_landscape');
+            $file_type = $landscape_temp->getClientMimeType();
+
+            $project->img_landscape_url = str_replace('.', time().'.', $landscape_temp->getClientOriginalName());
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($landscape_temp));
+                $image->fit(580, 362, function ($constraint) {
+                    $constraint->upsize();
+                });
+                $image = $image->stream()->__toString();
+
+                $storage->put("project/{$project->project_cid}/".$project->img_landscape_url, $image);
+            }
+        }
+
+        $project->save();        
+
+        return redirect('/project/form/'.$project->project_cid)->with('success', $cid ? 'Project updated!' : 'Project saved!');
     }
 
     public function list(Request $request)

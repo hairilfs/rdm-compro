@@ -4,8 +4,8 @@
 
 @section('head')
 <link rel="stylesheet" href="assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css">
-<link rel="stylesheet" href="assets/js/plugins/select2/select2-bootstrap.min.css">
 <link rel="stylesheet" href="assets/js/plugins/select2/select2.min.css">
+{{-- <link rel="stylesheet" href="assets/js/plugins/select2/select2-bootstrap.min.css"> --}}
 @endsection
 
 @section('content')
@@ -31,11 +31,19 @@
     <!-- Page Content -->
     <div class="content">
         <form class="form-horizontal push-5-t" action="" method="post" enctype="multipart/form-data">
-        	{{ csrf_field() }}
-	        <div class="row">
-	            <div class="col-md-8">
-	                <div class="block block-bordered">
-	                    <div class="block-content">
+            {{ csrf_field() }}
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="block block-bordered">
+                        <div class="block-header">
+                            <ul class="block-options">
+                                <li>
+                                    <button type="button"><i class="si si-settings"></i></button>
+                                </li>
+                            </ul>
+                            <h3 class="block-title">Main Data</h3>
+                        </div>
+                        <div class="block-content">
                             <div class="form-group">
                                 <div class="col-sm-8">
                                     <div class="form-material">
@@ -57,6 +65,22 @@
                                     <div class="form-material">
                                         <textarea class="ckeditor" id="description" name="description">{!! $project->description !!}</textarea>
                                         <label for="description">Description</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <div class="form-material">
+                                        @php
+                                            $selected_category = explode(',', $project->project_category);
+                                        @endphp
+                                        <select class="js-select2 form-control" id="project_category" name="project_category[]" style="width: 100%;" data-placeholder="Choose categories.." multiple>
+                                            <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
+                                            @foreach ($category as $element)
+                                            <option value="{{ $element->slug }}" {{ in_array($element->slug, $selected_category) ? 'selected' : '' }}>{{ $element->name }}</option>
+                                            @endforeach
+                                        </select>
+                                        <label for="project_category">Categories</label>
                                     </div>
                                 </div>
                             </div>
@@ -92,26 +116,36 @@
                                     </div>
                                 </div>
                             </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="col-md-4">
-	                <div class="block block-bordered">
-	                    <div class="block-content">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="block block-bordered">
+                        <div class="block-header">
+                            <ul class="block-options">
+                                <li>
+                                    <button type="button"><i class="si si-settings"></i></button>
+                                </li>
+                            </ul>
+                            <h3 class="block-title">Main Data</h3>
+                        </div>
+                        <div class="block-content">
+                            
                             <div class="form-group">
-                                <div class="col-sm-12">
+                                <div class="col-xs-12">
                                     <div class="form-material">
-                                        <select class="js-select2 form-control" id="project_category" name="project_category" style="width: 100%;" data-placeholder="Choose categories.." multiple>
-                                            <option></option><!-- Required for data-placeholder attribute to work with Select2 plugin -->
-                                            <option value="1">HTML</option>
-                                            <option value="2">CSS</option>
-                                            <option value="3">JavaScript</option>
-                                            <option value="4">PHP</option>
-                                            <option value="5">MySQL</option>
-                                            <option value="6">Ruby</option>
-                                            <option value="7">AngularJS</option>
-                                        </select>
-                                        <label for="project_category">Categories</label>
+                                        <img src="{{ $project->getImgUrl('portrait') }}" class="push-10-t" {!! $project->img_portrait_url ? 'width="100%"' : '' !!}>
+                                        <input type="file" class="upload-preview push-10-t" id="img_portrait" name="img_portrait">
+                                        <label for="img_portrait">Portrait Image</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-xs-12">
+                                    <div class="form-material">
+                                        <img src="{{ $project->getImgUrl('landscape') }}" class="push-10-t" {!! $project->img_landscape_url ? 'width="100%"' : '' !!}>
+                                        <input type="file" class="upload-preview push-10-t" id="img_landscape" name="img_landscape">
+                                        <label for="img_landscape">Landscape Image</label>
                                     </div>
                                 </div>
                             </div>
@@ -133,16 +167,37 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-sm-9">
+                                <div class="col-sm-12">
                                     <button class="btn btn-sm btn-primary" type="submit">Submit</button>
                                 </div>
                             </div>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
-	    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>     
     </div>
+
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="block block-bordered">
+                    <div class="block-header">
+                        <ul class="block-options">
+                            <li>
+                                <button type="button"><i class="si si-settings"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Modules</h3>
+                    </div>
+                    <div class="block-content">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     <!-- END Page Content -->
 </main>
 
@@ -164,10 +219,10 @@
         App.initHelpers(['ckeditor', 'datetimepicker', 'select2']);
 
         CKEDITOR.config.toolbar = [
-		   ['Format'],
-		   ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
-		   ['Source']
-		] ;
+           ['Format'],
+           ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
+           ['Source']
+        ] ;
     });
 </script>
 

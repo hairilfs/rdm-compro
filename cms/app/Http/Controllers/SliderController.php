@@ -48,7 +48,7 @@ class SliderController extends Controller
             $ext = $img_temp->extension();
 
             $slider = new Slider;
-            $slider->img_url = str_slug(str_replace('.', time().'.', $img_temp->getClientOriginalName()));
+            $slider->img_url = str_replace('.', time().'.', $img_temp->getClientOriginalName());
             $slider->category = $category;
             $slider->is_publish = 1;
             $slider->published_at = date('Y-m-d H:i:s');

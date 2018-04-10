@@ -38,6 +38,8 @@
 
         <!-- Base URL -->
         <base href="{{ url('/').'/' }}">
+        
+        @yield('head')
 
         <!-- Bootstrap and OneUI CSS framework -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -46,7 +48,6 @@
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
-        @yield('head')
         <!-- END Stylesheets -->
     </head>
     <body>
@@ -202,6 +203,22 @@
         @stack('scripts')
 
         <script type="text/javascript">
+
+            function readURL(input) {
+              if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function(e) {
+                        $(input).prev().attr({
+                            width: '100%',
+                            src: e.target.result
+                        });
+                    }
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+            
             function popup_notif(icon, message, type) {
                 jQuery.notify({
                 icon: icon,
@@ -229,6 +246,10 @@
                     }
                 });
             }
+
+            $(".upload-preview").change(function() {
+                readURL(this);
+            });
 
             @if (Session::has('success') || Session::has('fail'))
             @php
