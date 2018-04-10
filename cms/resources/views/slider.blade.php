@@ -80,7 +80,6 @@
     <!-- END Page Content -->
 </main>
 
-{{-- <iframe src="http://localhost:81/rdm-wheel/cms/public/prize" width="100%"></iframe> --}}
 @endsection
 
 @push('scripts')

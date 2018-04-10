@@ -24,6 +24,31 @@ var BaseTableDatatables = function() {
         });
     };
 
+    // Custom
+    var initDataTableCustom = function() {
+        jQuery('.js-dataTable-custom').dataTable({
+            processing: true,
+            serverSide: true,
+            ajax: dt_conf.ajax,
+            columns: dt_conf.columns,
+            pagingType: "full_numbers",
+            columnDefs: dt_conf.columnDefs,
+            pageLength: dt_conf.pageLength,
+            lengthMenu: dt_conf.lengthMenu,
+            order : typeof(dt_conf.order != 'undefined') ? dt_conf.order : [[ 0, 'desc' ]],
+            "initComplete" : function(settings, json) {
+                // Initialize Tooltips
+                jQuery('[data-toggle="tooltip"], .js-tooltip').tooltip({
+                    container: 'body',
+                    animation: false
+                });
+
+                jQuery('#DataTables_Table_0_length')
+                    .prepend('<a href="'+dt_conf.formUrl+'" class="btn btn-success" style="margin-right: 15px;"><i class="fa fa-plus"></i> New</a>');
+            }
+        });
+    };
+
     // Init simple DataTable, for more examples you can check out https://www.datatables.net/
     var initDataTableSimple = function() {
         jQuery('.js-dataTable-simple').dataTable({
@@ -199,6 +224,11 @@ var BaseTableDatatables = function() {
             initDataTableSimple();
             initDataTableFull();
             initDataTableFullPagination();
+
+            if(dt_conf)
+            {
+                initDataTableCustom();
+            }
         }
     };
 }();
