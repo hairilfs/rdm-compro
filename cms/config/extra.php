@@ -19,5 +19,23 @@ return [
         'texteditor'    => 5,
         'file'          => 6,
     ],
+    
+    /*
+    |--------------------------------------------------------------------------
+    | Module Type
+    |--------------------------------------------------------------------------
+    |
+    | Declare module type for table 'module' in database
+    |
+    */
+
+    'module_type' => [
+        'text'          => 1,
+        'image'         => 2,
+        'images'        => 3,
+        'text_image'    => 4,
+    ],
+
+
 
 ];

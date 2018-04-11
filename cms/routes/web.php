@@ -34,5 +34,8 @@ Route::get('/project-category/{cid}/delete', 'ProjectCategoryController@delete')
 Route::get('/project-category/{cid?}/{edit?}', 'ProjectCategoryController@index');
 Route::post('/project-category/{cid?}/{edit?}', 'ProjectCategoryController@save');
 
+Route::get('/module/{category}/{id?}', 'ModuleController@index');
+Route::post('/module/{category}/{id?}', 'ModuleController@save');
+
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');

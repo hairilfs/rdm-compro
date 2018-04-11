@@ -183,11 +183,9 @@
             <div class="col-md-8">
                 <div class="block block-bordered">
                     <div class="block-header">
-                        <ul class="block-options">
-                            <li>
-                                <button type="button"><i class="si si-settings"></i></button>
-                            </li>
-                        </ul>
+                        <div class="block-options-simple block-options">
+                            <button class="btn btn-xs btn-success" type="button" data-toggle="modal" data-target="#modal_module"><i class="fa fa-fw fa-plus"></i> Add new</button>
+                        </div>
                         <h3 class="block-title">Modules</h3>
                     </div>
                     <div class="block-content">
@@ -199,21 +197,79 @@
     </div>
 
     <!-- END Page Content -->
+
+    <!-- Normal Modal -->
+    <div class="modal" id="modal_module" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent remove-margin-b">
+                    <div class="block-header bg-primary-dark">
+                        <ul class="block-options">
+                            <li>
+                                <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                            </li>
+                        </ul>
+                        <h3 class="block-title">Lists of Modules</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="content-grid">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="block block-link-hover2" href="{{ url('module/text') }}?project={{ $project->project_cid}}">
+                                        <div class="block-content block-content-full bg-primary clearfix">
+                                            <i class="si si-speech fa-2x text-white pull-right"></i>
+                                            <span class="h4 text-white-op">Simple Text</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a class="block block-link-hover2" href="javascript:void(0)">
+                                        <div class="block-content block-content-full bg-city clearfix">
+                                            <i class="si si-picture fa-2x text-white pull-right"></i>
+                                            <span class="h4 text-white-op">Single Image</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="block block-link-hover2" href="javascript:void(0)">
+                                        <div class="block-content block-content-full bg-flat clearfix">
+                                            <i class="si si-layers fa-2x text-white pull-right"></i>
+                                            <span class="h4 text-white-op">Double Image</span>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="col-lg-6">
+                                    <a class="block block-link-hover2" href="javascript:void(0)">
+                                        <div class="block-content block-content-full bg-warning clearfix">
+                                            <i class="si si-grid fa-2x text-white pull-right"></i>
+                                            <span class="h4 text-white-op">Text &amp; Image</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Normal Modal -->
 </main>
 
 @endsection
 
 @push('scripts')
 
-<script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
+{{-- <script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
 <script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash"></script> --}}
 <script src="assets/js/plugins/ckeditor/ckeditor.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/moment.min.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="assets/js/plugins/select2/select2.full.min.js"></script>
-<script src="assets/js/core/bootstrap.min.js"></script>
 <script type="text/javascript">    
     jQuery(function () {
         App.initHelpers(['ckeditor', 'datetimepicker', 'select2']);
