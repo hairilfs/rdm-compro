@@ -13,7 +13,8 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    {{ $module->module_id ? 'Edit' : 'Add'}} Module <small>: {{ $project->title }}</small>
+                    <a href="{{ url('/project/form/'.$project->project_cid) }}" title="Back to project: {{ $project->title }}">&laquo;</a>
+                    {{ $module->module_id ? 'Edit' : 'Add'}} Module <small>: {{ $project->title }}</small>                    
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
@@ -53,15 +54,12 @@
                         </div>
 
                         <div class="block-content">
-                            @php
-                                $obj = $module->content ? json_decode($module->content) : (object)['content' => null];
-                            @endphp
                             @switch($category)
                                 @case('text')
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <div class="form-material">
-                                                <textarea class="ckeditor" id="text" name="text">{!! $obj->content !!}</textarea>
+                                            <div class="form-material" style="padding-top: 10px;">
+                                                <textarea class="ckeditor" id="text" name="text">{!! $module->content !!}</textarea>
                                                 <label for="text">Text</label>
                                             </div>
                                         </div>
@@ -113,6 +111,21 @@
                             </div>
                         </div>
                     </div>
+
+                    @if ($module->module_id)
+                    <div class="block block-bordered">
+                        <div class="block-header">
+                            <h3 class="block-title">Module</h3>
+                        </div>
+                        <div class="block-content">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-sm btn-primary" type="button" data-toggle="modal" data-target="#modal_module"><i class="fa fa-plus"></i> Add new module</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
         </form>     
@@ -120,6 +133,8 @@
 
     <!-- END Page Content -->
 </main>
+
+@include('partials.modal-module')
 
 @endsection
 

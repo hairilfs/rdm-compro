@@ -41,11 +41,9 @@ class ModuleController extends Controller
     {
         // dd($request->all());
         $module = $id ? Module::find($id) : new Module;
-        $data = array('type' => config('extra.module_type.'.$category));
-
         switch ($category) {
             case 'text':
-                $data['content'] = $request->input('text');
+                $module->content = $request->input('text');
                 break;
             
             default:
@@ -54,8 +52,7 @@ class ModuleController extends Controller
         }
 
         $module->project_cid = $request->input('project');
-        $module->content = json_encode($data);
-        $module->module_type = $data['type'];
+        $module->module_type = config('extra.module_type.'.$category);
         $module->published_at = date('Y-m-d H:i:s', strtotime($request->input('published_at')));
         $module->is_publish = $request->input('is_publish') ? 1 : 0;
 
