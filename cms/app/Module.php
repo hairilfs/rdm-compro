@@ -17,32 +17,24 @@ class Module extends Model
         'published_at',
     ];
 
+    public function images()
+    {
+        return $this->hasMany('App\ModuleImage', 'module_id');
+    }
+
     public function getPublish()
     {
     	return $this->published_at ? $this->published_at->format('m/d/Y H:i A') : date('m/d/Y H:i A');
     }
 
-    public function getImgUrl($type='landscape')
+    public function getImgUrl($order=0)
     {
-        switch ($type) {
-            case 'landscape':
-                if ($this->img_landscape_url) {
-                    $url = env('WEB_BASE_URL')."uploads/module/{$this->module_cid}/{$this->img_landscape_url}";
-                } else {
-                    $url = 'http://via.placeholder.com/100x150?text=Upload+image';
-                }
-
-                break;
-            
-            default:                
-                if ($this->img_portrait_url) {
-                    $url = env('WEB_BASE_URL')."uploads/module/{$this->module_cid}/{$this->img_portrait_url}";
-                } else {
-                    $url = 'http://via.placeholder.com/150x100?text=Upload+image';
-                }
-                break;
+        $images = $this->images;
+        if ($images->count() <= 0) {
+            return 'http://via.placeholder.com/300x200?text=Upload+image';
         }
 
-        return $url;
+        return $images[$order]->getImgUrl($this->project_cid);
+
     }
 }

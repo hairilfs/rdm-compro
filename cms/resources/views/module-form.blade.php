@@ -67,8 +67,17 @@
                                     @break
 
                                 @case('image')
-                                    <h3 class="block-title">Single Image</h3>
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <div class="form-material">
+                                                <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="50%">
+                                                <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
+                                                <label for="img1">Image</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                     @break
+
                                 @case('images')
                                     <h3 class="block-title">Double Image</h3>
                                     @break

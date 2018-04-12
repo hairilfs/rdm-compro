@@ -23,7 +23,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6">
-                                <a class="block block-link-hover2" href="javascript:void(0)">
+                                <a class="block block-link-hover2" href="{{ url('module/image') }}?project={{ $project->project_cid}}">
                                     <div class="block-content block-content-full bg-city clearfix">
                                         <i class="si si-picture fa-2x text-white pull-right"></i>
                                         <span class="h4 text-white-op">Single Image</span>
@@ -33,7 +33,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
-                                <a class="block block-link-hover2" href="javascript:void(0)">
+                                <a class="block block-link-hover2" href="{{ url('module/images') }}?project={{ $project->project_cid}}">
                                     <div class="block-content block-content-full bg-flat clearfix">
                                         <i class="si si-layers fa-2x text-white pull-right"></i>
                                         <span class="h4 text-white-op">Double Image</span>
@@ -41,6 +41,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6">
+                                <a class="block block-link-hover2" href="{{ url('module/text_image') }}?project={{ $project->project_cid}}">
                                 <a class="block block-link-hover2" href="javascript:void(0)">
                                     <div class="block-content block-content-full bg-warning clearfix">
                                         <i class="si si-grid fa-2x text-white pull-right"></i>

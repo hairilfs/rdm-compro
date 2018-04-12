@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{ Module, Project };
+use App\{ Module, ModuleImage, Project };
 use Storage, Image;
 
 class ModuleController extends Controller
@@ -55,51 +55,51 @@ class ModuleController extends Controller
         $module->module_type = config('extra.module_type.'.$category);
         $module->published_at = date('Y-m-d H:i:s', strtotime($request->input('published_at')));
         $module->is_publish = $request->input('is_publish') ? 1 : 0;
+        $module->save();      
 
         $storage = Storage::disk('web');
 
-        if ($request->hasFile('img_portrait')) 
+        if ($request->hasFile('img1')) 
         {
-            $portrait_temp = $request->file('img_portrait');
-            $file_type = $portrait_temp->getClientMimeType();
+            $img1_temp = $request->file('img1');
+            $file_type = $img1_temp->getClientMimeType();
 
-            $module->img_portrait_url = str_replace('.', time().'.', $portrait_temp->getClientOriginalName());
+            $filename = str_replace('.', time().'.', $img1_temp->getClientOriginalName());
             if (str_contains($file_type, 'image')) {
-                $image = Image::make(file_get_contents($portrait_temp));
-                $image->fit(580, 743, function ($constraint) {
-                    $constraint->upsize();
-                });
+                $image = Image::make(file_get_contents($img1_temp));
                 $image = $image->stream()->__toString();
 
-                $storage->put("module/{$module->module_id}/".$module->img_portrait_url, $image);
+                $storage->put("module_image/{$module->project_cid}/".$filename, $image);
+
+                $mi = new ModuleImage;
+                $mi->module_id = $module->module_id;
+                $mi->img_url = $filename;
+                $mi->save();
             }
         }
-
-        if ($request->hasFile('img_landscape')) 
-        {
-            $landscape_temp = $request->file('img_landscape');
-            $file_type = $landscape_temp->getClientMimeType();
-
-            $module->img_landscape_url = str_replace('.', time().'.', $landscape_temp->getClientOriginalName());
-            if (str_contains($file_type, 'image')) {
-                $image = Image::make(file_get_contents($landscape_temp));
-                $image->fit(580, 362, function ($constraint) {
-                    $constraint->upsize();
-                });
-                $image = $image->stream()->__toString();
-
-                $storage->put("module/{$module->module_id}/".$module->img_landscape_url, $image);
-            }
-        }
-
-        $module->save();        
 
         return redirect("/module/{$category}/{$module->module_id}?project=".$module->project_cid)->with('success', $id ? 'Module updated!' : 'Module saved!');
     }
 
-    public function list(Request $request)
+    public function list(Request $request, $cid=null)
     {
-        $list = Module::orderBy('sort')->get();
+        if(!$cid) return response()->json([]);
+
+        $list = [];
+        $modules = Module::where('project_cid', $cid)->orderBy('sort')->with('images')->get();
+        foreach ($modules as $key => $value) {
+            $list[$key] = [
+                'project_cid' => $value->project_cid,
+                'module_type' => $value->module_type,
+                'content' => $value->content,
+                'sort' => $value->sort,
+            ];
+
+            foreach ($value->images as $index => $image) {
+                $list[$key]['image'][$index] = $image->getImgUrl($cid);
+            }
+        }
+
         return response()->json($list);
     }
 

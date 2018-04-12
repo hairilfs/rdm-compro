@@ -126,7 +126,38 @@
                             </div>
                             <h3 class="block-title">Modules</h3>
                         </div>
-                        <div class="block-content">
+
+                        <div class="block-content" id="sortable_wrapper">
+
+                            <div v-for="(data, index) in module" class="block block-bordered block-rounded block-module-item" :data-id="data.module_id">
+                                <div class="block-content bg-gray-light" style="padding-bottom: 20px;">
+                                    <div class="block-header">
+                                        <ul class="block-options">
+                                            <li>
+                                                <button type="button" title="Delete" :data-id="data.id" v-on:click="return deleteImage(data.id)"><i class="fa fa-trash text-danger"></i></button>
+                                            </li>
+                                            <li title="Move..." style="cursor: move;">
+                                                <i class="fa fa-arrows"></i>
+                                            </li>
+                                        </ul>
+                                        <h3 class="block-title">@{{ moduleType(data.module_type) }}</h3>
+                                    </div>
+
+                                    <div class="block-content">
+                                        <template v-if="data.module_type == 1">
+                                            <p v-html="data.content"></p>
+                                        </template>
+
+                                        <template v-else-if="data.module_type == 2">
+                                            <img :src="data.image[0]" style="height: 120px;">
+                                        </template>
+                                        
+                                        <template v-else>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -210,7 +241,8 @@
     var v_module = new Vue({
         el: '#module_list',
         data: {
-            module: []
+            module: [],
+            changed: false
         },
         mounted: function() {
             this.$nextTick(function(){
@@ -218,11 +250,34 @@
                     v_module.module = response;
                 }, 'json');
             });
+        },
+        methods: {
+            moduleType: function(type) {
+                switch(parseInt(type)) {
+                    case 1:
+                        var name = 'Simple Text';
+                        break;
+                    case 2:
+                        var name = 'Single Image';
+                        break;
+
+                    default:
+                        var name = 'Other Module';
+                }
+
+                return name;
+            }
         }
     });
 
     jQuery(function () {
         App.initHelpers(['ckeditor', 'datetimepicker', 'select2']);
+
+        $( "#sortable_wrapper").sortable({
+            update: function( event, ui ) {
+                vue_slider.changed = true;
+            }
+        });
 
         CKEDITOR.config.toolbar = [
            ['Format'],
