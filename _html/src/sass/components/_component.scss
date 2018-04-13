@@ -305,6 +305,7 @@
 .btn {
     text-transform: uppercase;
 	padding: 1rem;
+    cursor: pointer;
     letter-spacing: 1px;
     box-shadow: none !important;
 
@@ -328,6 +329,18 @@
 
     &:hover {
         background-color: #fff;
+    }
+}
+
+.btn.btn-border-black {
+    border: 1px solid #707070;
+    color: #000;
+    background-color: transparent;
+
+    &:hover {
+        background-color: #000;
+        border-color: #000;
+        color: #fff;
     }
 }
 
@@ -377,6 +390,27 @@
 
     &:focus {
     	opacity: 1;
+    }
+}
+
+.select-option--holder {
+    position: relative;
+
+    select {
+        background-color: transparent;
+        font-weight: 400;
+        padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+        @include appearance(none);
+
+    }
+
+    i {
+        position: absolute;
+        color: #707070;
+        // z-index: -1;
+        pointer-events: none;
+        top: 7px;
+        right: 10px;
     }
 }
 
