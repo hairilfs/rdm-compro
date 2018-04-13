@@ -42,7 +42,6 @@
                             </div>
                             <div class="col-lg-6">
                                 <a class="block block-link-hover2" href="{{ url('module/text_image') }}?project={{ $project->project_cid}}">
-                                <a class="block block-link-hover2" href="javascript:void(0)">
                                     <div class="block-content block-content-full bg-warning clearfix">
                                         <i class="si si-grid fa-2x text-white pull-right"></i>
                                         <span class="h4 text-white-op">Text &amp; Image</span>

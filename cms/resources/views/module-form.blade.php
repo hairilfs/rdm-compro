@@ -35,58 +35,83 @@
                 <div class="col-md-8">
                     <div class="block block-bordered">
                         <div class="block-header">
-                            @switch($category)
-                                @case('text')
-                                    <h3 class="block-title">Simple Text</h3>
-                                    @break
-                                @case('image')
-                                    <h3 class="block-title">Single Image</h3>
-                                    @break
-                                @case('images')
-                                    <h3 class="block-title">Double Image</h3>
-                                    @break
-                                @case('text_image')
-                                    <h3 class="block-title">Text &amp; Image</h3>
-                                    @break                            
-                                @default
-                                    <h3 class="block-title">Other Module</h3>
-                            @endswitch                            
+                            @if ($category == 'text')
+                                <h3 class="block-title">Simple Text</h3>
+
+                            @elseif($category == 'image')
+                                <h3 class="block-title">Single Image</h3>
+
+                            @elseif($category == 'images')
+                                <h3 class="block-title">Double Image</h3>
+
+                            @elseif($category == 'text_image')
+                                <h3 class="block-title">Text &amp; Image</h3>
+
+                            @else
+                                <h3 class="block-title">Other Module</h3>
+
+                            @endif                                                 
                         </div>
 
-                        <div class="block-content">
-                            @switch($category)
-                                @case('text')
-                                    <div class="form-group">
-                                        <div class="col-xs-12">
-                                            <div class="form-material" style="padding-top: 10px;">
-                                                <textarea class="ckeditor" id="text" name="text">{!! $module->content !!}</textarea>
-                                                <label for="text">Text</label>
+                        <div class="block-content">                            
+                            @if($category == 'text')
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <div class="form-material" style="padding-top: 10px;">
+                                            <textarea class="ckeditor" id="text" name="text">{!! $module->content !!}</textarea>
+                                            <label for="text">Text</label>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                            
+                            @elseif($category == 'image')
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <div class="form-material">
+                                            <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="50%">
+                                            <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
+                                            <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[0]->module_image_id : '' }}">
+                                            <label for="img1">Image</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                            @elseif($category == 'images')
+                                <div class="row" id="images_wrapper">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="form-material">
+                                                    <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="50%">
+                                                    <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
+                                                    <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[0]->module_image_id : '' }}">
+                                                    <label for="img1">Image</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @break
-
-                                @case('image')
-                                    <div class="form-group">
-                                        <div class="col-xs-12">
-                                            <div class="form-material">
-                                                <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="50%">
-                                                <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
-                                                <label for="img1">Image</label>
+                                    
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="form-material">
+                                                    <img src="{{ $module->getImgUrl(1) }}" class="push-10-t" width="50%">
+                                                    <input type="file" class="upload-preview push-10-t" id="img2" name="img2">
+                                                    <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[1]->module_image_id : '' }}">
+                                                    <label for="img2">Image</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @break
-
-                                @case('images')
-                                    <h3 class="block-title">Double Image</h3>
-                                    @break
-                                @case('text_image')
-                                    <h3 class="block-title">Text &amp; Image</h3>
-                                    @break                            
-                                @default
-                                    <h3 class="block-title">Other Module</h3>
-                            @endswitch                                
+                                    
+                                </div>                              
+                            
+                            @elseif($category == 'text_image')
+                                <h3 class="block-title">Text &amp; Image</h3>
+                            
+                            @else
+                                <h3 class="block-title">Other Module</h3>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -148,11 +173,11 @@
 @endsection
 
 @push('scripts')
-
-{{-- <script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
-<script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+{{-- 
+<script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash"></script> --}}
+<script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="assets/js/plugins/ckeditor/ckeditor.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/moment.min.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
@@ -166,6 +191,12 @@
            ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
            ['Source']
         ] ;
+
+        $("#images_wrapper").sortable({
+            update: function( event, ui ) {
+                // vue_slider.changed = true;
+            }
+        });
     });
 </script>
 

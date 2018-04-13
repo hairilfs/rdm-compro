@@ -133,6 +133,7 @@
                                 <div class="block-content bg-gray-light" style="padding-bottom: 20px;">
                                     <div class="block-header">
                                         <ul class="block-options">
+                                            <a :href="baseUrl+'module/'+moduleConfig(data.module_type)+'/'+data.module_id+'?project='+data.project_cid" title="Edit"><i class="fa fa-fw fa-pencil text-primary"></i></a>
                                             <li>
                                                 <button type="button" title="Delete" :data-id="data.id" v-on:click="return deleteImage(data.id)"><i class="fa fa-trash text-danger"></i></button>
                                             </li>
@@ -150,6 +151,11 @@
 
                                         <template v-else-if="data.module_type == 2">
                                             <img :src="data.image[0]" style="height: 120px;">
+                                        </template>
+
+                                        <template v-else-if="data.module_type == 3">
+                                            <img :src="data.image[0]" style="height: 120px; margin: auto;">
+                                            <img :src="data.image[1]" style="height: 120px; margin: auto;">
                                         </template>
                                         
                                         <template v-else>
@@ -242,7 +248,8 @@
         el: '#module_list',
         data: {
             module: [],
-            changed: false
+            changed: false,
+            baseUrl: '{{ url('/').'/' }}'
         },
         mounted: function() {
             this.$nextTick(function(){
@@ -260,12 +267,36 @@
                     case 2:
                         var name = 'Single Image';
                         break;
+                    case 3:
+                        var name = 'Double Image';
+                        break;
 
                     default:
                         var name = 'Other Module';
                 }
 
                 return name;
+            },
+            moduleConfig: function(type) {
+                switch(parseInt(type)) {
+                    case 1:
+                        var config = 'text';
+                        break;
+                    case 2:
+                        var config = 'image';
+                        break;
+                    case 3:
+                        var config = 'images';
+                        break;
+                    case 4:
+                        var config = 'text_image';
+                        break;
+
+                    default:
+                        var config = 'Other Module';
+                }
+
+                return config;
             }
         }
     });

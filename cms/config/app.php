@@ -125,7 +125,7 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
-    'log_max_files' => env('APP_LOG_MAX', 30),
+    // 'log_max_files' => env('APP_LOG_MAX', 30),
 
     /*
     |--------------------------------------------------------------------------

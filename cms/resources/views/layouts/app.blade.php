@@ -45,6 +45,13 @@
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
         <link rel="stylesheet" id="css-main" href="assets/css/oneui.min.css">
 
+        <script type="text/javascript">
+            window.App = {!! json_encode([
+                    'baseUrl' => url('/').'/',
+                    'csrfToken' => csrf_token()
+                ]) !!};
+        </script>
+
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->

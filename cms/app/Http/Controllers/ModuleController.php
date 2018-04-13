@@ -61,6 +61,12 @@ class ModuleController extends Controller
 
         if ($request->hasFile('img1')) 
         {
+            $mi = $request->input('old_img1') ? ModuleImage::find($request->input('old_img1')) : new ModuleImage;
+
+            if ($mi->img_url) {
+                $storage->delete("module_image/{$module->project_cid}/".$mi->img_url);
+            }
+
             $img1_temp = $request->file('img1');
             $file_type = $img1_temp->getClientMimeType();
 
@@ -71,7 +77,30 @@ class ModuleController extends Controller
 
                 $storage->put("module_image/{$module->project_cid}/".$filename, $image);
 
-                $mi = new ModuleImage;
+                $mi->module_id = $module->module_id;
+                $mi->img_url = $filename;
+                $mi->save();
+            }
+        }
+
+        if ($request->hasFile('img2')) 
+        {
+            $mi = $request->input('old_img2') ? ModuleImage::find($request->input('old_img2')) : new ModuleImage;
+
+            if ($mi->img_url) {
+                $storage->delete("module_image/{$module->project_cid}/".$mi->img_url);
+            }
+
+            $img2_temp = $request->file('img2');
+            $file_type = $img2_temp->getClientMimeType();
+
+            $filename = str_replace('.', time().'.', $img2_temp->getClientOriginalName());
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($img2_temp));
+                $image = $image->stream()->__toString();
+
+                $storage->put("module_image/{$module->project_cid}/".$filename, $image);
+
                 $mi->module_id = $module->module_id;
                 $mi->img_url = $filename;
                 $mi->save();
@@ -89,6 +118,7 @@ class ModuleController extends Controller
         $modules = Module::where('project_cid', $cid)->orderBy('sort')->with('images')->get();
         foreach ($modules as $key => $value) {
             $list[$key] = [
+                'module_id' => $value->module_id,
                 'project_cid' => $value->project_cid,
                 'module_type' => $value->module_type,
                 'content' => $value->content,
