@@ -168,7 +168,7 @@ var rdm = (function(){
             items              : 1,
             animateOut         : 'fadeOut',
 
-            autoplay           : false,
+            autoplay           : true,
             autoplayTimeout    : 6000,
             loop               : true,
 
