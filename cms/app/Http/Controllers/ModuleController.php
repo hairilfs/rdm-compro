@@ -43,6 +43,7 @@ class ModuleController extends Controller
         $module = $id ? Module::find($id) : new Module;
         switch ($category) {
             case 'text':
+            case 'text_image':
                 $module->content = $request->input('text');
                 break;
             
@@ -121,7 +122,8 @@ class ModuleController extends Controller
                 'module_id' => $value->module_id,
                 'project_cid' => $value->project_cid,
                 'module_type' => $value->module_type,
-                'content' => $value->content,
+                'content' => str_limit(strip_tags($value->content), 100),
+                'content_position' => $value->content_position,
                 'sort' => $value->sort,
             ];
 
@@ -135,11 +137,28 @@ class ModuleController extends Controller
 
     public function sort(Request $request)
     {
+        // dd($request->all());
         $counter = 0;
+        $module_parent = $request->input('module') ? true : false;
         foreach ($request->input('sorting') as $value) {
-            $module_category = Module::find($value['module_category_id']);
-            $module_category->sort = $value['sort'];
-            $module_category->save();
+            if ($value['text'] == 'true') 
+            {
+                $module = Module::find($value['module_id']);
+                if ($module_parent) {
+                    $module->sort = $value['sort'];
+                } else {
+                    $module->content_position = $value['sort'];
+                }
+                $module->save();
+            }
+            else
+            {
+                $moduleImage = ModuleImage::find($value['module_id']);
+                $moduleImage->sort = $value['sort'];
+                $moduleImage->save();
+
+            }
+
             $counter++;
         }
 
@@ -148,17 +167,29 @@ class ModuleController extends Controller
         ]);
     }
 
-    public function delete(Request $request, $id='')
+    public function delete(Request $request)
     {
-        if (!$id) return redirect('module-category');
+        $retval = ['status' => false];
+        $id = (int)$request->input('id');
 
-        $module_category = Module::find($id);
-        if (count($module_category)) {
-            $module_category->delete();
-            return redirect('module-category')->with('success', 'Category deleted!');
-        } else {
-            return redirect('module-category')->with('fail', 'Category not found!');
+        if ($id) {
+            $module = Module::find($id);
+            if (count($module)) {
+                $storage = Storage::disk('web');
 
+                foreach ($module->images as $value) {
+                    $storage->delete("module_image/{$module->project_cid}/".$value->img_url);
+                    $value->delete();
+                }
+
+                $module->delete();
+
+                $retval['id'] = $id;
+                $retval['status'] = true;
+                $retval['message'] = "Module has been deleted!";
+            }
         }
+
+        return response()->json($retval);
     }
 }

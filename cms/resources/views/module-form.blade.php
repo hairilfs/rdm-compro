@@ -35,6 +35,9 @@
                 <div class="col-md-8">
                     <div class="block block-bordered">
                         <div class="block-header">
+                            <div class="block-options-simple block-options">
+                                <button class="btn btn-xs btn-warning" type="button" onclick="return sorting()" style="display: none;"><i class="fa fa-refresh"></i> Save change</button>
+                            </div>
                             @if ($category == 'text')
                                 <h3 class="block-title">Simple Text</h3>
 
@@ -78,36 +81,92 @@
                             
                             @elseif($category == 'images')
                                 <div class="row" id="images_wrapper">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <div class="form-material">
-                                                    <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="50%">
-                                                    <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
-                                                    <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[0]->module_image_id : '' }}">
-                                                    <label for="img1">Image</label>
-                                                </div>
+                                    <div class="col-md-6" data-id="{{ $module->getImgId() }}" data-text="false">
+                                        <div class="block block-bordered">
+                                            <div class="block-content" style="padding-bottom: 20px;">
+                                                <ul class="block-options">
+                                                    <li title="Move..." style="cursor: move;">
+                                                        <i class="fa fa-arrows"></i>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="block-title">Image</h3> <br>
+                                                <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="100%">
+                                                <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
+                                                <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[0]->module_image_id : '' }}">
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <div class="form-material">
-                                                    <img src="{{ $module->getImgUrl(1) }}" class="push-10-t" width="50%">
-                                                    <input type="file" class="upload-preview push-10-t" id="img2" name="img2">
-                                                    <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[1]->module_image_id : '' }}">
-                                                    <label for="img2">Image</label>
-                                                </div>
+
+                                    <div class="col-md-6" data-id="{{ $module->getImgId(1) }}" data-text="false">
+                                        <div class="block block-bordered">
+                                            <div class="block-content" style="padding-bottom: 20px;">
+                                                <ul class="block-options">
+                                                    <li title="Move..." style="cursor: move;">
+                                                        <i class="fa fa-arrows"></i>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="block-title">Image</h3> <br>
+                                                <img src="{{ $module->getImgUrl(1) }}" class="push-10-t" width="100%">
+                                                <input type="file" class="upload-preview push-10-t" id="img2" name="img2">
+                                                <input type="hidden" name="old_img2" value="{{ $module->images->count() ? $module->images[1]->module_image_id : '' }}">
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                </div>                              
+                                                                     
+                                </div> 
                             
                             @elseif($category == 'text_image')
-                                <h3 class="block-title">Text &amp; Image</h3>
+                                <div class="row" id="images_wrapper">
+
+                                    @if (!$module->sort)
+                                    <div class="col-md-6" data-id="{{ $module->module_id }}" data-text="true">
+                                        <div class="block block-bordered">
+                                            <div class="block-content" style="padding-bottom: 20px;">
+                                                <ul class="block-options">
+                                                    <li title="Move..." style="cursor: move;">
+                                                        <i class="fa fa-arrows"></i>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="block-title">Text</h3> <br>
+                                                <textarea class="ckeditor" id="text" name="text">{!! $module->content !!}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+
+                                    <div class="col-md-6" data-id="{{ $module->getImgId() }}" data-text="false">
+                                        <div class="block block-bordered">
+                                            <div class="block-content" style="padding-bottom: 20px;">
+                                                <ul class="block-options">
+                                                    <li title="Move..." style="cursor: move;">
+                                                        <i class="fa fa-arrows"></i>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="block-title">Image</h3> <br>
+                                                <img src="{{ $module->getImgUrl() }}" class="push-10-t" width="100%">
+                                                <input type="file" class="upload-preview push-10-t" id="img1" name="img1">
+                                                <input type="hidden" name="old_img1" value="{{ $module->images->count() ? $module->images[0]->module_image_id : '' }}">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @if ($module->sort)
+                                    <div class="col-md-6" data-id="{{ $module->module_id }}" data-text="true">
+                                        <div class="block block-bordered">
+                                            <div class="block-content" style="padding-bottom: 20px;">
+                                                <ul class="block-options">
+                                                    <li title="Move..." style="cursor: move;">
+                                                        <i class="fa fa-arrows"></i>
+                                                    </li>
+                                                </ul>
+                                                <h3 class="block-title">Text</h3> <br>
+                                                <textarea class="ckeditor" id="text" name="text">{!! $module->content !!}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    @endif
+                                                                     
+                                </div> 
                             
                             @else
                                 <h3 class="block-title">Other Module</h3>
@@ -173,10 +232,8 @@
 @endsection
 
 @push('scripts')
-{{-- 
-<script src="assets/js/plugins/dropzonejs/dropzone.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script src="https://cdn.jsdelivr.net/npm/lodash"></script> --}}
+
+<script src="https://cdn.jsdelivr.net/npm/lodash"></script>
 <script src="assets/js/plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="assets/js/plugins/ckeditor/ckeditor.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/moment.min.js"></script>
@@ -184,20 +241,45 @@
 <script src="assets/js/plugins/select2/select2.full.min.js"></script>
 <script type="text/javascript">    
     jQuery(function () {
-        App.initHelpers(['ckeditor', 'datetimepicker', 'select2']);
+        App.initHelpers(['datetimepicker', 'select2']);
 
-        CKEDITOR.config.toolbar = [
-           ['Format'],
-           ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
-           ['Source']
-        ] ;
+        if($('#text').length) {
+            CKEDITOR.replace( 'text' );
+        
+            CKEDITOR.config.toolbar = [
+               ['Format'],
+               ['Bold','Italic','Underline'],
+               ['Source']
+            ];
+        }
 
         $("#images_wrapper").sortable({
+            start: function(event, ui) {
+                if ($('#text').length && CKEDITOR.instances.text) CKEDITOR.instances.text.destroy();
+            },
+            stop: function(event, ui) {
+                if($('#text').length) CKEDITOR.replace( 'text' );
+            },
             update: function( event, ui ) {
-                // vue_slider.changed = true;
+                $('.btn-warning').show();
             }
         });
     });
+
+    function sorting(argument) {
+        var sorting = [];
+
+        _.forEach($('#images_wrapper').find('.col-md-6'), function(value, key){
+            sorting.push({ module_id: $(value).data('id'), text: $(value).data('text'), sort: key });
+        })
+
+        $.post('{{ url('module/sort') }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
+            if(response.counter) {
+                $('.btn-warning').hide();
+                popup_notif('fa fa-check', 'Changes saved!', 'success');
+            }
+        }, 'json');
+    }
 </script>
 
 @endpush

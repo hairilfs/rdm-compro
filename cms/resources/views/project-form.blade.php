@@ -122,6 +122,7 @@
                     <div class="block block-bordered" id="module_list">
                         <div class="block-header">
                             <div class="block-options-simple block-options">
+                                <button v-show="changed" class="btn btn-xs btn-primary" type="button" v-on:click="sorting" :disabled="isSorting"><i class="fa fa-refresh" :class="{ 'fa-spin': isSorting }"></i> Save change</button>
                                 <button class="btn btn-xs btn-success" type="button" data-toggle="modal" data-target="#modal_module"><i class="fa fa-fw fa-plus"></i> Add new</button>
                             </div>
                             <h3 class="block-title">Modules</h3>
@@ -135,7 +136,7 @@
                                         <ul class="block-options">
                                             <a :href="baseUrl+'module/'+moduleConfig(data.module_type)+'/'+data.module_id+'?project='+data.project_cid" title="Edit"><i class="fa fa-fw fa-pencil text-primary"></i></a>
                                             <li>
-                                                <button type="button" title="Delete" :data-id="data.id" v-on:click="return deleteImage(data.id)"><i class="fa fa-trash text-danger"></i></button>
+                                                <button type="button" title="Delete" v-on:click="return deleteModule(data.module_id)"><i class="fa fa-trash text-danger"></i></button>
                                             </li>
                                             <li title="Move..." style="cursor: move;">
                                                 <i class="fa fa-arrows"></i>
@@ -154,11 +155,32 @@
                                         </template>
 
                                         <template v-else-if="data.module_type == 3">
-                                            <img :src="data.image[0]" style="height: 120px; margin: auto;">
-                                            <img :src="data.image[1]" style="height: 120px; margin: auto;">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img :src="data.image[0]" style="height: 120px; margin: auto;">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <img :src="data.image[1]" style="height: 120px; margin: auto;">
+                                                </div>
+                                            </div>
+                                        </template>
+
+                                        <template v-else-if="data.module_type == 4">
+                                            <div class="row">
+                                                <div class="col-md-6" v-if="!data.content_position">
+                                                    <p v-html="data.content"></p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <img :src="data.image[0]" style="height: 120px; margin: auto;">
+                                                </div>
+                                                <div class="col-md-6" v-if="data.content_position">
+                                                    <p v-html="data.content"></p>
+                                                </div>
+                                            </div>
                                         </template>
                                         
                                         <template v-else>
+                                            <p>Unknown Module</p>
                                         </template>
                                     </div>
                                 </div>
@@ -242,14 +264,17 @@
 <script src="assets/js/plugins/bootstrap-datetimepicker/moment.min.js"></script>
 <script src="assets/js/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
 <script src="assets/js/plugins/select2/select2.full.min.js"></script>
+<script src="https://unpkg.com/promise-polyfill@7.1.0/dist/promise.min.js" async=""></script>
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js" async=""></script>
 <script type="text/javascript"> 
     
     var v_module = new Vue({
         el: '#module_list',
         data: {
             module: [],
+            baseUrl: '{{ url('/').'/' }}',
             changed: false,
-            baseUrl: '{{ url('/').'/' }}'
+            isSorting: false
         },
         mounted: function() {
             this.$nextTick(function(){
@@ -269,6 +294,9 @@
                         break;
                     case 3:
                         var name = 'Double Image';
+                        break;
+                    case 4:
+                        var name = 'Text & Image';
                         break;
 
                     default:
@@ -297,7 +325,49 @@
                 }
 
                 return config;
+            },
+            sorting: function() {
+                v_module.isSorting = true;
+                var sorting = [];
+
+                _.forEach($('#sortable_wrapper').find('.block-module-item'), function(value, key){
+                    sorting.push({ module_id: $(value).data('id'), text: 'true', sort: key });
+                })
+
+                $.post('{{ url('module/sort') }}', { _token: '{{ csrf_token() }}', sorting, module: true }, function(response){
+                    if(response.counter) {
+                        v_module.changed = false;
+                        v_module.isSorting = false;
+                        popup_notif('fa fa-check', 'Changes saved!', 'success');
+                    }
+                }, 'json');
+            },
+            deleteModule: function(id) {
+
+                swal({
+                    title: 'Are you sure want to delete?',
+                    animation: false,
+                    // customClass: 'animated fadeInDown',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {            
+
+                        $.post('{{ url('module/delete') }}', { _token: '{{ csrf_token() }}', id: id }, function(response){
+                            if(response.status) {
+
+                                var idx = _.findIndex(v_module.module, ['module_id', id]);
+                                v_module.module.splice(idx, 1);
+
+                                popup_notif('fa fa-check', 'Delete success!', 'success');
+                            }
+                        }, 'json');
+                    }
+                });
             }
+
         }
     });
 
@@ -306,13 +376,13 @@
 
         $( "#sortable_wrapper").sortable({
             update: function( event, ui ) {
-                vue_slider.changed = true;
+                v_module.changed = true;
             }
         });
 
         CKEDITOR.config.toolbar = [
            ['Format'],
-           ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
+           ['Bold','Italic','Underline'],
            ['Source']
         ] ;
     });

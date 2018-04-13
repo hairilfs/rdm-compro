@@ -19,7 +19,7 @@ class Module extends Model
 
     public function images()
     {
-        return $this->hasMany('App\ModuleImage', 'module_id');
+        return $this->hasMany('App\ModuleImage', 'module_id')->orderBy('sort');
     }
 
     public function getPublish()
@@ -36,5 +36,14 @@ class Module extends Model
 
         return $images[$order]->getImgUrl($this->project_cid);
 
+    }
+    public function getImgId($order=0)
+    {
+        $images = $this->images;
+        if ($images->count()) {
+            return $images[$order]->module_image_id;
+        }
+
+        return 'false';
     }
 }
