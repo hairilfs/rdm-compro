@@ -1,0 +1,194 @@
+@extends('layouts.app')
+
+@section('title', 'Project')
+
+@section('body_class', 'project-detail')
+
+@section('content')
+
+<main>
+    <section id="project-name">
+        <div class="section--inner has-ver-padding">
+            <div class="container">
+                <p>Inasgoc — <a href="#" class=" link link-white link-opaque category">Strategy</a> / <a href="#" class=" link link-white link-opaque category">Style Guide</a> / <a href="#" class=" link link-white link-opaque category">Custom Apparel</a> / <a href="#" class=" link link-white link-opaque category">Packaging</a> / <a href="#" class=" link link-white link-opaque category">Digital</a></p>
+
+                <h1>Asian Games 2018</h1>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-intro">
+        <div class="section--inner">
+            <figure class="no-margin fullheight-js">
+                <picture class="image-ad">
+                    <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
+                    <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
+                    <img src="uploads/_temp/img-dummy-1.jpg" alt="">
+                </picture>
+            </figure>
+
+            <div class="intro-text has-ver-padding">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-2 project-intro-info">
+                            <ul>
+                                <li>
+                                    <p class="no-margin f-bold">Project Status</p>
+                                    <p class="no-margin">Ongoing</p>
+                                </li>
+
+                                <li>
+                                    <p class="no-margin f-bold">Partners</p>
+                                    <p class="no-margin">Inasgoc</p>
+                                </li>
+
+                                <li>
+                                    <p class="no-margin f-bold">Year</p>
+                                    <p class="no-margin">2018</p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-6 push-lg-4 project-intro-content">
+                            <h5 class="lh-med">Design direction for a new quarterly sport events that strikes out against the current trends of sports design.</h5>
+                            <p>Lorem ipsum dolor sit amet, unum minimum his in. Putant tamquam habemus nec ut, te nisl aeque probatus sea, ei consul vivendo blandit cum. Vis contentiones signiferumque at, possit integre mei id. Ad vivendum laboramus eum, sed at possim nominavi. Sanctus corrumpit cu duo, nec latine docendi ocurreret ei. Aeterno menandri an mei, tation audire antiopam est in. Vim id autem choro, eos tation eripuit cu. Id vis stet ornatus, at minimum luptatum eos. Ei dicit civibus hendrerit pro, sea dolorem ancillae mandamus te. Cetero impetus mea ei, mei graeci dictas perfecto an.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-video" class="has-ver-padding">
+        <div class="section--inner has-ver-padding">
+            <div class="container">
+                <div class="video">
+                    <div id="yt-player" class="vid-container embed-responsive embed-responsive-16by9">
+                        <div id="player"></div>
+                    </div>
+
+                    <div id="thumb-container" class="thumb-container">
+                        <img src="http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg">
+                        <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/Oy9nUaoHoJw">
+                            <i class="icon-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project-preview" class="has-ver-padding">
+        <div class="section--inner">
+            <div class="container">
+                <div class="preview-intro">
+                    <p>Asian Games 2018</p>
+                    <p class="lead">This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games – Energy of Asia succeed in a world of sport.</p>
+
+                    <h5>Full case study will be published later this year. Check back soon!</h5>
+                </div>
+
+                <div class="preview-row" data-columns="false">
+                    <div class="row">
+                        <figure class="no-margin">
+                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
+                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="preview-row" data-columns="true">
+                    <div class="row">
+                        <figure class="no-margin">
+                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
+                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
+                            </a>
+                        </figure>
+
+                        <figure class="no-margin">
+                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-2.jpg">
+                                <img class="w-fit" src="uploads/_temp/img-dummy-2.jpg">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="preview-row" data-columns="true">
+                    <div class="row">
+                        <figure class="no-margin">
+                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
+                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
+                            </a>
+                        </figure>
+
+                        <div class="preview-text">
+                            <h5>Asian biggest Sport Events.</h5>
+                            <p>Asian Games – Energy of Asia succeed in a world of sport.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-row" data-columns="false">
+                    <div class="row">
+                        <figure class="no-margin">
+                            <a class="d-block" data-fancybox="project" href="uploads/what-hero.jpg">
+                                <img class="w-fit" src="uploads/what-hero.jpg">
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="preview-bottom">
+                    <p class="small no-margin">Want to know more? Contact Us.</p>
+                    <p class="small no-margin"><a href="#" class="link f-med">us@onerdm.com</a> or <a href="#" class="link f-med">+628171824912839</a></p>
+                </div>
+
+                <div class="back-to-top text-center">
+                    <a href="#" id="back-top" class="link link-opaque">
+                        <i class="icon-right-open-big"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="next-project" class="">
+        <div class="section--inner">
+            <a href="#" class="d-block link link-white">
+                <figure class="no-margin">
+                    <img src="uploads/what-hero.jpg">
+                </figure>
+                <span class="overlay dark"></span>
+                <div class="next-project-title">
+                    <div class="container">
+                        <h6 class="ls-med">NEXT PROJECT</h6>
+                        <p>Marvel — <span class="opaque category">Strategy</span> / <span class="opaque category">Style Guide</span> / <span class="opaque category">Custom Apparel</span> / <span class="opaque category">Packaging</span></p>
+
+                        <p class="h1 no-margin">Star Wars Coin 1-7</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </section>
+</main>
+    
+@endsection
+
+@push('scripts')
+
+<script>
+    $(document).ready(function(){
+        
+    });
+
+    $(window).load(function(){
+        
+    });
+
+    $(window).resize(function(){
+        
+    });
+</script>
+    
+@endpush

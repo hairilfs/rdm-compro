@@ -71,6 +71,15 @@
         </script>
     @endisset
 
+    @yield('head')
+
+    <script type="text/javascript">
+        window.App = {!! json_encode([
+                'baseUrl' => url('/').'/',
+                'csrfToken' => csrf_token()
+            ]) !!};
+    </script>
+
 </head>
 
 

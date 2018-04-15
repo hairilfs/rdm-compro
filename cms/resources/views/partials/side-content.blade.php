@@ -29,6 +29,10 @@
             </ul>
         </li>
         <li>
+            <a href="{{ url('talk') }}"><i class="si si-speech"></i>Talk</a>
+        </li>        
+        <li class="nav-main-heading"><span class="sidebar-mini-hide">Misc</span></li>
+        <li>
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wrench"></i><span class="sidebar-mini-hide">Setting</span></a>
             <ul>
                 <li>

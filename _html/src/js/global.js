@@ -395,7 +395,8 @@ var rdm = (function(){
                 field.keypress(function(e){
                     if(e.which == 13) {
                         e.preventDefault();
-                        console.log('sdsd');
+                        console.log('enter pressed');
+
                         nextInput();
                     }
                 });
@@ -408,6 +409,13 @@ var rdm = (function(){
 
                 function nextInput(){
                     var item = $('.js-slide.is-active');
+                    var help = $('#input_help').val();
+                    var curr_val = item.find('.form-control').length ? item.find('.form-control').val() : help;
+
+                    if (!curr_val.trim()) {
+                        return false;
+                    }
+
                     item.removeClass('is-active').addClass('is-leaving');
                     item.next().addClass('is-active');
 
@@ -422,7 +430,14 @@ var rdm = (function(){
                     }
 
                     if($('.modal-field--success').hasClass('is-active')){
-                        $('#talk-form').addClass('form-completed');
+                        // $('#talk-form').addClass('form-completed');
+
+                        $.post(App.baseUrl+'talk', $('#talk-form').serialize() , function(response){
+                            if (response.status) {
+                                $('#talk-form').addClass('form-completed');
+                            } 
+                        }, 'json');
+                        
                     }
                 };
 
@@ -448,6 +463,7 @@ var rdm = (function(){
                         e.preventDefault();
 
                         input.text($(this).text());
+                        $('#input_help').val($(this).text().trim());
 
                         setTimeout(function(){
                             nextInput();
@@ -480,6 +496,12 @@ var rdm = (function(){
             e.preventDefault();
             hideTalkModal();
         });
+
+        $('body').on('click', 'a#close-talk', function(e){
+            e.preventDefault();
+            hideTalkModal();
+        });
+
     };
 
     var projects = function(){

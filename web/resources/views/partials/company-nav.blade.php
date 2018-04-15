@@ -1,0 +1,10 @@
+<nav id="company-top-nav">
+    <div class="container">
+        <div class="nav--inner flexed">
+            <h5 class="active"><a href="#" class="link">Who</a></h5>
+            <h5><a href="#" class="link">What</a></h5>
+            <h5><a href="#" class="link">How</a></h5>
+            <h5><a href="#" class="link">Why</a></h5>
+        </div>
+    </div>
+</nav>

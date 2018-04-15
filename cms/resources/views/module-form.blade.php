@@ -267,6 +267,7 @@
     });
 
     function sorting(argument) {
+        $('.fa-refresh').addClass('fa-spin');
         var sorting = [];
 
         _.forEach($('#images_wrapper').find('.col-md-6'), function(value, key){
@@ -276,6 +277,7 @@
         $.post('{{ url('module/sort') }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
             if(response.counter) {
                 $('.btn-warning').hide();
+                $('.fa-refresh').removeClass('fa-spin');
                 popup_notif('fa fa-check', 'Changes saved!', 'success');
             }
         }, 'json');

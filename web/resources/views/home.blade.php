@@ -13,7 +13,7 @@
                 <div class="item">
                     <figure class="no-margin fullheight-js">
                         <picture class="image-ad">
-                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1.jpg">
+                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
                             <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
                             <img src="uploads/_temp/img-dummy-1.jpg" alt="">
                         </picture>
@@ -34,7 +34,7 @@
             </div>
 
             <div class="hero-heading text-center">
-                <h1>Creativity Meets Reality</h1>
+                <h1 class="f-reg">Creativity Meets Reality</h1>
                 <p class="no-margin f-bold">Licensing &amp; Brand Innovation</p>
             </div>
 
@@ -217,7 +217,8 @@
                                             </div>
 
                                             <div id="thumb-container" class="thumb-container">
-                                                <a href="javascript:void(0)" id="start-video" class="start-video">
+                                                <img src="http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg">
+                                                <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/Oy9nUaoHoJw">
                                                     <i class="icon-play"></i>
                                                 </a>
                                             </div>

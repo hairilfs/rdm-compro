@@ -40,5 +40,10 @@ Route::post('/module/delete', 'ModuleController@delete');
 Route::get('/module/{category}/{id?}', 'ModuleController@index');
 Route::post('/module/{category}/{id?}', 'ModuleController@save');
 
+Route::get('/talk', 'TalkController@index');
+Route::get('/talk/datatables', 'TalkController@datatables');
+Route::get('/talk/form/{cid?}', 'TalkController@show');
+Route::post('/talk/form/{cid?}', 'TalkController@save');
+
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');

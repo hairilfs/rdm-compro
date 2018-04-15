@@ -4,7 +4,7 @@
     </a>
     
     <div class="container">
-        <div class="section--inner flexed justify">
+        <div class="section--inner flexed-desktop justify">
             <figure class="no-margin">
                 <img class="img-fluid" src="assets/img/rdm-logo.png">
             </figure>

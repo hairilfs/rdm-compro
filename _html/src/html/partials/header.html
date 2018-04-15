@@ -4,7 +4,7 @@
             <a href="#" id="close-talk" class="css-close"></a>
 
             <div class="talk-content fheight">
-                <form id="talk-form" class="fheight">
+                <form id="talk-form" class="fheight" method="post">
 			        <div class="modal-field-container fheight">
 
 
@@ -12,7 +12,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">Hi :) What is your name?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="text" class="form-control" name="" placeholder="lastname, first name" />
+			                        <input type="text" class="form-control" name="name" placeholder="lastname, first name" required />
 
 			                        <p class="input-msg">please enter your name</p>
 			                    </div>
@@ -23,7 +23,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">What's the name of your company?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="text" class="form-control" name="" placeholder="Company name" />
+			                        <input type="text" class="form-control" name="company" placeholder="Company name" required="" />
 
 			                        <p class="input-msg">please enter your company name</p>
 			                    </div>
@@ -34,7 +34,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">What is your email?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="email" class="form-control" name="" placeholder="youremail@company.com" />
+			                        <input type="email" class="form-control" name="email" placeholder="youremail@company.com" required="" />
 
 			                        <p class="input-msg">please enter your email</p>
 			                    </div>
@@ -45,7 +45,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">What is your phone number?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="email" class="form-control" name="" placeholder="your phone number" />
+			                        <input type="email" class="form-control" name="phone" placeholder="your phone number" required="" />
 
 			                        <p class="input-msg">please enter your phone number</p>
 			                    </div>
@@ -54,6 +54,7 @@
 
 			            <div class="modal-field flexed js-slide">
 			                <div class="form-group">
+			                	<input type="hidden" name="help" id="input_help">
 			                    <label for="" class="light-weight no-margin form-slide-line">We can help with</label>
 			                    <div class="input-container has-dropdown form-slide-line">
 			                        <div class="dropdown custom-dropdown">
@@ -78,7 +79,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">Tell us a bit about your needs</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="email" class="form-control" name="" placeholder="Describe in a few words" />
+			                        <input type="text" class="form-control" name="description" placeholder="Describe in a few words" required="" />
 			                    </div>
 			                </div>            
 			            </div>
@@ -100,6 +101,7 @@
         </div>
     </div>
 </script>
+
 
 <script type="text/template" data-template="header-menu">
 	<div id="header-menu">

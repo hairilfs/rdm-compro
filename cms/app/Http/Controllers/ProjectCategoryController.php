@@ -72,6 +72,8 @@ class ProjectCategoryController extends Controller
         if (!$cid) return redirect('project-category');
 
         $project_category = ProjectCategory::find($cid);
+        $project_category->deleteProjectToo();
+        
         if (count($project_category)) {
             $project_category->delete();
             return redirect('project-category')->with('success', 'Category deleted!');
