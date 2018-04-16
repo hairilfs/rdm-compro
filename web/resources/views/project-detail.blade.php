@@ -10,9 +10,12 @@
     <section id="project-name">
         <div class="section--inner has-ver-padding">
             <div class="container">
-                <p>Inasgoc — <a href="#" class=" link link-white link-opaque category">Strategy</a> / <a href="#" class=" link link-white link-opaque category">Style Guide</a> / <a href="#" class=" link link-white link-opaque category">Custom Apparel</a> / <a href="#" class=" link link-white link-opaque category">Packaging</a> / <a href="#" class=" link link-white link-opaque category">Digital</a></p>
+                <p>{{ $project->partner }} — 
+                    @foreach (explode(',', $project->project_category) as $element)
+                        <a href="#" class=" link link-white link-opaque category">{{ title_case($element) }}</a> {{ !$loop->last ? '/' : '' }}    
+                    @endforeach
 
-                <h1>Asian Games 2018</h1>
+                <h1>{{ $project->title }}</h1>
             </div>
         </div>
     </section>
@@ -22,8 +25,8 @@
             <figure class="no-margin fullheight-js">
                 <picture class="image-ad">
                     <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                    <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
-                    <img src="uploads/_temp/img-dummy-1.jpg" alt="">
+                    <source media="(min-width: 577px)" srcset="{{ $project->getImgUrl() }}">
+                    <img src="{{ $project->getImgUrl() }}" alt="">
                 </picture>
             </figure>
 
@@ -34,30 +37,32 @@
                             <ul>
                                 <li>
                                     <p class="no-margin f-bold">Project Status</p>
-                                    <p class="no-margin">Ongoing</p>
+                                    <p class="no-margin">{{ $project->project_status }}</p>
                                 </li>
 
                                 <li>
                                     <p class="no-margin f-bold">Partners</p>
-                                    <p class="no-margin">Inasgoc</p>
+                                    <p class="no-margin">{{ $project->partner }}</p>
                                 </li>
 
                                 <li>
                                     <p class="no-margin f-bold">Year</p>
-                                    <p class="no-margin">2018</p>
+                                    <p class="no-margin">{{ $project->year }}</p>
                                 </li>
                             </ul>
                         </div>
 
                         <div class="col-lg-6 push-lg-4 project-intro-content">
-                            <h5 class="lh-med">Design direction for a new quarterly sport events that strikes out against the current trends of sports design.</h5>
-                            <p>Lorem ipsum dolor sit amet, unum minimum his in. Putant tamquam habemus nec ut, te nisl aeque probatus sea, ei consul vivendo blandit cum. Vis contentiones signiferumque at, possit integre mei id. Ad vivendum laboramus eum, sed at possim nominavi. Sanctus corrumpit cu duo, nec latine docendi ocurreret ei. Aeterno menandri an mei, tation audire antiopam est in. Vim id autem choro, eos tation eripuit cu. Id vis stet ornatus, at minimum luptatum eos. Ei dicit civibus hendrerit pro, sea dolorem ancillae mandamus te. Cetero impetus mea ei, mei graeci dictas perfecto an.</p>
+                            <h5 class="lh-med">{{ $project->excerpt }}</h5>
+                            {!! $project->description !!}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    @if ($project->youtube_url)
 
     <section id="project-video" class="has-ver-padding">
         <div class="section--inner has-ver-padding">
@@ -68,8 +73,11 @@
                     </div>
 
                     <div id="thumb-container" class="thumb-container">
-                        <img src="http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg">
-                        <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/Oy9nUaoHoJw">
+                        @php
+                            $youtube_id = $project->getYoutubeId();
+                        @endphp
+                        <img src="http://img.youtube.com/vi/{{ $youtube_id }}/maxresdefault.jpg">
+                        <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/{{ $youtube_id }}">
                             <i class="icon-play"></i>
                         </a>
                     </div>
@@ -77,6 +85,9 @@
             </div>
         </div>
     </section>
+
+    @endif
+
 
     <section id="project-preview" class="has-ver-padding">
         <div class="section--inner">

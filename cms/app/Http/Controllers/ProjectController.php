@@ -83,6 +83,10 @@ class ProjectController extends Controller
 
         if ($request->hasFile('img_portrait')) 
         {
+            if ($project->img_portrait_url) {
+                $storage->delete("project/{$project->project_cid}/".$project->img_portrait_url);
+            }
+
             $portrait_temp = $request->file('img_portrait');
             $file_type = $portrait_temp->getClientMimeType();
 
@@ -100,18 +104,28 @@ class ProjectController extends Controller
 
         if ($request->hasFile('img_landscape')) 
         {
+            if ($project->img_landscape_url) {
+                $storage->delete("project/{$project->project_cid}/".$project->img_landscape_url);
+                $storage->delete("project/{$project->project_cid}/thumb_".$project->img_landscape_url);
+            }
+
             $landscape_temp = $request->file('img_landscape');
             $file_type = $landscape_temp->getClientMimeType();
 
             $project->img_landscape_url = str_replace('.', time().'.', $landscape_temp->getClientOriginalName());
             if (str_contains($file_type, 'image')) {
                 $image = Image::make(file_get_contents($landscape_temp));
-                $image->fit(580, 362, function ($constraint) {
+                $image = $image->stream()->__toString();
+                $storage->put("project/{$project->project_cid}/".$project->img_landscape_url, $image);
+
+                // thumb
+                $thumb = Image::make(file_get_contents($landscape_temp));
+                $thumb->fit(580, 362, function ($constraint) {
                     $constraint->upsize();
                 });
-                $image = $image->stream()->__toString();
+                $thumb = $thumb->stream()->__toString();
 
-                $storage->put("project/{$project->project_cid}/".$project->img_landscape_url, $image);
+                $storage->put("project/{$project->project_cid}/thumb_".$project->img_landscape_url, $thumb);
             }
         }
 
@@ -130,9 +144,9 @@ class ProjectController extends Controller
     {
         $counter = 0;
         foreach ($request->input('sorting') as $value) {
-            $project_category = Project::find($value['project_category_cid']);
-            $project_category->sort = $value['sort'];
-            $project_category->save();
+            $project = Project::find($value['project_cid']);
+            $project->sort = $value['sort'];
+            $project->save();
             $counter++;
         }
 
@@ -143,14 +157,24 @@ class ProjectController extends Controller
 
     public function delete(Request $request, $cid='')
     {
-        if (!$cid) return redirect('project-category');
+        if (!$cid) return redirect('project');
 
-        $project_category = Project::find($cid);
-        if (count($project_category)) {
-            $project_category->delete();
-            return redirect('project-category')->with('success', 'Category deleted!');
+        $project = Project::find($cid);
+        if (count($project)) {
+            $storage = Storage::disk('web');
+            
+            if ($project->img_portrait_url) {
+                $storage->delete("project/{$project->project_cid}/".$project->img_portrait_url);
+            }
+            if ($project->img_landscape_url) {
+                $storage->delete("project/{$project->project_cid}/".$project->img_landscape_url);
+                $storage->delete("project/{$project->project_cid}/thumb_".$project->img_landscape_url);
+            }
+
+            $project->delete();
+            return redirect('project')->with('success', 'Project deleted!');
         } else {
-            return redirect('project-category')->with('fail', 'Category not found!');
+            return redirect('project')->with('fail', 'Project not found!');
 
         }
     }

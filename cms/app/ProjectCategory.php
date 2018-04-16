@@ -16,7 +16,7 @@ class ProjectCategory extends Model
         'updated_at',
     ];
 
-    public function deleteProjectToo($)
+    public function deleteProjectToo()
     {
     	$project = Project::where('project_category', 'like', '%'.$this->slug.'%')->get();
 

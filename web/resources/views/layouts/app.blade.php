@@ -29,6 +29,8 @@
 
     <!-- <link rel="icon" type="image/png" href="assets/icon/icon.png"> -->
 
+    <base href="{{ url('/').'/' }}">
+
     <link rel="icon" type="image/png" href="assets/icon/icon-16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/icon/icon-32.png" sizes="32x32">
     <link rel="icon" type="image/png" href="assets/icon/icon-96.png" sizes="96x96">

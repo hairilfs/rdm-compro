@@ -15,4 +15,11 @@ class ProjectController extends Controller
     	$this->data['projects'] = Project::publish()->get();
     	return view('projects', $this->data);
     }
+
+    public function show(Request $request, $slug=null)
+    {
+    	$cid = $this->getCidFromSlug($slug);
+    	$this->data['project'] = Project::find($cid);
+    	return view('project-detail', $this->data);
+    }
 }

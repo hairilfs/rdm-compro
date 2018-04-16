@@ -46,10 +46,9 @@
                             @foreach ($projects as $element)
                                 <div class="col-md-6 item{{ $loop->index % 7 == 0 ? ' portrait' : ' landscape' }} {{ str_replace(',', ' ', $element->project_category) }}">
                                     <div class="project-image">
-                                        <a href="javascript:void(0)" class="d-block link">
+                                        <a href="{{ $element->getUrl() }}" class="d-block link">
                                             <figure class="no-margin">
-                                                {{-- <img src="uploads/AG-showcase.png"> --}}
-                                                <img src="{{ $element->getImgUrl($loop->index) }}">
+                                                <img src="{{ $element->getImgThumbUrl($loop->index) }}">
                                             </figure>
                                             <figcaption>
                                                 <p>{{ $element->title }}</p>
