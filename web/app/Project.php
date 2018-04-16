@@ -13,6 +13,11 @@ class Project extends Model
 
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
+    public function modules()
+    {
+        return $this->hasMany('App\Module', 'project_cid')->orderBy('sort');
+    }
+
     public function scopePublish($query)
     {
         return $query->where('is_publish', 1)->whereRaw('DATE(`published_at`) <= CURDATE()');

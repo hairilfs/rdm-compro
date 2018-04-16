@@ -19,7 +19,10 @@ class ProjectController extends Controller
     public function show(Request $request, $slug=null)
     {
     	$cid = $this->getCidFromSlug($slug);
-    	$this->data['project'] = Project::find($cid);
+        $this->data['project'] = Project::find($cid);
+    	$this->data['other'] = Project::where('project_id', '>', $this->data['project']->project_id)
+            ->orWhere('project_id', '<', $this->data['project']->project_id)
+            ->first();
     	return view('project-detail', $this->data);
     }
 }

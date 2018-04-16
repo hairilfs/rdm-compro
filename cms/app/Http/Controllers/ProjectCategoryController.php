@@ -43,7 +43,7 @@ class ProjectCategoryController extends Controller
         $category->slug = str_slug($request->input('name'));
         $category->save();
 
-        return redirect('/project-category')->with('success', 'Category saved!');
+        return redirect('project-category')->with('success', 'Category saved!');
     }
 
     public function list(Request $request)

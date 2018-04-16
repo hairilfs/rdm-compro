@@ -108,7 +108,7 @@ class ModuleController extends Controller
             }
         }
 
-        return redirect("/module/{$category}/{$module->module_id}?project=".$module->project_cid)->with('success', $id ? 'Module updated!' : 'Module saved!');
+        return redirect("module/{$category}/{$module->module_id}?project=".$module->project_cid)->with('success', $id ? 'Module updated!' : 'Module saved!');
     }
 
     public function list(Request $request, $cid=null)

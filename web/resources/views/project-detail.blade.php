@@ -88,71 +88,20 @@
 
     @endif
 
-
+    @php
+        $modules = $project->modules;
+    @endphp
+    @if ($modules->count())
     <section id="project-preview" class="has-ver-padding">
         <div class="section--inner">
             <div class="container">
-                <div class="preview-intro">
-                    <p>Asian Games 2018</p>
-                    <p class="lead">This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games – Energy of Asia succeed in a world of sport.</p>
-
-                    <h5>Full case study will be published later this year. Check back soon!</h5>
-                </div>
-
-                <div class="preview-row" data-columns="false">
-                    <div class="row">
-                        <figure class="no-margin">
-                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
-                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
-                            </a>
-                        </figure>
-                    </div>
-                </div>
-
-                <div class="preview-row" data-columns="true">
-                    <div class="row">
-                        <figure class="no-margin">
-                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
-                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
-                            </a>
-                        </figure>
-
-                        <figure class="no-margin">
-                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-2.jpg">
-                                <img class="w-fit" src="uploads/_temp/img-dummy-2.jpg">
-                            </a>
-                        </figure>
-                    </div>
-                </div>
-
-                <div class="preview-row" data-columns="true">
-                    <div class="row">
-                        <figure class="no-margin">
-                            <a class="d-block" data-fancybox="project" href="uploads/_temp/img-dummy-1.jpg">
-                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
-                            </a>
-                        </figure>
-
-                        <div class="preview-text">
-                            <h5>Asian biggest Sport Events.</h5>
-                            <p>Asian Games – Energy of Asia succeed in a world of sport.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="preview-row" data-columns="false">
-                    <div class="row">
-                        <figure class="no-margin">
-                            <a class="d-block" data-fancybox="project" href="uploads/what-hero.jpg">
-                                <img class="w-fit" src="uploads/what-hero.jpg">
-                            </a>
-                        </figure>
-                    </div>
-                </div>
+                @foreach ($modules as $element)
+                    {!! $element->toHtml() !!}
+                @endforeach                
 
                 <div class="preview-bottom">
                     <p class="small no-margin">Want to know more? Contact Us.</p>
-                    <p class="small no-margin"><a href="#" class="link f-med">us@onerdm.com</a> or <a href="#" class="link f-med">+628171824912839</a></p>
+                    <p class="small no-margin"><a href="mailto:us@onerdm.com" class="link f-med">us@onerdm.com</a> or <a href="tel:+628171824912839" class="link f-med">+628171824912839</a></p>
                 </div>
 
                 <div class="back-to-top text-center">
@@ -163,25 +112,31 @@
             </div>
         </div>
     </section>
-
+    @endif
+    
+    @if ($other->count())
     <section id="next-project" class="">
         <div class="section--inner">
-            <a href="#" class="d-block link link-white">
+            <a href="{{ $other->getUrl() }}" class="d-block link link-white">
                 <figure class="no-margin">
-                    <img src="uploads/what-hero.jpg">
+                    <img src="{{ $other->getImgUrl() }}">
                 </figure>
                 <span class="overlay dark"></span>
                 <div class="next-project-title">
                     <div class="container">
                         <h6 class="ls-med">NEXT PROJECT</h6>
-                        <p>Marvel — <span class="opaque category">Strategy</span> / <span class="opaque category">Style Guide</span> / <span class="opaque category">Custom Apparel</span> / <span class="opaque category">Packaging</span></p>
+                        <p>{{ $other->partner }} — 
+                        @foreach (explode(',', $project->project_category) as $element)
+                            <span class="opaque category">{{ title_case($element) }}</span> {{ !$loop->last ? '/' : '' }}
+                        @endforeach
 
-                        <p class="h1 no-margin">Star Wars Coin 1-7</p>
+                        <p class="h1 no-margin">{{ $other->title }}</p>
                     </div>
                 </div>
             </a>
         </div>
     </section>
+    @endif
 </main>
     
 @endsection
