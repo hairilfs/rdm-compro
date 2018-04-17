@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Slider')
+@section('title', 'Partner')
 
 @section('head')
 
@@ -16,13 +16,13 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Slider - {{ $category }}
+                    Partner
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li>Slider</li>
-                    <li><a class="link-effect" href="javascript:void(0)">{{ $category }}</a></li>
+                    <li>Partner</li>
+                    <li><a class="link-effect" href="javascript:void(0)">List</a></li>
                 </ol>
             </div>
         </div>
@@ -32,7 +32,7 @@
     <!-- Page Content -->
     <div class="content">
         <div class="row">
-            <div class="col-md-7" id="vue_slider">
+            <div class="col-md-7" id="vue_partner">
                 <div class="block block-bordered">
                     <div class="block-header">
                         <div class="block-options-simple block-options">
@@ -44,8 +44,8 @@
                     <div class="block-content" id="sortable_wrapper">
                         {{-- <p v-show="empty">No images, please upload &raquo;</p> --}}
 
-                        <div v-for="data in images" class="block block-bordered block-rounded block-slider-item" :data-id="data.id">
-                            <div class="block-content bg-gray-light" style="padding-bottom: 20px;">
+                        <div v-for="data in images" class="block block-bordered block-rounded block-partner-item" :data-id="data.id">
+                            <div class="block-content bg-gray" style="padding-bottom: 20px;">
                                 <ul class="block-options">
                                     <li>
                                         <button type="button" title="Delete" :data-id="data.id" v-on:click="return deleteImage(data.id)"><i class="fa fa-trash text-danger"></i></button>
@@ -54,7 +54,7 @@
                                         <i class="fa fa-arrows"></i>
                                     </li>
                                 </ul>
-                                <img :src="data.url" style="height: 120px;">
+                                <img :src="data.url">
                             </div>
                         </div>
 
@@ -68,7 +68,7 @@
                     </div>
                     <div class="block-content">
                         <div class="form-group">
-                            <form class="dropzone" id="slider-dropzone" action="{{ url()->current() }}" enctype="multipart/form-data">
+                            <form class="dropzone" id="partner-dropzone" action="{{ url()->current() }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
                             </form>
                         </div>
@@ -95,12 +95,12 @@
     jQuery(function () {
         $( "#sortable_wrapper").sortable({
             update: function( event, ui ) {
-                vue_slider.empty = false;
+                vue_partner.empty = false;
             }
         });        
     });
 
-    Dropzone.options.sliderDropzone = {
+    Dropzone.options.partnerDropzone = {
         paramName: 'file',
         maxFilesize: 5, // MB
         maxFiles: 10,
@@ -108,16 +108,16 @@
         init: function() {
             this.on("success", function(file, server) {
                 console.log(file.status, file.name); 
-                vue_slider.images.push({ id: server.slider_id, url: file.dataURL });
+                vue_partner.images.push({ id: server.partner_id, url: file.dataURL });
                 setTimeout(function(){
-                    vue_slider.sorting();
+                    vue_partner.sorting();
                 }, 1000);
             });
         }
     };
 
-    var vue_slider = new Vue({
-        el: '#vue_slider',
+    var vue_partner = new Vue({
+        el: '#vue_partner',
         data: {
             images: [],
             empty: true,
@@ -133,23 +133,23 @@
                 $.get('{{ url()->current().'/list' }}', function(response){
                     if(response.length) {
                         _.forEach(response, function(value, key){
-                            vue_slider.images.push({ id: value.slider_id, url: value.image_url});
+                            vue_partner.images.push({ id: value.partner_id, url: value.image_url});
                         })
                     }
                 });
             },
             sorting: function() {
-                vue_slider.isSorting = true;
+                vue_partner.isSorting = true;
                 var sorting = [];
 
-                _.forEach($('#sortable_wrapper').find('.block-slider-item'), function(value, key){
-                    sorting.push({ slider_id: $(value).data('id'), sort: key+1 });
+                _.forEach($('#sortable_wrapper').find('.block-partner-item'), function(value, key){
+                    sorting.push({ partner_id: $(value).data('id'), sort: key+1 });
                 })
 
                 $.post('{{ url()->current().'/sort' }}', { _token: '{{ csrf_token() }}', sorting }, function(response){
                     if(response.counter) {
-                        vue_slider.empty = true;
-                        vue_slider.isSorting = false;
+                        vue_partner.empty = true;
+                        vue_partner.isSorting = false;
                         popup_notif('fa fa-check', 'Changes saved!', 'success');
                     }
                 }, 'json');
@@ -170,8 +170,8 @@
                         $.post('{{ url()->current().'/delete' }}', { _token: '{{ csrf_token() }}', id: id }, function(response){
                             if(response.status) {
 
-                                var idx = _.findIndex(vue_slider.images, ['id', id]);
-                                vue_slider.images.splice(idx, 1);
+                                var idx = _.findIndex(vue_partner.images, ['id', id]);
+                                vue_partner.images.splice(idx, 1);
 
                                 popup_notif('fa fa-check', 'Delete success!', 'success');
                             }

@@ -276,53 +276,13 @@
 
                 <div class="clients-body has-ver-padding">
                     <div class="row flexed">
+                        @foreach ($partner as $element)
                         <div class="item">
                             <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-disney.png">
+                                <img src="{{ $element->getImgUrl() }}">
                             </figure>
                         </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-starwars.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-matahari.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-royalselangor.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-sinde.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-indofood.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-sritex.png">
-                            </figure>
-                        </div>
+                        @endforeach
                     </div>
 
                     <p class="btn-holder text-center">

@@ -23,6 +23,12 @@ Route::post('/slider/{category}/delete', 'SliderController@delete');
 Route::get('/slider/{category}', 'SliderController@index');
 Route::post('/slider/{category}', 'SliderController@save');
 
+Route::get('/partner/list', 'PartnerController@list');
+Route::post('/partner/sort', 'PartnerController@sort');
+Route::post('/partner/delete', 'PartnerController@delete');
+Route::get('/partner', 'PartnerController@index');
+Route::post('/partner', 'PartnerController@save');
+
 Route::get('/project', 'ProjectController@index');
 Route::get('/project/datatables', 'ProjectController@datatables');
 Route::get('/project/form/{cid?}', 'ProjectController@show');

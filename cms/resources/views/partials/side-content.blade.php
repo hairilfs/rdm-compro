@@ -30,6 +30,9 @@
         </li>
         <li>
             <a href="{{ url('talk') }}"><i class="si si-speech"></i>Talk</a>
+        </li> 
+        <li>
+            <a href="{{ url('partner') }}"><i class="si si-people"></i>Partner</a>
         </li>        
         <li class="nav-main-heading"><span class="sidebar-mini-hide">Misc</span></li>
         <li>

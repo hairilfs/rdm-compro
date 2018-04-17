@@ -109,7 +109,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3 menu-main">
-						<a href="#" class="brand d-block">
+						<a href="{{ url('/') }}" class="brand d-block">
 							<img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM">
 						</a>
 						<ul class="menu-main-list">
@@ -207,7 +207,7 @@
 
 	                <div class="header-main flexed-desktop justify">
 	                	<div class="header-brand flexed-mobile justify">
-		                    <a href="#" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
+		                    <a href="{{ url('/') }}" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
 		                </div>
 
 		                <div id="navbarMenu" class="header-menu hidden-md-down">
@@ -248,7 +248,7 @@
 
 	                <div class="header-main flexed justify">
 	                	<div class="header-brand">
-		                    <a href="#" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
+		                    <a href="{{ url('/') }}" class="brand"><img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM"></a>
 		                </div>
 
 		                <div class="header-menu" id="navbarMenu">
