@@ -143,7 +143,7 @@
 
 <script>
     $(document).ready(function(){
-        rdm.company();
+        rdm.contact();
     });
 
     $(window).load(function(){

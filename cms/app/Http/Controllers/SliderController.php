@@ -59,6 +59,17 @@ class SliderController extends Controller
                 $image = $image->stream()->__toString();
 
                 $storage->put("slider/{$category}/".$slider->img_url, $image);
+
+                // mobile
+                $mobile = Image::make(file_get_contents($img_temp));
+                if($mobile->width() > 600) {
+                    $mobile->resize(600, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
+                }
+                $mobile = $mobile->stream()->__toString();
+
+                $storage->put("slider/{$category}/mobile_".$slider->img_url, $mobile);
             }
 
             $slider->save();
@@ -109,7 +120,10 @@ class SliderController extends Controller
             $slider = Slider::find($id);
             if (count($slider)) {
 
-                Storage::disk('web')->delete("slider/{$category}/".$slider->img_url);
+                $storage = Storage::disk('web');
+
+                $storage->delete("slider/{$category}/".$slider->img_url);
+                $storage->delete("slider/{$category}/mobile_".$slider->img_url);
                 $slider->delete();
 
                 $retval['id'] = $id;

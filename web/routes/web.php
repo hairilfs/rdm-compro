@@ -17,4 +17,8 @@ Route::get('/home', 'HomeController@index');
 Route::get('/projects', 'ProjectController@index');
 Route::get('/project/{slug}', 'ProjectController@show');
 
+Route::get('/about', 'AboutController@index');
+
+Route::get('/contact', 'ContactController@index');
+
 Route::post('/talk', 'TalkController@save');

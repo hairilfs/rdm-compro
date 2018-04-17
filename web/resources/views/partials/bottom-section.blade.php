@@ -11,9 +11,9 @@
 
             <nav class="bottom-nav">
                 <ul class="nav-list text-center no-margin">
-                    <li><a href="#" class="link link-white link-opaque h4">Projects</a></li>
-                    <li><a href="#" class="link link-white link-opaque h4">About</a></li>
-                    <li><a href="#" class="link link-white link-opaque h4">Contact</a></li>
+                    <li><a href="{{ url('projects') }}" class="link link-white link-opaque h4">Projects</a></li>
+                    <li><a href="{{ url('about') }}" class="link link-white link-opaque h4">About</a></li>
+                    <li><a href="{{ url('contact') }}" class="link link-white link-opaque h4">Contact</a></li>
                 </ul>
             </nav>
 

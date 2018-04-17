@@ -10,27 +10,18 @@
     <section id="home-hero" class="">
         <div class="section--inner">
             <div id="sliderHome" class="owl-carousel slider">
+                @foreach ($slider as $element)
                 <div class="item">
                     <figure class="no-margin fullheight-js">
                         <picture class="image-ad">
-                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                            <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
-                            <img src="uploads/_temp/img-dummy-1.jpg" alt="">
+                            <source media="(max-width: 576px)" srcset="{{ $element->getImgUrl('mobile') }}">
+                            <source media="(min-width: 577px)" srcset="{{ $element->getImgUrl() }}">
+                            <img src="{{ $element->getImgUrl() }}" alt="">
                         </picture>
                         <span class="overlay black"></span>
                     </figure>
                 </div>
-
-                <div class="item">
-                    <figure class="no-margin fullheight-js">
-                        <picture class="image-ad">
-                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-2.jpg">
-                            <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-2.jpg">
-                            <img src="uploads/_temp/img-dummy-2.jpg" alt="">
-                        </picture>
-                        <span class="overlay black"></span>
-                    </figure>
-                </div>
+                @endforeach
             </div>
 
             <div class="hero-heading text-center">
@@ -243,49 +234,30 @@
                         </div>
                         <div class="home-project-body has-ver-padding">
                             <div class="row">
-                                <div class="col-md-6 col-left">
-                                    <div class="project-image">
-                                        <a href="javascript:void(0)" class="d-block link">
-                                            <figure class="no-margin">
-                                                <img src="uploads/featured-projects-ag.jpg">
-                                            </figure>
-                                            <figcaption>
-                                                <p>Asian Games</p>
-                                                <p>Product Design</p>
-                                            </figcaption>
-                                        </a>
-                                    </div>
-                                </div>
 
-                                <div class="col-md-6 col-right">
+                                @foreach ($project as $element)
+                                @if ($loop->first || $loop->iteration == 2)
+                                <div class="col-md-6 {!! $loop->first ? 'col-left' : 'col-right' !!}">
+                                @endif
                                     <div class="project-image">
-                                        <a href="javascript:void(0)" class="d-block link">
+                                        <a href="{{ $element->getUrl() }}" class="d-block link">
                                             <figure class="no-margin">
-                                                <img src="uploads/featured-projects-infinity.jpg">
+                                                <img src="{{ $element->getImgThumbUrl($loop->index) }}">
                                             </figure>
                                             <figcaption>
-                                                <p>Asian Games</p>
-                                                <p>Product Design</p>
+                                                <p>{{ $element->title }}</p>
+                                                <p>{{ title_case(str_replace(',', ' ', $element->project_category)) }}</p>
                                             </figcaption>
                                         </a>
                                     </div>
-
-                                    <div class="project-image">
-                                        <a href="javascript:void(0)" class="d-block link">
-                                            <figure class="no-margin">
-                                                <img src="uploads/featured-projects-sw.jpg">
-                                            </figure>
-                                            <figcaption>
-                                                <p>Asian Games</p>
-                                                <p>Product Design</p>
-                                            </figcaption>
-                                        </a>
-                                    </div>
+                                @if ($loop->first || $loop->last)
                                 </div>
+                                @endif
+                                @endforeach
                             </div>
 
                             <p class="more text-center">
-                                <a href="#" class="btn btn-border-white curved ls-med small"><i class="icon-right-open-big"></i>VIEW MORE</a>
+                                <a href="{{ url('projects') }}" class="btn btn-border-white curved ls-med small"><i class="icon-right-open-big"></i>VIEW MORE</a>
                             </p>
                         </div>
                     </div>

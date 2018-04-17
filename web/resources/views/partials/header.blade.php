@@ -113,9 +113,9 @@
 							<img class="img-fluid" src="assets/img/rdm-logo.png" alt="RDM">
 						</a>
 						<ul class="menu-main-list">
-							<li><a href="#" class="link">Projects</a></li>
-							<li><a href="#" class="link">About</a></li>
-							<li><a href="#" class="link">Contact</a></li>
+							<li><a href="{{ url('projects') }}" class="link">Projects</a></li>
+							<li><a href="{{ url('about') }}" class="link">About</a></li>
+							<li><a href="{{ url('contact') }}" class="link">Contact</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3 push-md-1 menu-content">
