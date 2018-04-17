@@ -161,22 +161,22 @@
                     <div class="col-xl-8 about-more-content">
                         <div class="more-item flexed-desktop">
                             <h4 class="f-reg no-margin">Who <span class="opaque">we are</span></h4>
-                            <a href="#" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT WHO WE ARE</a>
+                            <a href="{{ url('about/who') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT WHO WE ARE</a>
                         </div>
 
                         <div class="more-item flexed-desktop">
                             <h4 class="f-reg no-margin">What <span class="opaque">we do</span></h4>
-                            <a href="#" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT WHAT WE DO</a>
+                            <a href="{{ url('about/what') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT WHAT WE DO</a>
                         </div>
 
                         <div class="more-item flexed-desktop">
                             <h4 class="f-reg no-margin">How <span class="opaque">we do it</span></h4>
-                            <a href="#" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR METHODS</a>
+                            <a href="{{ url('about/how') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR METHODS</a>
                         </div>
 
                         <div class="more-item flexed-desktop">
                             <h4 class="f-reg no-margin">Why <span class="opaque">we are different</span></h4>
-                            <a href="#" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR METHODS</a>
+                            <a href="{{ url('about/why') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR METHODS</a>
                         </div>
                     </div>
                 </div>

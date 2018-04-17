@@ -29,10 +29,18 @@
             </ul>
         </li>
         <li>
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-info"></i><span class="sidebar-mini-hide">About</span></a>
+            <ul>
+                <li>
+                    <a href="{{ url('about/who') }}">Who</a>
+                </li>
+            </ul>
+        </li>
+        <li>
             <a href="{{ url('talk') }}"><i class="si si-speech"></i>Talk</a>
         </li> 
         <li>
-            <a href="{{ url('partner') }}"><i class="si si-people"></i>Partner</a>
+            <a href="{{ url('partner') }}"><i class="si si-users"></i>Partner</a>
         </li>        
         <li class="nav-main-heading"><span class="sidebar-mini-hide">Misc</span></li>
         <li>

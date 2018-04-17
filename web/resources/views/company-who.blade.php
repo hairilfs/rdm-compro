@@ -7,20 +7,17 @@
 @section('content')
 
 <main>
-    @include('partials/company-nav.html')
+    @include('partials.company-nav')
     <section id="company-intro" class="has-ver-padding">
         <div class="section--inner">
             <div class="intro-text">
                 <div class="container">
                     <p class="small ls-med f-med">INTRODUCTION</p>
-                    <h1 class="f-reg">
-                        Our mission is simple
-                        <span class="opaque d-block">Create a Unique and Premium Marketing Program to Drive your Sales.</span>
-                    </h1>
-                    <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
+                    {!! getAbout('who', 'introduction') !!}
                 </div>
             </div>
 
+            @if (getAbout('who', 'youtube_url'))
             <div class="intro-image has-video">
                 <div class="container">
                     <div class="video">
@@ -29,14 +26,15 @@
                         </div>
 
                         <div id="thumb-container" class="thumb-container">
-                            <img src="http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg">
-                            <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/Oy9nUaoHoJw">
+                            <img src="http://img.youtube.com/vi/{{ getYoutubeId(getAbout('who', 'youtube_url')) }}/maxresdefault.jpg">
+                            <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/{{ getYoutubeId(getAbout('who', 'youtube_url')) }}">
                                 <i class="icon-play"></i>
                             </a>
                         </div>
                     </div>         
                 </div>
             </div>
+            @endif
         </div>
     </section>
 

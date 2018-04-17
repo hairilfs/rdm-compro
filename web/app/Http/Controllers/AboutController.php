@@ -10,9 +10,9 @@ class AboutController extends Controller
 {	
 	public $data = array();
 
-    public function index(Request $request)
+    public function index(Request $request, $section='who')
     {
-    	return view('about', $this->data);
+    	return view('company-'.$section, $this->data);
     }
 
 }

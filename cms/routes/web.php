@@ -53,3 +53,6 @@ Route::post('/talk/form/{cid?}', 'TalkController@save');
 
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
+
+Route::get('/about/{section}', 'AboutController@index');
+Route::post('/about/{section}', 'AboutController@save');
