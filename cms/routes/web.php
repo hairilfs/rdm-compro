@@ -54,5 +54,8 @@ Route::post('/talk/form/{cid?}', 'TalkController@save');
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
 
-Route::get('/about/{section}', 'AboutController@index');
-Route::post('/about/{section}', 'AboutController@save');
+Route::get('/about/who-intro', 'AboutController@intro');
+Route::get('/about/who-testimony', 'AboutController@testimony');
+Route::get('/about/who-testimony/datatables', 'AboutController@testimonyDatatables');
+Route::get('/about/who-testimony/form/{id?}', 'AboutController@showTestimony');
+Route::post('/about/who-testimony/form/{id?}', 'AboutController@saveTestimony');

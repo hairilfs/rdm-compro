@@ -32,7 +32,16 @@
             <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-info"></i><span class="sidebar-mini-hide">About</span></a>
             <ul>
                 <li>
-                    <a href="{{ url('about/who') }}">Who</a>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Who</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ url('about/who-intro') }}">Intro</a>
+                        </li>
+
+                        <li>
+                            <a href="{{ url('about/who-testimony') }}">Testimony</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>

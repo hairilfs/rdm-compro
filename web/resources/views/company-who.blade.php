@@ -97,37 +97,24 @@
 
                 <div class="slider-holder">
                     <div id="sliderTesti" class="owl-carousel slider">
-                        <div class="item">
-                            <div class="profile-thumb">
-                                <figure class="no-margin">
-                                    <img class="w-fit" src="uploads/ceo-profile.jpg" alt="">
-                                    <span class="overlay med"></span>
-                                </figure>
-                                <figcaption>
-                                    <h5 class="f-reg lh-med content-line_slide">“Our strength and success record stems from a combination of international experience and a strong understanding of local practices from our Indonesian roots.”</h5>
-                                </figcaption>
-                            </div>
-                            <div class="profile-info">
-                                <p class="profile-name f-bold no-margin">Rene Ishak</p>
-                                <p class="profile-position no-margin">CHIEF EXECUTIVE OFFICER, RDM</p>
-                            </div>
-                        </div>
 
+                        @foreach ($testimony as $element)
                         <div class="item">
                             <div class="profile-thumb">
                                 <figure class="no-margin">
-                                    <img class="w-fit" src="uploads/ceo-profile.jpg" alt="">
+                                    <img class="w-fit" src="{{ $element->getImgUrl() }}" alt="">
                                     <span class="overlay med"></span>
                                 </figure>
                                 <figcaption>
-                                    <h5 class="f-reg lh-med content-line_slide">“Our strength and success record stems from a combination of international experience and a strong understanding of local practices from our Indonesian roots.”</h5>
+                                    <h5 class="f-reg lh-med content-line_slide">“{{ $element->testimony }}”</h5>
                                 </figcaption>
                             </div>
                             <div class="profile-info">
-                                <p class="profile-name f-bold no-margin">Rene Ishak</p>
-                                <p class="profile-position no-margin">CHIEF EXECUTIVE OFFICER, RDM</p>
+                                <p class="profile-name f-bold no-margin">{{ $element->name }}</p>
+                                <p class="profile-position no-margin">{{ $element->position }}</p>
                             </div>
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
