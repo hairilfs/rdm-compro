@@ -37,9 +37,17 @@
                         <li>
                             <a href="{{ url('about/who-intro') }}">Intro</a>
                         </li>
-
+                        <li>
+                            <a href="{{ url('about/who-scope') }}">Scope</a>
+                        </li>
                         <li>
                             <a href="{{ url('about/who-testimony') }}">Testimony</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('about/who-people') }}">People &amp; Culture</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('about/who-address') }}">Address</a>
                         </li>
                     </ul>
                 </li>

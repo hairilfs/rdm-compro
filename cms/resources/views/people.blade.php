@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Testimony Lists')
+@section('title', 'People Lists')
 
 @section('head')
 <link rel="stylesheet" href="assets/js/plugins/datatables/jquery.dataTables.min.css">
@@ -13,12 +13,12 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Testimony Lists
+                    People Lists
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li>Testimony</li>
+                    <li>People</li>
                     <li><a class="link-effect" href="javascript:void(0)">List</a></li>
                 </ol>
             </div>
@@ -27,7 +27,7 @@
     <!-- END Page Header -->
 
     <!-- Page Content -->
-    <div class="content" id="vue_testimony_category">
+    <div class="content" id="vue_people_category">
         <div class="row">
             <div class="block">
                 <div class="block-content">
@@ -67,13 +67,13 @@
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {            
-                window.location = '{{ url('about/who-testimony/delete') }}/'+id;
+                window.location = '{{ url('about/who-people/delete') }}/'+id;
             }
         });
     }
 
     var dt_conf =  {
-        'ajax' : '{{ url("about/who-testimony/datatables") }}',
+        'ajax' : '{{ url("about/who-people/datatables") }}',
         'columns' : [
             { data: 'name', name: 'name' },
             { data: 'is_publish', name: 'is_publish' },
@@ -84,7 +84,7 @@
         'columnDefs' : [ { orderable: false, targets: [ 3 ] } ],
         'pageLength' : 10,
         'lengthMenu' : [[5, 10, 15, 20], [5, 10, 15, 20]],
-        'formUrl': '{{ url('about/who-testimony/form') }}'
+        'formUrl': '{{ url('about/who-people/form') }}'
     };
 
 </script>

@@ -54,8 +54,24 @@ Route::post('/talk/form/{cid?}', 'TalkController@save');
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
 
-Route::get('/about/who-intro', 'AboutController@intro');
+// -------------------------
 Route::get('/about/who-testimony', 'AboutController@testimony');
 Route::get('/about/who-testimony/datatables', 'AboutController@testimonyDatatables');
+Route::get('/about/who-testimony/delete/{id}', 'AboutController@deleteTestimony');
 Route::get('/about/who-testimony/form/{id?}', 'AboutController@showTestimony');
 Route::post('/about/who-testimony/form/{id?}', 'AboutController@saveTestimony');
+// -------------------------
+Route::get('/about/who-people', 'AboutController@people');
+Route::get('/about/who-people/datatables', 'AboutController@peopleDatatables');
+Route::get('/about/who-people/delete/{id}', 'AboutController@deletePeople');
+Route::get('/about/who-people/form/{id?}', 'AboutController@showPeople');
+Route::post('/about/who-people/form/{id?}', 'AboutController@savePeople');
+// -------------------------
+Route::get('/about/who-scope', 'AboutController@scope');
+Route::get('/about/who-scope/datatables', 'AboutController@scopeDatatables');
+Route::get('/about/who-scope/delete/{id}', 'AboutController@deleteScope');
+Route::get('/about/who-scope/form/{id?}', 'AboutController@showScope');
+Route::post('/about/who-scope/form/{id?}', 'AboutController@saveScope');
+// -------------------------
+Route::get('/about/{section}', 'AboutController@intro');
+Route::post('/about/{section}', 'AboutController@save');

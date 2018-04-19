@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\{ About, Testimony };
+use App\{ About, Testimony, Partner, Scope, People };
 
 class AboutController extends Controller
 {	
@@ -14,6 +14,9 @@ class AboutController extends Controller
     {
     	if ($section=='who') {
     		$this->data['testimony'] = Testimony::publish()->get();
+            $this->data['partner'] = Partner::orderBy('sort')->take(8)->get();
+            $this->data['scope'] = Scope::publish()->orderBy('published_at')->get();
+	    	$this->data['people'] = People::publish()->orderBy('published_at')->get();    		
     	}
 
     	return view('company-'.$section, $this->data);

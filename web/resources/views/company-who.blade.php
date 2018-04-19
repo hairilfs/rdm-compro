@@ -13,11 +13,11 @@
             <div class="intro-text">
                 <div class="container">
                     <p class="small ls-med f-med">INTRODUCTION</p>
-                    {!! getAbout('who', 'introduction') !!}
+                    {!! getAbout('who-intro', 'introduction') !!}
                 </div>
             </div>
 
-            @if (getAbout('who', 'youtube_url'))
+            @if (getAbout('who-intro', 'youtube_url'))
             <div class="intro-image has-video">
                 <div class="container">
                     <div class="video">
@@ -26,8 +26,8 @@
                         </div>
 
                         <div id="thumb-container" class="thumb-container">
-                            <img src="http://img.youtube.com/vi/{{ getYoutubeId(getAbout('who', 'youtube_url')) }}/maxresdefault.jpg">
-                            <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/{{ getYoutubeId(getAbout('who', 'youtube_url')) }}">
+                            <img src="http://img.youtube.com/vi/{{ getYoutubeId(getAbout('who-intro', 'youtube_url')) }}/maxresdefault.jpg">
+                            <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/{{ getYoutubeId(getAbout('who-intro', 'youtube_url')) }}">
                                 <i class="icon-play"></i>
                             </a>
                         </div>
@@ -47,44 +47,22 @@
                 </h3>
 
                 <div class="row">
-                    <div class="col-md-4 scopes-item">
-                        <figure>
-                            <a href="#" class="d-block">
-                                <img class="w-fit" src="uploads/scopes-1.jpg">
-                            </a>
-                        </figure>
-                        <figcaption>
-                            <h5>What we do</h5>
-                            <p>RDM creates brands, build products, and devise campaigns.</p>
-                            <a href="#" class="link ls-med f-med"><i class="icon-right-open-big"></i>MORE ABOUT THE WHAT</a>
-                        </figcaption>
-                    </div>
 
+                    @foreach ($scope as $element)
                     <div class="col-md-4 scopes-item">
                         <figure>
                             <a href="#" class="d-block">
-                                <img class="w-fit" src="uploads/scopes-2.jpg">
+                                <img class="w-fit" src="{{ $element->getImgUrl() }}">
                             </a>
                         </figure>
                         <figcaption>
-                            <h5>How we do it</h5>
-                            <p>RDM creates brands, build products, and devise campaigns.</p>
-                            <a href="#" class="link ls-med f-med"><i class="icon-right-open-big"></i>MORE ABOUT THE WHAT</a>
+                            <h5>{{ $element->title }}</h5>
+                            <p>{{ $element->description }}</p>
+                            <a href="{{ $element->link_url }}" class="link ls-med f-med"><i class="icon-right-open-big"></i>{{ $element->link_text }}</a>
                         </figcaption>
                     </div>
-
-                    <div class="col-md-4 scopes-item">
-                        <figure>
-                            <a href="#" class="d-block">
-                                <img class="w-fit" src="uploads/scopes-3.jpg">
-                            </a>
-                        </figure>
-                        <figcaption>
-                            <h5>What we do</h5>
-                            <p>RDM creates brands, build products, and devise campaigns.</p>
-                            <a href="#" class="link ls-med f-med"><i class="icon-right-open-big"></i>MORE ABOUT THE WHAT</a>
-                        </figcaption>
-                    </div>
+                    @endforeach
+                    
                 </div>
             </div>
         </div>
@@ -128,53 +106,15 @@
 
                 <div class="clients-body has-ver-padding">
                     <div class="row flexed">
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
 
+                        @foreach ($partner as $element)
                         <div class="item">
                             <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
+                                <img src="{{ $element->getImgUrl() }}">
                             </figure>
                         </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
-
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="uploads/home-partner-marvel.png">
-                            </figure>
-                        </div>
+                        @endforeach
+                        
                     </div>
 
                     <p class="btn-holder text-center">
@@ -192,35 +132,19 @@
 
                 <div class="team-holder">
                     <div class="row">
-                        <div class="col-md-4 profile-item">
-                            <figure>
-                                <img src="uploads/ceo-profile.jpg" alt="">
-                            </figure>
-                            <figcaption>
-                                <p class="profile-name f-bold no-margin">Luke Powell</p>
-                                <p class="profile-position no-margin">Art Director</p>
-                            </figcaption>
-                        </div>
 
+                        @foreach ($people as $element)
                         <div class="col-md-4 profile-item">
                             <figure>
-                                <img src="uploads/ceo-profile.jpg" alt="">
+                                <img src="{{ $element->getImgUrl() }}" alt="">
                             </figure>
                             <figcaption>
-                                <p class="profile-name f-bold no-margin">Luke Powell</p>
-                                <p class="profile-position no-margin">Art Director</p>
+                                <p class="profile-name f-bold no-margin">{{ $element->name }}</p>
+                                <p class="profile-position no-margin">{{ $element->position }}</p>
                             </figcaption>
                         </div>
-
-                        <div class="col-md-4 profile-item">
-                            <figure>
-                                <img src="uploads/ceo-profile.jpg" alt="">
-                            </figure>
-                            <figcaption>
-                                <p class="profile-name f-bold no-margin">Luke Powell</p>
-                                <p class="profile-position no-margin">Art Director</p>
-                            </figcaption>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
 
@@ -255,33 +179,21 @@
                     <div class="col-md-6 loc-indonesia">
                         <figure>
                             <a href="javascript:void(0)" class="d-block">
-                                <img class="w-fit" src="uploads/location-indo.jpg">
+                                <img class="w-fit" src="{{ getAbout('who-address', 'who_address_indo_image') }}">
                             </a>
                         </figure>
                         <figcaption>
-                            <h5 class="f-reg">Indonesia</h5>
-                            <address>
-                                Rukan Crown Blok H No.1<br/>
-                                Green Lake City<br/>
-                                Cipondoh - Tangerang,<br/>
-                                Indonesia.
-                            </address>
+                            {!! getAbout('who-address', 'who_address_indo') !!}
                         </figcaption>
                     </div>
                     <div class="col-md-6 loc-australia">
                         <figure>
                             <a href="javascript:void(0)" class="d-block">
-                                <img class="w-fit" src="uploads/location-aus.jpg">
+                                <img class="w-fit" src="{{ getAbout('who-address', 'who_address_aus_image') }}">
                             </a>
                         </figure>
                         <figcaption>
-                            <h5 class="f-reg">Australia</h5>
-                            <address>
-                                Rukan Crown Blok H No.1<br/>
-                                Green Lake City<br/>
-                                Cipondoh - Tangerang,<br/>
-                                Indonesia.
-                            </address>
+                            {!! getAbout('who-address', 'who_address_aus') !!}
                         </figcaption>
                     </div>
                 </div>
