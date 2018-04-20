@@ -157,10 +157,13 @@
         <div class="section--inner">
             <div class="mood-holder">
                 <figure class="no-margin">
+                    @php
+                        $single_img = getAbout('who-image', 'who_single_img');
+                    @endphp
                     <picture class="image-ad">
-                        <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                        <source media="(min-width: 577px)" srcset="uploads/contact-mood.jpg">
-                        <img class="w-fit" src="uploads/contact-mood.jpg" alt="">
+                        <source media="(max-width: 576px)" srcset="{{ 'thumb_'.$single_img }}">
+                        <source media="(min-width: 577px)" srcset="{{ $single_img }}">
+                        <img class="w-fit" src="{{ $single_img }}" alt="">
                     </picture>
                 </figure>
             </div>

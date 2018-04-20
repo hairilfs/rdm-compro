@@ -47,10 +47,27 @@
                             <a href="{{ url('about/who-testimony') }}">Testimony</a>
                         </li>
                         <li>
+                            <a href="{{ url('about/who-partner') }}">Partners</a>
+                        </li>
+                        <li>
                             <a href="{{ url('about/who-people') }}">People &amp; Culture</a>
                         </li>
                         <li>
+                            <a href="{{ url('about/who-image') }}">Single Image</a>
+                        </li>
+                        <li>
                             <a href="{{ url('about/who-address') }}">Address</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">What</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ url('about/what-hero') }}">Hero Image</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('about/what-content') }}">Content</a>
                         </li>
                     </ul>
                 </li>

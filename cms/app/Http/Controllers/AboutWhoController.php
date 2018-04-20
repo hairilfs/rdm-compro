@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\{ About, Testimony, People, Scope };
+use App\{ About, Testimony, People, Scope, PartnerWho };
 
 use Storage, Image, DataTables;
 
-class AboutController extends Controller
+class AboutWhoController extends Controller
 {
     /**
      * Create global variable.
@@ -83,14 +83,32 @@ class AboutController extends Controller
                     if (str_contains($about->file_type, 'image')) {
                         $image = Image::make(file_get_contents($request->{$key}));
 
-                        if ($section=='who-address') {
+                        if ($section=='who-address') 
+                        {
                             $image->fit(580, 362, function ($constraint) {
                                 $constraint->upsize();
                             });
                         }
+                        else if($section=='who-image')
+                        {
+                            if ($image->width() > 1331) {
+                                $image->resize(1331, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                            }
+
+                            if ($image->width() > 600) {
+                                $mobile = Image::make(file_get_contents($request->{$key}));
+                                $mobile->resize(600, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                                $mobile = $mobile->stream()->__toString();
+                                $storage->put("about/thumb_".$about->content, $mobile);
+                            }
+
+                        }
 
                         $image = $image->stream()->__toString();
-
                         $storage->put("about/".$about->content, $image);
                     }
 
@@ -387,5 +405,98 @@ class AboutController extends Controller
             return redirect('/about/who-people/')->with('fail', 'People not found!');
 
         }
+    }
+    /*
+    |--------------------------------------------------------------------------
+    | About - Partner
+    |--------------------------------------------------------------------------
+    */
+
+    public function indexPartner(Request $request)
+    {
+        return view('partner-who', $this->data);
+    }
+
+    public function savePartner(Request $request)
+    {
+        $storage = Storage::disk('web');
+
+        if ($request->hasFile('file')) {
+
+            $img_temp = $request->file('file');
+            $file_type = $img_temp->getClientMimeType();
+            $ext = $img_temp->extension();
+
+            $partner = new PartnerWho;
+            $partner->img_url = str_replace('.', time().'.', $img_temp->getClientOriginalName());
+
+            // uploading...
+            if (str_contains($file_type, 'image')) {
+                $image = Image::make(file_get_contents($img_temp));
+                $image = $image->stream()->__toString();
+
+                $storage->put("partner_who/".$partner->img_url, $image);
+            }
+
+            $partner->save();
+
+            return response()->json([
+                'partner_id' => $partner->partner_who_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/partner_who/".$partner->img_url,
+            ]);
+        }
+    }
+
+    public function listPartner(Request $request)
+    {
+        $data = array();
+        $list = PartnerWho::orderBy('sort', 'asc')->get();
+        foreach ($list as $partner) {
+            $data[] = [
+                'partner_id' => $partner->partner_who_id,
+                'image_url' => env('WEB_BASE_URL')."uploads/partner_who/".$partner->img_url,
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function sortPartner(Request $request)
+    {
+        // dd($request->all());
+        $counter = 0;
+        foreach ($request->input('sorting') as $value) {
+            $partner = PartnerWho::find($value['partner_id']);
+            $partner->sort = $value['sort'];
+            $partner->save();
+            $counter++;
+        }
+
+        return response()->json([
+            'counter' => $counter
+        ]);
+    }
+
+    public function deletePartner(Request $request)
+    {
+        $retval = ['status' => false];
+        $id = (int)$request->input('id');
+
+        if ($id) {
+            $partner = PartnerWho::find($id);
+            if (count($partner)) {
+
+                $storage = Storage::disk('web');
+
+                $storage->delete("partner_who/".$partner->img_url);
+                $partner->delete();
+
+                $retval['id'] = $id;
+                $retval['status'] = true;
+                $retval['message'] = "Partner id: {$id} has been deleted!";
+            }
+        }
+
+        return response()->json($retval);
     }
 }

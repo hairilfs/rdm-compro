@@ -54,24 +54,45 @@ Route::post('/talk/form/{cid?}', 'TalkController@save');
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
 
+/*
+|--------------------------------------------------------------------------
+| ABOUT WHO
+|--------------------------------------------------------------------------
+*/
+Route::get('/about/who-testimony', 'AboutWhoController@testimony');
+Route::get('/about/who-testimony/datatables', 'AboutWhoController@testimonyDatatables');
+Route::get('/about/who-testimony/delete/{id}', 'AboutWhoController@deleteTestimony');
+Route::get('/about/who-testimony/form/{id?}', 'AboutWhoController@showTestimony');
+Route::post('/about/who-testimony/form/{id?}', 'AboutWhoController@saveTestimony');
 // -------------------------
-Route::get('/about/who-testimony', 'AboutController@testimony');
-Route::get('/about/who-testimony/datatables', 'AboutController@testimonyDatatables');
-Route::get('/about/who-testimony/delete/{id}', 'AboutController@deleteTestimony');
-Route::get('/about/who-testimony/form/{id?}', 'AboutController@showTestimony');
-Route::post('/about/who-testimony/form/{id?}', 'AboutController@saveTestimony');
+Route::get('/about/who-people', 'AboutWhoController@people');
+Route::get('/about/who-people/datatables', 'AboutWhoController@peopleDatatables');
+Route::get('/about/who-people/delete/{id}', 'AboutWhoController@deletePeople');
+Route::get('/about/who-people/form/{id?}', 'AboutWhoController@showPeople');
+Route::post('/about/who-people/form/{id?}', 'AboutWhoController@savePeople');
 // -------------------------
-Route::get('/about/who-people', 'AboutController@people');
-Route::get('/about/who-people/datatables', 'AboutController@peopleDatatables');
-Route::get('/about/who-people/delete/{id}', 'AboutController@deletePeople');
-Route::get('/about/who-people/form/{id?}', 'AboutController@showPeople');
-Route::post('/about/who-people/form/{id?}', 'AboutController@savePeople');
+Route::get('/about/who-scope', 'AboutWhoController@scope');
+Route::get('/about/who-scope/datatables', 'AboutWhoController@scopeDatatables');
+Route::get('/about/who-scope/delete/{id}', 'AboutWhoController@deleteScope');
+Route::get('/about/who-scope/form/{id?}', 'AboutWhoController@showScope');
+Route::post('/about/who-scope/form/{id?}', 'AboutWhoController@saveScope');
 // -------------------------
-Route::get('/about/who-scope', 'AboutController@scope');
-Route::get('/about/who-scope/datatables', 'AboutController@scopeDatatables');
-Route::get('/about/who-scope/delete/{id}', 'AboutController@deleteScope');
-Route::get('/about/who-scope/form/{id?}', 'AboutController@showScope');
-Route::post('/about/who-scope/form/{id?}', 'AboutController@saveScope');
+Route::get('/about/who-partner/list', 'AboutWhoController@listPartner');
+Route::post('/about/who-partner/sort', 'AboutWhoController@sortPartner');
+Route::post('/about/who-partner/delete', 'AboutWhoController@deletePartner');
+Route::get('/about/who-partner', 'AboutWhoController@indexPartner');
+Route::post('/about/who-partner', 'AboutWhoController@savePartner');
 // -------------------------
-Route::get('/about/{section}', 'AboutController@intro');
-Route::post('/about/{section}', 'AboutController@save');
+Route::get('/about/{section}', 'AboutWhoController@intro')->where('section', '^([0-9A-Za-z\-]+)?who([0-9A-Za-z\-]+)?');;
+Route::post('/about/{section}', 'AboutWhoController@save')->where('section', '^([0-9A-Za-z\-]+)?who([0-9A-Za-z\-]+)?');;
+
+/*
+|--------------------------------------------------------------------------
+| ABOUT WHAT
+|--------------------------------------------------------------------------
+*/
+Route::get('/about/what-content', 'AboutWhatController@showContent');
+// Route::post('/about/what-content', 'AboutWhatController@save');
+// -------------------------
+Route::get('/about/{section2}', 'AboutWhatController@index')->where('section2', '^([0-9A-Za-z\-]+)?what([0-9A-Za-z\-]+)?');
+Route::post('/about/{section2}', 'AboutWhatController@save')->where('section2', '^([0-9A-Za-z\-]+)?what([0-9A-Za-z\-]+)?');
