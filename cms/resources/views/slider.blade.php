@@ -16,12 +16,12 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Slider - {{ $category }}
+                    Hero - {{ $category }}
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li>Slider</li>
+                    <li>Hero</li>
                     <li><a class="link-effect" href="javascript:void(0)">{{ $category }}</a></li>
                 </ol>
             </div>
@@ -31,14 +31,14 @@
 
     <!-- Page Content -->
     <div class="content">
-        <div class="row">
-            <div class="col-md-7" id="vue_slider">
+        <div class="row" id="vue_slider">
+            <div class="col-md-7">
                 <div class="block block-bordered">
                     <div class="block-header">
                         <div class="block-options-simple block-options">
                             <button v-show="!empty" class="btn btn-xs btn-primary" type="button" v-on:click="sorting" :disabled="isSorting"><i class="fa fa-refresh" :class="{ 'fa-spin': isSorting }"></i> Save change</button>
                         </div>
-                        <h3 class="block-title">Images</h3>
+                        <h3 class="block-title">Image{{ $category == 'Home' ? 's' : '' }}</h3>
                     </div>
 
                     <div class="block-content" id="sortable_wrapper">
@@ -66,7 +66,7 @@
                     <div class="block-header">
                         <h3 class="block-title">Drop Image</h3>
                     </div>
-                    <div class="block-content">
+                    <div class="block-content" v-show="showDropzone">
                         <div class="form-group">
                             <form class="dropzone" id="slider-dropzone" action="{{ url()->current() }}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
@@ -100,18 +100,25 @@
         });        
     });
 
+    var maxFilesUpload = {{ $category == 'Home' ? 10 : 1 }};
+
     Dropzone.options.sliderDropzone = {
         paramName: 'file',
         maxFilesize: 5, // MB
-        maxFiles: 10,
+        maxFiles: maxFilesUpload,
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         init: function() {
             this.on("success", function(file, server) {
                 console.log(file.status, file.name); 
                 vue_slider.images.push({ id: server.slider_id, url: file.dataURL });
+
                 setTimeout(function(){
                     vue_slider.sorting();
                 }, 1000);
+
+                if (maxFilesUpload == 1) { // project & contact
+                    vue_slider.showDropzone = false;
+                }
             });
         }
     };
@@ -121,7 +128,8 @@
         data: {
             images: [],
             empty: true,
-            isSorting: false
+            isSorting: false,
+            showDropzone: true
         },
         mounted: function() {
             this.$nextTick(function () {
@@ -134,7 +142,11 @@
                     if(response.length) {
                         _.forEach(response, function(value, key){
                             vue_slider.images.push({ id: value.slider_id, url: value.image_url});
-                        })
+                        });
+
+                        if (vue_slider.images.length) {
+                            vue_slider.showDropzone = false;
+                        }
                     }
                 });
             },
@@ -174,6 +186,10 @@
                                 vue_slider.images.splice(idx, 1);
 
                                 popup_notif('fa fa-check', 'Delete success!', 'success');
+
+                                if (!vue_slider.images.length) {
+                                    vue_slider.showDropzone = true;
+                                }
                             }
                         }, 'json');
                     }

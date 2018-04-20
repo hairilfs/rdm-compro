@@ -5,13 +5,16 @@
         </li>
         <li class="nav-main-heading"><span class="sidebar-mini-hide">Content</span></li>
         <li>
-            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-image"></i><span class="sidebar-mini-hide">Hero Slider</span></a>
+            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="fa fa-image"></i><span class="sidebar-mini-hide">Hero</span></a>
             <ul>
                 <li>
                     <a href="{{ url('slider/home') }}">Home</a>
                 </li>
                 <li>
                     <a href="{{ url('slider/projects') }}">Projects</a>
+                </li>
+                <li>
+                    <a href="{{ url('slider/contact') }}">Contact</a>
                 </li>
             </ul>
         </li>

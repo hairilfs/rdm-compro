@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Project;
+use App\{ Project, SLider };
 
 class ProjectController extends Controller
 {	
@@ -12,6 +12,7 @@ class ProjectController extends Controller
 
     public function index(Request $request)
     {
+        $this->data['slider'] = Slider::where('category', 'projects')->orderBy('sort')->first();
     	$this->data['projects'] = Project::publish()->get();
     	return view('projects', $this->data);
     }

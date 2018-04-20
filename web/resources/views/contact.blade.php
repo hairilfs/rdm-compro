@@ -15,9 +15,9 @@
         <div class="section--inner">
             <figure class="no-margin fullheight-js">
                 <picture class="image-ad fheight">
-                    <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                    <source media="(min-width: 577px)" srcset="uploads/_temp/img-dummy-1.jpg">
-                    <img src="uploads/_temp/img-dummy-1.jpg" alt="">
+                    <source media="(max-width: 576px)" srcset="{{ $slider->getImgUrl('mobile') }}">
+                    <source media="(min-width: 577px)" srcset="{{ $slider->getImgUrl() }}">
+                    <img src="{{ $slider->getImgUrl() }}" alt="">
                 </picture>
                 <span class="overlay black"></span>
             </figure>
