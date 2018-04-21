@@ -21,7 +21,7 @@
 
             <div class="intro-image image-offset">
                 <figure class="no-margin">
-                    <img class="w-fit" src="uploads/what-hero.jpg">
+                    <img class="w-fit" src="{{ getAbout('what-hero', 'what_hero_img') }}">
                 </figure>
             </div>
         </div>
@@ -32,26 +32,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">We create brands</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title1') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
-
-                            <ul>
-                                <li>Brand Architecture</li>
-                                <li>Brand Audit</li>
-                                <li>Brand Guidelines</li>
-                                <li>Brand Strategy</li>
-                                <li>Competitor Analysis</li>
-                                <li>Creative Direction</li>
-                                <li>Logo &amp; Identity</li>
-                                <li>Brand Architecture</li>
-                                <li>Naming</li>
-                            </ul>
-
-                            <blockquote>“This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games Energy of Asia succeed in a world of sport.”</blockquote>
+                            {!! getAbout('what-content', 'what_desc1') !!}
                         </div>            
                     </div>
                 </div>
@@ -62,12 +48,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">We build products</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title2') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
+                            {!! getAbout('what-content', 'what_desc2') !!}
                         </div>            
                     </div>
                 </div>
@@ -78,15 +64,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">We create marketing things</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title3') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
+                            {!! getAbout('what-content', 'what_desc3') !!}
 
                             <figure>
-                                <img class="w-fit" src="uploads/_temp/img-dummy-1.jpg">
+                                <img class="w-fit" src="{{ getAbout('what-content', 'what_img3') }}">
                             </figure>
                         </div>            
                     </div>
@@ -98,13 +84,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">Mission</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title4') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <h4 class="section-large-text f-reg">Creates a long term partnership with Brand partners</h4>
-                            <p>We pride ourselves on being unique and creativeThe passionate team works collaboratively with partners to stay ahead in any changing and challenging retail environment</p>
+                            {!! getAbout('what-content', 'what_desc4') !!}
                         </div>            
                     </div>
                 </div>
@@ -115,13 +100,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">Vision</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title5') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <h4 class="section-large-text f-reg">To be The Best Brand Licensing Company in Indonesia</h4>
-                            <p>Partnering with world-renown brand to enhance and maximize the business thru a unique and exclusive marketing and licensing model</p>
+                            {!! getAbout('what-content', 'what_desc5') !!}   
                         </div>            
                     </div>
                 </div>

@@ -70,7 +70,6 @@ class AboutWhatController extends Controller
 
                     $about->content = str_replace('.', time().'.', $request->{$key}->getClientOriginalName());
                     $about->file_type = $request->{$key}->getClientMimeType();
-                    $about->size = $request->{$key}->getClientSize();
 
                     // uploading...
                     if (str_contains($about->file_type, 'image')) {
@@ -85,7 +84,17 @@ class AboutWhatController extends Controller
                             }
 
                         }
+                        if($section=='what-content')
+                        {
+                            if ($image->width() > 600) {
+                                $image->resize(600, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                            }
 
+                        }
+
+                        $about->size = (int)$image->filesize();
                         $image = $image->stream()->__toString();
                         $storage->put("about/".$about->content, $image);
                     }

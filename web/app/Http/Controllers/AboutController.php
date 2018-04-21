@@ -14,14 +14,10 @@ class AboutController extends Controller
     {
     	if ($section=='who') 
         {
-    		$this->data['testimony'] = Testimony::publish()->get();
+            $this->data['testimony'] = Testimony::publish()->get();
             $this->data['partner'] = PartnerWho::orderBy('sort')->take(8)->get();
             $this->data['scope'] = Scope::publish()->orderBy('published_at')->get();
-	    	$this->data['people'] = People::publish()->orderBy('published_at')->get();    		
-    	}
-        else if($section=='what')
-        {
-            
+            $this->data['people'] = People::publish()->orderBy('published_at')->get();          
         }
 
     	return view('company-'.$section, $this->data);
