@@ -71,6 +71,28 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">How</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ url('about/how-hero') }}">Hero Image</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('about/how-content') }}">Content</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Why</span></a>
+                    <ul>
+                        <li>
+                            <a href="{{ url('about/why-hero') }}">Hero Image</a>
+                        </li>
+                        <li>
+                            <a href="{{ url('about/why-content') }}">Content</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </li>
         <li>

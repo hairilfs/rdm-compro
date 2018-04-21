@@ -77,7 +77,6 @@ class AboutWhoController extends Controller
 
                     $about->content = str_replace('.', time().'.', $request->{$key}->getClientOriginalName());
                     $about->file_type = $request->{$key}->getClientMimeType();
-                    $about->size = $request->{$key}->getClientSize();
 
                     // uploading...
                     if (str_contains($about->file_type, 'image')) {
@@ -108,6 +107,7 @@ class AboutWhoController extends Controller
 
                         }
 
+                        $about->size = $image->filesize();
                         $image = $image->stream()->__toString();
                         $storage->put("about/".$about->content, $image);
                     }

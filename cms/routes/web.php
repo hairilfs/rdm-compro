@@ -92,7 +92,26 @@ Route::post('/about/{section}', 'AboutWhoController@save')->where('section', '^(
 |--------------------------------------------------------------------------
 */
 Route::get('/about/what-content', 'AboutWhatController@showContent');
-// Route::post('/about/what-content', 'AboutWhatController@save');
 // -------------------------
 Route::get('/about/{section2}', 'AboutWhatController@index')->where('section2', '^([0-9A-Za-z\-]+)?what([0-9A-Za-z\-]+)?');
 Route::post('/about/{section2}', 'AboutWhatController@save')->where('section2', '^([0-9A-Za-z\-]+)?what([0-9A-Za-z\-]+)?');
+
+/*
+|--------------------------------------------------------------------------
+| ABOUT HOW
+|--------------------------------------------------------------------------
+*/
+Route::get('/about/how-content', 'AboutHowController@showContent');
+// -------------------------
+Route::get('/about/{section3}', 'AboutHowController@index')->where('section3', '^([0-9A-Za-z\-]+)?how([0-9A-Za-z\-]+)?');
+Route::post('/about/{section3}', 'AboutHowController@save')->where('section3', '^([0-9A-Za-z\-]+)?how([0-9A-Za-z\-]+)?');
+
+/*
+|--------------------------------------------------------------------------
+| ABOUT WHY
+|--------------------------------------------------------------------------
+*/
+Route::get('/about/why-content', 'AboutWhyController@showContent');
+// -------------------------
+Route::get('/about/{section4}', 'AboutWhyController@index')->where('section4', '^([0-9A-Za-z\-]+)?why([0-9A-Za-z\-]+)?');
+Route::post('/about/{section4}', 'AboutWhyController@save')->where('section4', '^([0-9A-Za-z\-]+)?why([0-9A-Za-z\-]+)?');

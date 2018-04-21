@@ -6,7 +6,6 @@
 
 @section('content')
 
-
 <main>
     @include('partials.company-nav')
     <section id="company-intro" class="has-ver-padding">
