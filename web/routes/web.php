@@ -15,6 +15,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/projects', 'ProjectController@index');
+Route::get('/project/ongoing', 'ProjectController@ongoing');
 Route::get('/project/{slug}', 'ProjectController@show');
 
 Route::get('/about/{section?}', 'AboutController@index');

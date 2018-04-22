@@ -10,6 +10,11 @@ class ProjectController extends Controller
 {	
 	public $data = array();
 
+    public function ongoing(Request $request)
+    {
+        return view('project-ongoing', $this->data);
+    }
+
     public function index(Request $request)
     {
         $this->data['slider'] = Slider::where('category', 'projects')->orderBy('sort')->first();

@@ -33,10 +33,17 @@
                     </div>
                     <ul class="filter-list no-margin">
                         <li class="active"><a href="#" class="link filter-js" data-filter="*">All<i class="icon-right-open-big"></i></a></li>
-                        <li><a href="#" class="link filter-js" data-filter=".product">Products<i class="icon-right-open-big"></i></a></li>
-                        <li><a href="#" class="link filter-js" data-filter=".campaign">Campaigns<i class="icon-right-open-big"></i></a></li>
-                        <li><a href="#" class="link filter-js" data-filter=".guide">Style Guides<i class="icon-right-open-big"></i></a></li>
-                        <li><a href="#" class="link filter-js" data-filter=".license">Licenses<i class="icon-right-open-big"></i></a></li>
+                        <?php
+                            $filters = [];
+                            foreach ($projects as $value) {
+                                $filters[] = explode(',', $value->project_category);
+                            }
+
+                            $filters = array_unique(array_collapse($filters));
+                        ?>
+                        @foreach ($filters as $filter)
+                        <li><a href="#" class="link filter-js" data-filter=".{{ $filter }}">{{ title_case($filter) }}<i class="icon-right-open-big"></i></a></li>
+                        @endforeach
                     </ul>
                 </div>
 

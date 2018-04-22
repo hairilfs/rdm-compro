@@ -29,7 +29,7 @@
                     <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs">
                         @foreach ($setting as $key => $element)
                         <li{!! $loop->first ? ' class="active"' : '' !!}>
-                            <a href="#tab-{{ $key }}">{{ $key }}</a>
+                            <a href="#tab-{{ str_slug($key) }}">{{ $key }}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -38,7 +38,7 @@
                     {{ csrf_field() }}
                     <div class="block-content tab-content"> 
                         @foreach ($setting as $key => $element)
-                        <div class="tab-pane{!! $loop->first ? ' active' : '' !!}" id="tab-{{ $key }}">
+                        <div class="tab-pane{!! $loop->first ? ' active' : '' !!}" id="tab-{{ str_slug($key) }}">
                             @foreach ($element as $value)
                                 @if ($value['setting_type'] == config('extra.setting_type.text'))
                                 <div class="form-group">

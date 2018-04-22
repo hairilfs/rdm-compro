@@ -18,9 +18,15 @@
             </nav>
 
             <div class="social">
-                <a href="#" target="_blank" class="link link-white"><i class="icon-instagram"></i></a>
-                <a href="#" target="_blank" class="link link-white"><i class="icon-facebook"></i></a>
-                <a href="#" target="_blank" class="link link-white"><i class="icon-twitter"></i></a>
+                @if ($ig = getSetting('Social Media', 'ig'))
+                <a href="{{ $ig }}" target="_blank" class="link link-white"><i class="icon-instagram"></i></a>
+                @endif
+                @if ($fb = getSetting('Social Media', 'fb'))
+                <a href="{{ $fb }}" target="_blank" class="link link-white"><i class="icon-facebook"></i></a>
+                @endif
+                @if ($tw = getSetting('Social Media', 'tw'))
+                <a href="{{ $tw }}" target="_blank" class="link link-white"><i class="icon-twitter"></i></a>
+                @endif
             </div>
         </div>
     </div>

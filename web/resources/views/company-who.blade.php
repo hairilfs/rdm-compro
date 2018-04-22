@@ -219,9 +219,9 @@
         <div class="section--inner">
             <div class="row row-no-margin">
                 <div class="col-md-6">
-                    <a href="#" class="d-block">
+                    <a href="{{ url('about') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="uploads/what-hero.jpg">
+                            <img src="{{ $single_img }}">
                             <span class="overlay black"></span>
                         </figure>
 
@@ -232,9 +232,9 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#" class="d-block">
+                    <a href="{{ url('about/what') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="uploads/what-hero.jpg">
+                            <img src="{{ getAbout('what-hero', 'what_hero_img') }}">
                             <span class="overlay black"></span>
                         </figure>
 
@@ -246,9 +246,9 @@
                 </div>
 
                 <div class="col-md-6">
-                    <a href="#" class="d-block">
+                    <a href="{{ url('about/how') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="uploads/what-hero.jpg">
+                            <img src="{{ getAbout('how-hero', 'how_hero_img') }}">
                             <span class="overlay black"></span>
                         </figure>
 
@@ -259,9 +259,9 @@
                     </a>
                 </div>
                 <div class="col-md-6">
-                    <a href="#" class="d-block">
+                    <a href="{{ url('about/why') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="uploads/what-hero.jpg">
+                            <img src="{{ getAbout('why-hero', 'why_hero_img') }}">
                             <span class="overlay black"></span>
                         </figure>
 

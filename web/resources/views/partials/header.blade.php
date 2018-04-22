@@ -123,40 +123,50 @@
 							<p class="small-title f-med no-margin">Contents</p>
 
 							<ul class="social-list">
+								@if ($tw = getSetting('Social Media', 'tw'))
 								<li>
-									<a href="#" class="link link-white f-med">
+									<a href="{{ $tw }}" class="link link-white f-med" target="_blank">
 										<i class="icon-twitter"></i>
 										<span class="hidden-sm-down">Twitter</span>
 									</a>
 								</li>
+								@endif
 
+								@if ($ig = getSetting('Social Media', 'ig'))
 								<li>
-									<a href="#" class="link link-white f-med">
+									<a href="{{ $ig }}" class="link link-white f-med" target="_blank">
 										<i class="icon-instagram"></i>
 										<span class="hidden-sm-down">Instagram</span>
 									</a>
 								</li>
+								@endif
 
+								@if ($fb = getSetting('Social Media', 'fb'))
 								<li>
-									<a href="#" class="link link-white f-med">
+									<a href="{{ $fb }}" class="link link-white f-med" target="_blank">
 										<i class="icon-facebook"></i>
 										<span class="hidden-sm-down">Facebook</span>
 									</a>
 								</li>
+								@endif
 
+								@if ($li = getSetting('Social Media', 'li'))
 								<li>
-									<a href="#" class="link link-white f-med">
+									<a href="{{ $li }}" class="link link-white f-med" target="_blank">
 										<i class="icon-linkedin"></i>
 										<span class="hidden-sm-down">Linkedin</span>
 									</a>
 								</li>
+								@endif
 
+								@if ($ph = getSetting('Contact', 'phone'))
 								<li>
-		                        	<a href="#" class="link link-white f-med">
+		                        	<a href="tel:{{ $ph }}" class="link link-white f-med">
 			                        	<i class="icon-phone"></i>
 			                        	<span class="hidden-sm-down">Call Us</span>
 		                        	</a>
 		                        </li>
+								@endif
 
 		                        <li class="talk-menu">
 		                        	<a href="#" id="trigger-talk" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
@@ -169,24 +179,12 @@
 							<p class="small-title f-med no-margin">Places</p>
 
 							<ul class="places-list">
-								<li>
-									<h5>Indonesia</h5>
-									<address>
-										Rukan Crown Blok H No.1<br class="hidden-sm-down"/>
-	                                    Green Lake City.<br class="hidden-sm-down"/>
-	                                    Cipondoh - Tangerang,<br class="hidden-sm-down"/>
-	                                    Indonesia.
-									</address>
+								<li> 
+									{!! getSetting('Address', 'address_indo') !!}
 								</li>
 
 								<li>
-									<h5>Australia</h5>
-									<address>
-										Rukan Crown Blok H No.1<br class="hidden-sm-down"/>
-	                                    Green Lake City.<br class="hidden-sm-down"/>
-	                                    Cipondoh - Tangerang,<br class="hidden-sm-down"/>
-	                                    Indonesia.
-									</address>
+									{!! getSetting('Address', 'address_aus') !!}
 								</li>
 							</ul>
 						</div>
@@ -224,9 +222,11 @@
 		                        	<a href="{{ url('/contact') }}" class="link link-white f-med link-opaque">Contact</a>
 		                        </li>
 
+		                        @if ($ph)
 		                        <li>
-		                        	<a href="#" class="link link-white link-opaque"><i class="icon-phone"></i></a>
+		                        	<a href="tel:{{ $ph }}" class="link link-white link-opaque"><i class="icon-phone"></i></a>
 		                        </li>
+								@endif
 
 		                        <li>
 		                        	<a href="#" id="trigger-talk" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
@@ -265,9 +265,11 @@
 		                        	<a href="#contact" class="link link-scroll link-white link-opaque">Contact</a>
 		                        </li>
 
+		                        @if ($ph)
 		                        <li>
-		                        	<a href="tel:021-5502637" class="link link-white link-opaque"><i class="icon-phone"></i></a>
+		                        	<a href="tel:{{ $ph }}" class="link link-white link-opaque"><i class="icon-phone"></i></a>
 		                        </li>
+		                        @endif
 		                    </ul>
 
 		                </div>

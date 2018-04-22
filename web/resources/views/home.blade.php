@@ -227,7 +227,7 @@
                             </div>
 
                             <p class="more text-center">
-                                <a href="#" class="link ls-med small"><i class="icon-right-open-big"></i>LEARN MORE ABOUT LICENSING OPPORTUNITY</a>
+                                <a href="{{ url('project/ongoing') }}" class="link ls-med small"><i class="icon-right-open-big"></i>LEARN MORE ABOUT LICENSING OPPORTUNITY</a>
                             </p>
                         </div>
                     </div>
