@@ -132,8 +132,11 @@
 <script type="text/javascript">
     CKEDITOR.config.toolbar = [
        ['Format'],
-       ['Bold','Italic','Underline','-','Undo','Redo','-','Cut','Copy','Paste','Find','Replace'],
+       ['Bold','Italic','Underline'],
        ['Source']
     ];
+
+    CKEDITOR.config.allowedContent = true;
+    CKEDITOR.config.extraAllowedContent = '*(*);*{*}';
 </script>
 @endpush

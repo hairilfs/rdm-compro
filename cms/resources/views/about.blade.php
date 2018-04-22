@@ -125,5 +125,6 @@
     ];
 
     CKEDITOR.config.allowedContent = true;
+    CKEDITOR.config.extraAllowedContent = '*(*);*{*}';
 </script>
 @endpush

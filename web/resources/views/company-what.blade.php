@@ -13,8 +13,7 @@
             <div class="intro-text">
                 <div class="container">
                     <h1 class="f-reg">
-                        We strategize, design
-                        <span class="opaque d-block">and create content and do all the things.</span>
+                        {!! getAbout('what-intro', 'what_intro') !!}
                     </h1>
                 </div>
             </div>

@@ -251,6 +251,9 @@
                ['Bold','Italic','Underline'],
                ['Source']
             ];
+
+            CKEDITOR.config.allowedContent = true;
+            CKEDITOR.config.extraAllowedContent = '*(*);*{*}';
         }
 
         $("#images_wrapper").sortable({

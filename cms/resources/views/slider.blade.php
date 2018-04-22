@@ -144,7 +144,7 @@
                             vue_slider.images.push({ id: value.slider_id, url: value.image_url});
                         });
 
-                        if (vue_slider.images.length) {
+                        if (vue_slider.images.length && maxFilesUpload == 1) {
                             vue_slider.showDropzone = false;
                         }
                     }

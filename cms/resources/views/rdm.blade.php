@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Setting')
+@section('title', 'RDM')
 
 @section('content')
 <main id="main-container">
@@ -9,11 +9,12 @@
         <div class="row items-push">
             <div class="col-sm-7">
                 <h1 class="page-heading">
-                    Setting 
+                    RDM
                 </h1>
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
+                    <li>RDM</li>
                     <li><a class="link-effect" href="javascript:void(0)">Setting</a></li>
                 </ol>
             </div>
@@ -27,9 +28,9 @@
             <div class="col-md-9">
                 <div class="block block-bordered">
                     <ul class="nav nav-tabs nav-tabs-alt" data-toggle="tabs">
-                        @foreach ($setting as $key => $element)
+                        @foreach ($rdm as $key => $element)
                         <li{!! $loop->first ? ' class="active"' : '' !!}>
-                            <a href="#tab-{{ $key }}">{{ $key }}</a>
+                            <a href="#tab-{{ str_slug($key) }}">{{ $key }}</a>
                         </li>
                         @endforeach
                     </ul>
@@ -37,8 +38,8 @@
                     <form action="" method="post" class="form-horizontal" id="form_setting" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="block-content tab-content"> 
-                        @foreach ($setting as $key => $element)
-                        <div class="tab-pane{!! $loop->first ? ' active' : '' !!}" id="tab-{{ $key }}">
+                        @foreach ($rdm as $key => $element)
+                        <div class="tab-pane{!! $loop->first ? ' active' : '' !!}" id="tab-{{ str_slug($key) }}">
                             @foreach ($element as $value)
                                 @if ($value['setting_type'] == config('extra.setting_type.text'))
                                 <div class="form-group">
@@ -95,7 +96,7 @@
                                         <label class="col-xs-12" for="{{ $value['setting_key'] }}">{{ $value['name'] }}</label>
                                         <div class="col-sm-12">
                                             @if (str_contains($value['file_type'], 'image'))
-                                            <img src="{{ env('WEB_BASE_URL')."uploads/setting/{$value['setting_key']}/{$value['content']}" }}" style="margin-bottom: 10px; max-width: 100%;">
+                                            <img src="{{ env('WEB_BASE_URL')."uploads/rdm/{$value['content']}" }}" style="margin-bottom: 10px; max-width: 100%;">
                                             @endif
                                             <input type="file" id="{{ $value['setting_key'] }}" name="{{ $value['setting_key'] }}">
                                         </div>

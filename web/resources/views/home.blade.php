@@ -25,12 +25,11 @@
             </div>
 
             <div class="hero-heading text-center">
-                <h1 class="f-reg">Creativity Meets Reality</h1>
-                <p class="no-margin f-bold">Licensing &amp; Brand Innovation</p>
-            </div>
+                {!! getSetting('Home', 'home_hero_text') !!}
+            </div>  
 
             <div class="hero-cta text-center">
-                <a href="#" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a>
+                <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a>
                 <br/>
                 <a href="#" class="link-scroll link link-white">
                     <i class="icon-down-dir"></i>
@@ -43,9 +42,9 @@
         <div class="section--inner has-ver-padding">
             <div class="about-content text-center">
                 <p class="small no-margin f-med ls-med">ABOUT US</p>
-                <h5 class="f-reg">Good design is not fashion nor branding. Good design is realistic and its problem solving, its a process of refining our world. It makes us who we are.</h5>
+                <h5 class="f-reg">{!! getSetting('Home', 'about') !!}</h5>
 
-                <a href="#" class="link link-opaque link-white small ls-med"><i class="icon-right-open-big"></i>LEARN MORE</a>
+                <a href="{{ url('about') }}" class="link link-opaque link-white small ls-med"><i class="icon-right-open-big"></i>LEARN MORE</a>
             </div>
         </div>
     </section>
@@ -56,20 +55,23 @@
             <div id="interaction-detail">
                 <div class="detail-item">
                     <div class="detail-item--inner fheight flexed">
+                        @php
+                            $title1 = getRdm('rdm-1', 'rdm_title1');
+                        @endphp
                         <div class="detail-image hidden-md-down fheight">
-                            <div class="detail-image--inner fheight">
+                            <div class="detail-image--inner fheight" style="background-image: url({{ getRdm('rdm-1', 'rdm_img1') }});">
                                 <span class="overlay black"></span>
-                                <span class="initial opaque">R</span>
+                                <span class="initial opaque">{{ substr($title1, 0, 1) }}</span>
                             </div>
                         </div>
                         <div class="detail-text flexed-mobile">
                             <div class="detail-text--inner">
                                 <div class="content-line_slide">
-                                    <h2 class="f-reg"><span>01</span>Result Oriented.</h2>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h2 class="f-reg"><span>01</span>{{ $title1 }}</h2>
+                                    <p>{{ getRdm('rdm-1', 'rdm_excerpt1') }}</p>
                                 </div>
                                 <div class="content-line_slide">
-                                    <p class="opaque">To truly innovate, you have to do more than increase conversion and wow your audience. Innovation simultaneously requires a global view of your digital product and the parsing of every user interaction. It means understanding what the user needs before they think they need it, and surprising them in the attention to detail. It means solving internal pain-points, automating processes, and turning complicated into simple.</p>
+                                    <p class="opaque">{{ getRdm('rdm-1', 'rdm_desc1') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -77,21 +79,24 @@
                 </div>
 
                 <div class="detail-item fheight flexed">
+                    @php
+                        $title2 = getRdm('rdm-2', 'rdm_title2');
+                    @endphp
                     <div class="detail-item--inner fheight flexed">
                         <div class="detail-image hidden-md-down fheight">
-                            <div class="detail-image--inner fheight">
+                            <div class="detail-image--inner fheight" style="background-image: url({{ getRdm('rdm-2', 'rdm_img2') }});">
                                 <span class="overlay black"></span>
-                                <span class="initial opaque">D</span>
+                                <span class="initial opaque">{{ substr($title2, 0, 1) }}</span>
                             </div>
                         </div>
                         <div class="detail-text flexed-mobile">
                             <div class="detail-text--inner">
                                 <div class="content-line_slide">
-                                    <h2 class="f-reg"><span>02</span>Different.</h2>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h2 class="f-reg"><span>02</span>{{ $title2 }}</h2>
+                                    <p>{{ getRdm('rdm-2', 'rdm_excerpt2') }}</p>
                                 </div>
                                 <div class="content-line_slide">
-                                    <p class="opaque">To truly innovate, you have to do more than increase conversion and wow your audience. Innovation simultaneously requires a global view of your digital product and the parsing of every user interaction. It means understanding what the user needs before they think they need it, and surprising them in the attention to detail. It means solving internal pain-points, automating processes, and turning complicated into simple.</p>
+                                    <p class="opaque">{{ getRdm('rdm-2', 'rdm_desc2') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -99,21 +104,24 @@
                 </div>
 
                 <div class="detail-item fheight flexed">
+                    @php
+                        $title3 = getRdm('rdm-3', 'rdm_title3');
+                    @endphp
                     <div class="detail-item--inner fheight flexed">
                         <div class="detail-image hidden-md-down fheight">
-                            <div class="detail-image--inner fheight">
+                            <div class="detail-image--inner fheight" style="background-image: url({{ getRdm('rdm-3', 'rdm_img3') }});">
                                 <span class="overlay black"></span>
-                                <span class="initial opaque">M</span>
+                                <span class="initial opaque">{{ substr($title3, 0, 1) }}</span>
                             </div>
                         </div>
                         <div class="detail-text flexed-mobile">
                             <div class="detail-text--inner">
                                 <div class="content-line_slide">
-                                    <h2 class="f-reg"><span>03</span>Magnificent.</h2>
-                                    <p>Lorem ipsum dolor sit amet.</p>
+                                    <h2 class="f-reg"><span>03</span>{{ $title3 }}</h2>
+                                    <p>{{ getRdm('rdm-3', 'rdm_excerpt3') }}</p>
                                 </div>
                                 <div class="content-line_slide">
-                                    <p class="opaque">To truly innovate, you have to do more than increase conversion and wow your audience. Innovation simultaneously requires a global view of your digital product and the parsing of every user interaction. It means understanding what the user needs before they think they need it, and surprising them in the attention to detail. It means solving internal pain-points, automating processes, and turning complicated into simple.</p>
+                                    <p class="opaque">{{ getRdm('rdm-3', 'rdm_desc3') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -127,21 +135,21 @@
                         <li>
                             <a href="#" class="link link-white link-opaque">
                                 <span>01</span>
-                                <span>Result Oriented.</span>
+                                <span>{{ $title1 }}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#" class="link link-white link-opaque">
                                 <span>02</span>
-                                <span>Different.</span>
+                                <span>{{ $title2 }}</span>
                             </a>
                         </li>
 
                         <li>
                             <a href="#" class="link link-white link-opaque">
                                 <span>03</span>
-                                <span>Magnificent.</span>
+                                <span>{{ $title3 }}</span>
                             </a>
                         </li>
                     </ul>
@@ -294,8 +302,8 @@
     </section>
 
     <section id="home-mood-bottom" class="right-diagonal">
-        <div class="section--inner fullheight-js">
-            <div class="fheight has-bg-ornament bg-holder"></div>
+        <div class="section--inner fullheight-js">                
+            <div class="fheight has-bg-ornament bg-holder" style="background-image: url({{ getSetting('Home', 'home_image') }});"></div>
         </div>
     </section>
 </main>

@@ -54,6 +54,9 @@ Route::post('/talk/form/{cid?}', 'TalkController@save');
 Route::get('/setting', 'SettingController@index');
 Route::post('/setting', 'SettingController@save');
 
+Route::get('/rdm', 'RdmController@index');
+Route::post('/rdm', 'RdmController@save');
+
 /*
 |--------------------------------------------------------------------------
 | ABOUT WHO

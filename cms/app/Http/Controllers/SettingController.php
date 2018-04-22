@@ -33,7 +33,7 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $this->data['setting'] = Setting::all()->groupBy('section')->toArray();
+        $this->data['setting'] = Setting::orderBy('sort')->get()->groupBy('section')->toArray();
         return view('setting', $this->data);
     }
 
@@ -43,7 +43,7 @@ class SettingController extends Controller
         array_shift($loop); // remove _token 
         // dd($loop) ;
 
-        $storage = Storage::disk('public');
+        $storage = Storage::disk('web');
 
         foreach ($loop as $key => $value) 
         {

@@ -64,6 +64,9 @@
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">What</span></a>
                     <ul>
                         <li>
+                            <a href="{{ url('about/what-intro') }}">Intro</a>
+                        </li>
+                        <li>
                             <a href="{{ url('about/what-hero') }}">Hero Image</a>
                         </li>
                         <li>
@@ -75,6 +78,9 @@
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">How</span></a>
                     <ul>
                         <li>
+                            <a href="{{ url('about/how-intro') }}">Intro</a>
+                        </li>
+                        <li>
                             <a href="{{ url('about/how-hero') }}">Hero Image</a>
                         </li>
                         <li>
@@ -85,6 +91,9 @@
                 <li>
                     <a class="nav-submenu" data-toggle="nav-submenu" href="#"><span class="sidebar-mini-hide">Why</span></a>
                     <ul>
+                        <li>
+                            <a href="{{ url('about/why-intro') }}">Intro</a>
+                        </li>
                         <li>
                             <a href="{{ url('about/why-hero') }}">Hero Image</a>
                         </li>
@@ -103,12 +112,10 @@
         </li>        
         <li class="nav-main-heading"><span class="sidebar-mini-hide">Misc</span></li>
         <li>
-            <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wrench"></i><span class="sidebar-mini-hide">Setting</span></a>
-            <ul>
-                <li>
-                    <a href="{{ url('setting') }}">Home</a>
-                </li>
-            </ul>
+            <a href="{{ url('setting') }}"><i class="si si-wrench"></i>Setting</a>
+        </li>
+        <li>
+            <a href="{{ url('rdm') }}"><i class="si si-star"></i>RDM</a>
         </li>
     </ul>
 </div>

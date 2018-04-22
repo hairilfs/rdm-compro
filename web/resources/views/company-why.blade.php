@@ -13,15 +13,14 @@
             <div class="intro-text">
                 <div class="container">
                     <h1 class="f-reg">
-                        RDM is a creative-living company in
-                        <span class="opaque d-block">the heart of Indonesia.</span>
+                        {!! getAbout('why-intro', 'why_intro') !!}
                     </h1>
                 </div>
             </div>
 
             <div class="intro-image image-offset">
                 <figure class="no-margin">
-                    <img class="w-fit" src="uploads/what-hero.jpg">
+                    <img class="w-fit" src="{{ getAbout('why-hero', 'why_hero_img') }}">
                 </figure>
             </div>
         </div>
@@ -32,10 +31,8 @@
             <div class="container">
                 <div class="content-body">
                     <div class="content-body--inner">
-                        <h4 class="content-header f-reg">We strategize</h4>
-                        <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
-
-                        <blockquote>“This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games Energy of Asia succeed in a world of sport.”</blockquote>
+                        <h4 class="content-header f-reg">{{ getAbout('why-content', 'why_title1') }}</h4>
+                        {!! getAbout('why-content', 'why_desc1') !!}                
                     </div>            
                 </div>
             </div>
@@ -45,21 +42,17 @@
             <div class="container">
                 <div class="content-body">
                     <div class="content-body--inner">
-                        <h4 class="content-header f-reg">Sales</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('why-content', 'why_title2') }}</h4>                        
                         
                         <div class="infographic">
                             <div class="row flexed-desktop">
                                 <div class="col-md-5">
                                     <figure class="text-center">
-                                        <img class="img-fluid" src="uploads/sales-icon.png">
+                                        <img class="img-fluid" src="{{ getAbout('why-content', 'why_img2') }}">
                                     </figure>
                                 </div>
                                 <div class="col-md-7">
-                                    <ul>
-                                        <li>+13% in revenue</li>
-                                        <li>+ 8% in shopper basket</li>
-                                        <li>+3% in partner brands</li>
-                                    </ul>
+                                    {!! getAbout('why-content', 'why_desc2') !!}
                                 </div>
                             </div>
                         </div>
@@ -72,21 +65,17 @@
             <div class="container">
                 <div class="content-body">
                     <div class="content-body--inner">
-                        <h4 class="content-header f-reg">Brand Advocacy</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('why-content', 'why_title3') }}</h4>
                         
                         <div class="infographic">
                             <div class="row flexed-desktop">
                                 <div class="col-md-5">
                                     <figure class="text-center">
-                                        <img class="img-fluid" src="uploads/brand-icon.png">
+                                        <img class="img-fluid" src="{{ getAbout('why-content', 'why_img3') }}">
                                     </figure>
                                 </div>
                                 <div class="col-md-7">
-                                    <ul>
-                                        <li>+13% in revenue</li>
-                                        <li>+ 8% in shopper basket</li>
-                                        <li>+3% in partner brands</li>
-                                    </ul>
+                                    {!! getAbout('why-content', 'why_desc3') !!}
                                 </div>
                             </div>
                         </div>
@@ -99,21 +88,18 @@
             <div class="container">
                 <div class="content-body">
                     <div class="content-body--inner">
-                        <h4 class="content-header f-reg">Sales</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('why-content', 'why_title4') }}</h4>
+
                         
                         <div class="infographic">
                             <div class="row flexed-desktop">
                                 <div class="col-md-5">
                                     <figure class="text-center">
-                                        <img class="img-fluid" src="uploads/sales-icon.png">
+                                        <img class="img-fluid" src="{{ getAbout('why-content', 'why_img4') }}">
                                     </figure>
                                 </div>
                                 <div class="col-md-7">
-                                    <ul>
-                                        <li>+13% in revenue</li>
-                                        <li>+ 8% in shopper basket</li>
-                                        <li>+3% in partner brands</li>
-                                    </ul>
+                                    {!! getAbout('why-content', 'why_desc4') !!} 
                                 </div>
                             </div>
                         </div>

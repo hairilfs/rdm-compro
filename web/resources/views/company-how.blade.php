@@ -13,15 +13,14 @@
     		<div class="intro-text">
     			<div class="container">
     				<h1 class="f-reg">
-	    				RDM is a creative-living company in
-	    				<span class="opaque d-block">the heart of Indonesia.</span>
+                        {!! getAbout('how-intro', 'how_intro') !!}
 	    			</h1>
     			</div>
     		</div>
 
     		<div class="intro-image image-offset">
     			<figure class="no-margin">
-    				<img class="w-fit" src="uploads/what-hero.jpg">
+    				<img class="w-fit" src="{{ getAbout('how-hero', 'how_hero_img') }}">
     			</figure>
     		</div>
     	</div>
@@ -32,27 +31,32 @@
     		<div class="container">
     			<div class="row">
     				<div class="col-md-6 content-head">
-    					<h4 class="content-header f-reg">We strategize</h4>
+    					<h4 class="content-header f-reg">{{ getAbout('how-content', 'how_title1') }}</h4>
     				</div>
 
     				<div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
+                            {!! getAbout('how-content', 'how_desc1') !!}
 
+                            @if (getAbout('how-content', 'how_youtube1'))
                             <div class="video">
-	                            <div id="yt-player" class="vid-container embed-responsive embed-responsive-16by9">
-	                                <div id="player"></div>
-	                            </div>
+                                <div id="yt-player" class="vid-container embed-responsive embed-responsive-16by9">
+                                    <div id="player"></div>
+                                </div>
 
-	                            <div id="thumb-container" class="thumb-container">
-	                            	<img src="http://img.youtube.com/vi/Oy9nUaoHoJw/maxresdefault.jpg">
-	                                <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/Oy9nUaoHoJw">
-	                                    <i class="icon-play"></i>
-	                                </a>
-	                            </div>
-	                        </div>
+                                <div id="thumb-container" class="thumb-container">
+                                    @php
+                                        $youtube_id = getYoutubeId(getAbout('how-content', 'how_youtube1'));
+                                    @endphp
+                                    <img src="http://img.youtube.com/vi/{{ $youtube_id }}/maxresdefault.jpg">
+                                    <a id="start-video" class="start-video" data-fancybox="video" href="https://youtu.be/{{ $youtube_id }}">
+                                        <i class="icon-play"></i>
+                                    </a>
+                                </div>
+                            </div>
 
-                            <blockquote>“This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games Energy of Asia succeed in a world of sport.”</blockquote>
+                            {!! getAbout('how-content', 'how_youtube1_desc') !!}
+                            @endif
                         </div>            
                     </div>
     			</div>
@@ -63,14 +67,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">We design</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('how-content', 'how_title2') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
-
-                            <blockquote>“This is a sneak preview of our comprehensive work of one of Asian biggest Sport Events. Asian Games Energy of Asia succeed in a world of sport.”</blockquote>
+                            {!! getAbout('how-content', 'how_desc2') !!}
                         </div>            
                     </div>
                 </div>
@@ -81,12 +83,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">We create content</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('how-content', 'how_title3') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being different and with your success being a priority. The passionate team works collaboratively with you to stay ahead in any changing and challenging retail environment. We believe in keeping you informed and openly communicate with your shoppers and suppliers to ensure that each needs and demands are met.</p>
+                            {!! getAbout('how-content', 'how_desc3') !!}
                         </div>            
                     </div>
                 </div>
@@ -97,25 +99,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">Our Services</h4>
+                        <h4 class="content-header f-reg">{{ getAbout('how-content', 'how_title4') }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            <p>We pride ourselves on being unique and creativeThe passionate team works collaboratively with partners to stay ahead in any changing and challenging retail environment</p>
-
-                            <ul class="two-col">
-                                <li>Brand Architecture</li>
-                                <li>Brand Audit</li>
-                                <li>Brand Guidelines</li>
-                                <li>Brand Strategy</li>
-                                <li>Competitor Analysis</li>
-                                <li>Creative Direction</li>
-                                <li>Logo &amp; Identity</li>
-                                <li>Brand Architecture</li>
-                                <li>Naming</li>
-                                <li>Naming</li>
-                            </ul>
+                            {!! getAbout('how-content', 'how_desc4') !!}
                         </div>            
                     </div>
                 </div>
