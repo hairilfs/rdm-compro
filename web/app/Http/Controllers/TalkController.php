@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 use App\Talk;
 
@@ -26,7 +27,11 @@ class TalkController extends Controller
 
     	if (!$saved) {
     		$retval['status'] = false;
-    	}
+    	} else {
+            Mail::to($talk->email)
+                ->cc('hairilfiqri@gmail.com')
+                ->send(new \App\Mail\Talk($request->all()));
+        }
 
 		return response()->json($retval);
     }

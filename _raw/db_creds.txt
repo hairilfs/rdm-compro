@@ -1,0 +1,6 @@
+rdm compro database setting
+===========================
+
+db: rdm-compro
+user: compro
+pass: j9pR>nOTf5^)eNt
