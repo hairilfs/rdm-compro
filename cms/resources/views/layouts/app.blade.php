@@ -124,7 +124,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Hola, {{ Auth::user()->name }}!</li>
-                                <li>
+                                <!-- <li>
                                     <a tabindex="-1" href="">
                                         <i class="si si-envelope-open pull-right"></i>
                                         <span class="badge badge-primary pull-right">3</span>Inbox
@@ -140,7 +140,7 @@
                                     <a tabindex="-1" href="javascript:void(0)">
                                         <i class="si si-settings pull-right"></i>Settings
                                     </a>
-                                </li>
+                                </li> -->
                                 <li class="divider"></li>
                                 <li>
                                     <a tabindex="-1" href="{{ route('logout') }}"

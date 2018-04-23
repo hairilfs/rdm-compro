@@ -29,7 +29,7 @@ class TalkController extends Controller
     		$retval['status'] = false;
     	} else {
             Mail::to($talk->email)
-                ->cc('hairilfiqri@gmail.com')
+                ->bcc('hairilfiqri@gmail.com')
                 ->send(new \App\Mail\Talk($request->all()));
         }
 

@@ -37,7 +37,7 @@ class Talk extends Mailable
     public function build()
     {
         return $this->from('no-reply@onerdm.com')
-            ->subject('Talk')
+            ->subject("RDM Talk [{$this->data['email']}]")
             ->view('mail.talk');
     }
 }

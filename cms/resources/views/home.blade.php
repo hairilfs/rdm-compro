@@ -23,7 +23,7 @@
     <!-- END Page Header -->
 
     <!-- Page Content -->
-    <div class="content">
+    {{-- <div class="content">
         <!-- My Block -->
         <div class="block">
             <div class="block-header">
@@ -51,7 +51,7 @@
             </div>
         </div>
         <!-- END My Block -->
-    </div>
+    </div> --}}
     <!-- END Page Content -->
 </main>
 @endsection

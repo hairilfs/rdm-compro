@@ -3,4 +3,10 @@ rdm compro database setting
 
 db: rdm-compro
 user: compro
-pass: j9pR>nOTf5^)eNt
+pass: compro12345
+
+
+rdm compro email setting
+===========================
+email: no-reply@onerdm.com
+pass: no-reply0987

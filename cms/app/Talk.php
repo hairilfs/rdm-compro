@@ -15,5 +15,10 @@ class Talk extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function getSubmit()
+    {
+    	return $this->created_at ? $this->created_at->format('m/d/Y H:i A') : date('m/d/Y H:i A');
+    }
    
 }
