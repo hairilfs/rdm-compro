@@ -23,14 +23,14 @@ class TalkController extends Controller
     	$talk->description = $request->input('description');
     	$saved = $talk->save();
 
-    	// logic send email (later)
 
-    	if (!$saved) {
-    		$retval['status'] = false;
-    	} else {
+        if (!$saved) {
+            $retval['status'] = false;
+        } else {
+        	// logic send email
             Mail::to($talk->email)
                 ->bcc('hairilfiqri@gmail.com')
-                ->send(new \App\Mail\Talk($request->all()));
+                ->send(new \App\Mail\Talk($talk->talk_id));
         }
 
 		return response()->json($retval);

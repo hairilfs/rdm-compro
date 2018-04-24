@@ -7,6 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Http\Request;
+use App\Talk as TalkModel;
 
 class Talk extends Mailable
 {
@@ -24,9 +25,9 @@ class Talk extends Mailable
      *
      * @return void
      */
-    public function __construct($request)
+    public function __construct($id)
     {
-        $this->data = $request;
+        $this->data = TalkModel::find($id);
     }
 
     /**
@@ -37,7 +38,7 @@ class Talk extends Mailable
     public function build()
     {
         return $this->from('no-reply@onerdm.com')
-            ->subject("RDM Talk [{$this->data['email']}]")
+            ->subject("RDM Talk [{$this->data->email}]")
             ->view('mail.talk');
     }
 }

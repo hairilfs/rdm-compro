@@ -23,3 +23,9 @@ Route::get('/about/{section?}', 'AboutController@index');
 Route::get('/contact', 'ContactController@index');
 
 Route::post('/talk', 'TalkController@save');
+
+Route::get('email', function (){
+        return new \App\Mail\Talk(1);
+	// \Mail::to('hairilfiqri@gmail.com')
+ //        ->send(new \App\Mail\Talk(1));
+});
