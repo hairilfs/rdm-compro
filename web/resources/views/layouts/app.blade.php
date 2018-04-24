@@ -91,10 +91,6 @@
 
 @yield('content', '')
 
-@include('partials.bottom-section')
-
-@include('partials.footer')
-
 @stack('scripts')
 
 </body>

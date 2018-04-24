@@ -1356,6 +1356,16 @@ body.projects {
 }
 
 body.project-detail {
+	#header {
+		#navbarMenu {
+			.headnav-list {
+				li {
+					color: #fff;
+				}
+			}
+		}
+	}
+
 	main {
 		#project-name {
 			background-color: #000;
@@ -2470,6 +2480,11 @@ body.company.who {
 
 			h3 {
 				margin-bottom: 4rem;
+
+				span {
+					font-family: 'Aktiv Grotesk', Arial, sans-serif;
+					font-size: 22px;
+				}
 			}
 
 			figure {

@@ -23,7 +23,7 @@
             </figure>
 
             <div class="hero-heading text-center">
-                <h1>Say Hello!</h1>
+                <h1 class="f-reg">Say Hello!</h1>
             </div>
         </div>
     </section>
@@ -136,6 +136,10 @@
         </div>
     </section>
 </main>
+
+@include('partials.bottom-section')
+
+@include('partials.footer')
 
 @endsection
 
