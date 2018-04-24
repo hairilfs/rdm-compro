@@ -1356,6 +1356,16 @@ body.projects {
 }
 
 body.project-detail {
+	#header {
+		#navbarMenu {
+			.headnav-list {
+				li {
+					color: #fff;
+				}
+			}
+		}
+	}
+
 	main {
 		#project-name {
 			background-color: #000;

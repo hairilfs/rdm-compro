@@ -137,6 +137,10 @@
     </section>
 </main>
 
+@include('partials.bottom-section')
+
+@include('partials.footer')
+
 @endsection
 
 @push('scripts')
