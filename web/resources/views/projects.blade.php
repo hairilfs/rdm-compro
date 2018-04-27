@@ -32,7 +32,7 @@
                         <a href="javascript:void(0)" class="link link-white">Filter Projects</a>
                     </div>
                     <ul class="filter-list no-margin">
-                        <li class="active"><a href="#" class="link filter-js" data-filter="*">All<i class="icon-right-open-big"></i></a></li>
+                        <li><a href="#" class="link filter-js active" data-filter="*">All<i class="icon-right-open-big"></i></a></li>
                         <?php
                             $filters = [];
                             foreach ($projects as $value) {

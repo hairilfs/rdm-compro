@@ -1233,7 +1233,8 @@ body.projects {
 
 					a {
 						font-family: 'ClanPro-News';
-						@media (min-width: $bp-md) {
+
+						@media (min-width: $bp-xl) {
 							font-size: 22.5px;
 						}
 					}
@@ -1242,22 +1243,28 @@ body.projects {
 
 				.filter-list {
 					opacity: 0;
-					@include transition(all 300ms ease-out);
 
-					@media (min-width: $bp-md) {
+					li {
+						a {
+							&.active {
+								color: $teel;
+							}
+						}
+					}
+
+					@media (min-width: $bp-xl) {
 						position: relative;
 						white-space: nowrap;
 						margin-left: 1rem;
 
 						@include transform(translateX(-100%));
+						@include transition(all 300ms ease-out);
 
 						li {
 							display: inline-block;
 							margin: 0 10px;
 
-							@media (min-width: $bp-md) {
-								font-size: 22.5px;
-							}
+							font-size: 22.5px;
 
 							a {
 								display: block;
@@ -1282,10 +1289,8 @@ body.projects {
 										@include transform(translateY(0) rotate(90deg));
 									}
 								}
-							}
 
-							&.active {
-								a {
+								&.active {
 									color: $teel;
 
 									i {
@@ -1294,22 +1299,65 @@ body.projects {
 									}
 								}
 							}
+
+							
 						}
 					}
 				}
 
 				&:hover {
+					@media (min-width: $bp-xl){
+						max-width: none;
+
+						.filter-header {
+							a {
+								text-decoration: underline !important;
+							}
+						}
+
+						.filter-list {
+							@include transform(translateX(30px));
+							opacity: 1;
+						}
+					}
+				}
+
+				@media (max-width: $bp-xl - 1px) {
 					max-width: none;
+					text-align: center;
+					pointer-events: none;
+
+					> div {
+						float: none;
+						pointer-events: auto;
+					}
 
 					.filter-header {
+						margin-bottom: 2rem;
+
 						a {
-							text-decoration: underline !important;
+							display: inline-block;
+							padding: 7px 15px;
+							border: 2px solid #fff;
+							text-decoration: none !important;
 						}
 					}
 
 					.filter-list {
-						@include transform(translateX(30px));
 						opacity: 1;
+						display: none;
+						pointer-events: auto;
+
+						li {
+							a {
+								padding: 5px 10px;
+								display: inline-block;
+
+								i {
+									display: none;
+								}
+							}
+						}
 					}
 				}
 			}
