@@ -178,8 +178,8 @@ body, input, textarea, select, button {
 	width: 100%;
 	height: 90%;
 
-	@media (max-width: $bp-s - 1px) {
-		height: 95%;
+	@media (max-width: $bp-md - 1px) {
+		height: 100%;
 	}
 
 	&:before {
