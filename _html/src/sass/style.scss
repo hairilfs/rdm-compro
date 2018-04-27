@@ -178,8 +178,8 @@ body, input, textarea, select, button {
 	width: 100%;
 	height: 90%;
 
-	@media (max-width: $bp-s - 1px) {
-		height: 95%;
+	@media (max-width: $bp-md - 1px) {
+		height: 100%;
 	}
 
 	&:before {
@@ -487,6 +487,10 @@ body, input, textarea, select, button {
 			padding: 1rem 0;
 			font-size: 11px;
 
+			@media (max-width: $bp-s - 1px) {
+				font-size: 10px;
+			}
+
 			p, a {
 				letter-spacing: 1px;
 			}
@@ -537,6 +541,10 @@ body.home {
 					top: 45%;
 					left: 50%;
 					@include transform(translate(-50%, -50%));
+
+					@media (max-width: $bp-xl - 1px) {
+						min-width: fit-content;
+					}
 
 					h1 {
 						@media (min-width: $bp-xl) {
@@ -1090,6 +1098,70 @@ body.home {
 				background-position: center;
 			}
 		}
+
+		#home-subscribe {
+			background-color: #000;
+
+			.section--inner {
+				max-width: 600px;
+				margin-left: auto;
+				margin-right: auto;
+				padding-left: 20px;
+				padding-right: 20px;
+
+				h3 {
+					margin-bottom: 1.5rem;
+				}
+
+				> p {
+					@media (max-width: $bp-md - 1px) {
+						font-size: 1rem;
+					}
+				}
+
+				form#subscribe-form {
+					margin-top: 4rem;
+					max-width: 400px;
+					margin-left: auto;
+					margin-right: auto;
+
+					.form-group {
+						position: relative;
+
+						input {
+							display: block;
+							width: 100%;
+							padding-right: 40px;
+							border-bottom: 2px solid #fff !important;
+						}
+
+						button[type="submit"] {
+							background-color: transparent;
+							padding: 1rem 10px;
+							color: $teel;
+							position: absolute;
+							bottom: 0;
+							right: 0;
+							@include transform(translateX(0));
+							@include transition(all 200ms ease-in-out);
+
+							&:hover {
+								@include transform(translateX(10px));
+							}
+
+							i {
+								display: block;
+
+								&:before {
+									margin: 0;
+									display: block;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 
@@ -1161,7 +1233,8 @@ body.projects {
 
 					a {
 						font-family: 'ClanPro-News';
-						@media (min-width: $bp-md) {
+
+						@media (min-width: $bp-xl) {
 							font-size: 22.5px;
 						}
 					}
@@ -1170,22 +1243,28 @@ body.projects {
 
 				.filter-list {
 					opacity: 0;
-					@include transition(all 300ms ease-out);
 
-					@media (min-width: $bp-md) {
+					li {
+						a {
+							&.active {
+								color: $teel;
+							}
+						}
+					}
+
+					@media (min-width: $bp-xl) {
 						position: relative;
 						white-space: nowrap;
 						margin-left: 1rem;
 
 						@include transform(translateX(-100%));
+						@include transition(all 300ms ease-out);
 
 						li {
 							display: inline-block;
 							margin: 0 10px;
 
-							@media (min-width: $bp-md) {
-								font-size: 22.5px;
-							}
+							font-size: 22.5px;
 
 							a {
 								display: block;
@@ -1210,10 +1289,8 @@ body.projects {
 										@include transform(translateY(0) rotate(90deg));
 									}
 								}
-							}
 
-							&.active {
-								a {
+								&.active {
 									color: $teel;
 
 									i {
@@ -1222,22 +1299,65 @@ body.projects {
 									}
 								}
 							}
+
+							
 						}
 					}
 				}
 
 				&:hover {
+					@media (min-width: $bp-xl){
+						max-width: none;
+
+						.filter-header {
+							a {
+								text-decoration: underline !important;
+							}
+						}
+
+						.filter-list {
+							@include transform(translateX(30px));
+							opacity: 1;
+						}
+					}
+				}
+
+				@media (max-width: $bp-xl - 1px) {
 					max-width: none;
+					text-align: center;
+					pointer-events: none;
+
+					> div {
+						float: none;
+						pointer-events: auto;
+					}
 
 					.filter-header {
+						margin-bottom: 2rem;
+
 						a {
-							text-decoration: underline !important;
+							display: inline-block;
+							padding: 7px 15px;
+							border: 2px solid #fff;
+							text-decoration: none !important;
 						}
 					}
 
 					.filter-list {
-						@include transform(translateX(30px));
 						opacity: 1;
+						display: none;
+						pointer-events: auto;
+
+						li {
+							a {
+								padding: 5px 10px;
+								display: inline-block;
+
+								i {
+									display: none;
+								}
+							}
+						}
 					}
 				}
 			}

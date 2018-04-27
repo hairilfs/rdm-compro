@@ -380,12 +380,13 @@
     background-color: transparent !important;
     border-radius: 0;
     padding: 0.5rem 0;
+    outline: none;
     height: auto !important;
     @include transition(opacity 200ms ease);
 
     @include placeholder {
         font-weight: 400;
-        font-size: 14px;
+        font-size: 18px;
     }
 
     &:focus {

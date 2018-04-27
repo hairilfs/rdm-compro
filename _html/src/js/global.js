@@ -140,7 +140,13 @@ var rdm = (function(){
         }, 400);
     }
 
-    var sizing = function(){}
+    var sizing = function(){
+        if($(window).width() < 1199){
+            $('#project-body .filter-header a').click(function(e){
+                $(this).parents('.filter-header').next().slideToggle(200);
+            })
+        }
+    }
 
     var fullHeight = function(elem){
         var wh = $(window).height();
@@ -518,10 +524,16 @@ var rdm = (function(){
         $('.filter-list').on('click', '.filter-js', function(e) {
             e.preventDefault();
             var filterValue = $(this).attr('data-filter');
+            var text        = $(this).text();
 
             grid.isotope({
                 filter: filterValue
             });
+
+            if($(window).width() < 1199) {
+                $(this).parents('.filter-list').slideUp(200);
+                $(this).parents('.filter-list').prev().children().text(text);
+            }
         });
 
         // change is-checked class on buttons
