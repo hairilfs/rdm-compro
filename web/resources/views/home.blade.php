@@ -306,6 +306,22 @@
             <div class="fheight has-bg-ornament bg-holder" style="background-image: url({{ getSetting('Home', 'home_image') }});"></div>
         </div>
     </section>
+
+    <section id="home-subscribe" class="has-ver-padding text-center">
+        <div class="section--inner has-ver-padding">
+            <h3 class="f-reg">RDM News</h3>
+            <p>Sign up today for a chance to win cool gifts and to get the latest news of any campaign or activation that are run by RDM!</p>
+
+            <form id="subscribe-form" method="" class="subscribe">
+                <div class="form-group">
+                    <label for="" class="d-block no-margin">
+                        <input type="text" class="rdm-form" name="email" placeholder="Enter your email..." required />
+                    </label>
+                    <button type="submit" class="btn"><i class="icon-right-open-big"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
 </main>
 
 @include('partials.bottom-section')
