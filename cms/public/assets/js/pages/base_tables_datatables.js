@@ -43,8 +43,15 @@ var BaseTableDatatables = function() {
                     animation: false
                 });
 
-                jQuery('#DataTables_Table_0_length')
-                    .prepend('<a href="'+dt_conf.formUrl+'" class="btn btn-success" style="margin-right: 15px;"><i class="fa fa-plus"></i> New</a>');
+                if (typeof(dt_conf.formUrl != 'undefined')) {
+                    var btn_add = '<a href="'+dt_conf.formUrl+'" class="btn btn-success" style="margin-right: 15px;"><i class="fa fa-plus"></i> New</a>';
+                    
+                    if (typeof(dt_conf.customButton != 'undefined') && json.data.length) {
+                        btn_add += dt_conf.customButton;
+                    }
+
+                    jQuery('#DataTables_Table_0_length').prepend(btn_add);
+                }
             }
         });
     };

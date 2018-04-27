@@ -406,6 +406,37 @@ class AboutWhoController extends Controller
 
         }
     }
+
+    public function listPeople(Request $request)
+    {
+        $data = array();
+        $list = People::orderBy('sort', 'asc')->get();
+        foreach ($list as $people) {
+            $data[] = [
+                'people_id' => $people->people_id,
+                'name' => $people->name
+            ];
+        }
+
+        return response()->json($data);
+    }
+
+    public function sortPeople(Request $request)
+    {
+        // dd($request->all());
+        $counter = 0;
+        foreach ($request->input('sorting') as $value) {
+            $people = People::find($value['people_id']);
+            $people->sort = $value['sort'];
+            $people->save();
+            $counter++;
+        }
+
+        return response()->json([
+            'counter' => $counter
+        ]);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | About - Partner

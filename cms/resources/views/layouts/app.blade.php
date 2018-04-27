@@ -3,6 +3,7 @@
 <!--[if gt IE 9]><!--> <html class="no-focus" lang="{{ app()->getLocale() }}"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>OneRDM - @yield('title')</title>
 
@@ -219,6 +220,26 @@
         @stack('scripts')
 
         <script type="text/javascript">
+            $(function(){
+                var menu_list = $('.nav-main li a').not('a[href="#"]');
+                var active = 0;
+                $.each(menu_list, function(key, value){
+                    if( !active && (window.location.href).indexOf($(value).attr('href')) >= 0 ) {
+                        $(value).addClass('active');
+
+                        var _sub_menu = $(value).parents('ul').prev();
+                        if( _sub_menu.hasClass('nav-submenu') ) {
+                            _sub_menu.parent().addClass('open');
+                        }
+
+                        active = 1;
+                    }
+                });
+
+                $(".upload-preview").change(function() {
+                    readURL(this);
+                });
+            })
 
             function readURL(input) {
               if (input.files && input.files[0]) {
@@ -261,11 +282,7 @@
                         exit: 'animated fadeOutDown'
                     }
                 });
-            }
-
-            $(".upload-preview").change(function() {
-                readURL(this);
-            });
+            }            
 
             @if (Session::has('success') || Session::has('fail'))
             @php

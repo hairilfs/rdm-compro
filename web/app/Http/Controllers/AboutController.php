@@ -17,7 +17,7 @@ class AboutController extends Controller
             $this->data['testimony'] = Testimony::publish()->get();
             $this->data['partner'] = PartnerWho::orderBy('sort')->take(8)->get();
             $this->data['scope'] = Scope::publish()->orderBy('published_at')->get();
-            $this->data['people'] = People::publish()->orderBy('published_at')->get();          
+            $this->data['people'] = People::publish()->orderBy('sort')->get();          
         }
 
     	return view('company-'.$section, $this->data);

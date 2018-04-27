@@ -1,7 +1,7 @@
 <div class="side-content side-content-full">
     <ul class="nav-main">
         <li>
-            <a class="active" href="{{ url('dashboard') }}"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+            <a href="{{ url('dashboard') }}"><i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span></a>
         </li>
         <li class="nav-main-heading"><span class="sidebar-mini-hide">Content</span></li>
         <li>

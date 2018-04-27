@@ -73,6 +73,8 @@ Route::get('/about/who-people/datatables', 'AboutWhoController@peopleDatatables'
 Route::get('/about/who-people/delete/{id}', 'AboutWhoController@deletePeople');
 Route::get('/about/who-people/form/{id?}', 'AboutWhoController@showPeople');
 Route::post('/about/who-people/form/{id?}', 'AboutWhoController@savePeople');
+Route::get('/about/who-people/list', 'AboutWhoController@listPeople');
+Route::post('/about/who-people/sort', 'AboutWhoController@sortPeople');
 // -------------------------
 Route::get('/about/who-scope', 'AboutWhoController@scope');
 Route::get('/about/who-scope/datatables', 'AboutWhoController@scopeDatatables');

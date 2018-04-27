@@ -12,6 +12,7 @@
                     <h3 class="block-title">Lists of Modules</h3>
                 </div>
                 <div class="block-content">
+                    @if ($project->project_cid)
                     <div class="content-grid">
                         <div class="row">
                             <div class="col-lg-6">
@@ -50,6 +51,10 @@
                             </div>
                         </div>
                     </div>
+                    @else
+                    <p>Please save this project first, then you can add modules after.</p>
+                    @endif
+
                 </div>
             </div>
         </div>
