@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\{ About, Testimony, PartnerWho, Scope, People };
+use View;
 
 class AboutController extends Controller
 {	
@@ -20,7 +21,18 @@ class AboutController extends Controller
             $this->data['people'] = People::publish()->orderBy('sort')->get();          
         }
 
-    	return view('company-'.$section, $this->data);
+        return view('company-'.$section, $this->data);
+    }
+
+    public function partner(Request $request)
+    {
+        if($request->ajax()){
+            $this->data['partner'] = PartnerWho::orderBy('sort')->get();
+            $partner = View::make('partials.partner-list', $this->data)->render();
+            return response()->json($partner);
+        }
+
+        return response()->json([]);
     }
 
 }

@@ -105,7 +105,7 @@
                 <h3 class="f-reg">Partners</h3>
 
                 <div class="clients-body has-ver-padding">
-                    <div class="row flexed">
+                    <div class="row flexed" id="partner_list">
 
                         @foreach ($partner as $element)
                         <div class="item">
@@ -118,7 +118,7 @@
                     </div>
 
                     <p class="btn-holder text-center">
-                        <a href="#" class="btn pad-lg curved ls-med f-med">VIEW ALL PARTNERS</a>
+                        <a href="javascript:void(0)" onclick="return allPartner(this);" class="btn pad-lg curved ls-med f-med">VIEW ALL PARTNERS</a>
                     </p>
                 </div>
             </div>
@@ -296,6 +296,20 @@
     $(window).resize(function(){
         rdm.company();
     });
+
+    function allPartner(obj) {
+        var data = {
+            _token: '{{ csrf_token() }}'
+        }
+
+        $.post('{{ url('about/partner') }}', data, function(res){
+            if(res) {
+                $('#partner_list').html(res);
+
+                $(obj).remove();
+            }
+        }, 'json');
+    }
 </script>
     
 @endpush

@@ -9,21 +9,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>RDM - @yield('title', '')</title>
     
-    <meta name="description" content="RDM">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
 
-    <meta property="og:url" content="">
+    @hasSection('meta')
+    
+    @yield('meta')
+    
+    @else
+    <meta name="description" content="RDM">
+    <meta property="og:url" content="{{ url('/').'/' }}">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="">
+    <meta property="og:title" content="RDM - Home">
+    <meta property="og:description" content="Creativity Meets Reality">
+    <meta property="og:image" content="http://web.onerdm.com/uploads/slider/home/desk1524737764.jpg">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:site" content="{{ url('/').'/' }}">
+    <meta name="twitter:creator" content="RDM">
+    <meta name="twitter:title" content="RDM - Home">
+    <meta name="twitter:description" content="Creativity Meets Reality">
+    <meta name="twitter:image" content="http://web.onerdm.com/uploads/slider/home/desk1524737764.jpg">
+    @endif
 
     <link rel="canonical" href="" />
 

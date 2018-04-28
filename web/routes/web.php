@@ -19,6 +19,7 @@ Route::get('/project/ongoing', 'ProjectController@ongoing');
 Route::get('/project/{slug}', 'ProjectController@show');
 
 Route::get('/about/{section?}', 'AboutController@index');
+Route::post('/about/partner', 'AboutController@partner');
 
 Route::get('/contact', 'ContactController@index');
 

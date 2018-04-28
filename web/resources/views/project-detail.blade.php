@@ -4,6 +4,21 @@
 
 @section('body_class', 'project-detail')
 
+@section('meta')
+<meta property="og:url" content="{{ $project->getUrl() }}">
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{ $project->title }}">
+<meta property="og:description" content="{{ $project->excerpt }}">
+<meta property="og:image" content="{{ $project->getImgUrl() }}">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="{{ $project->getUrl() }}">
+<meta name="twitter:creator" content="RDM">
+<meta name="twitter:title" content="{{ $project->title }}">
+<meta name="twitter:description" content="{{ $project->excerpt }}">
+<meta name="twitter:image" content="{{ $project->getImgUrl() }}">
+@endsection
+
 @section('content')
 
 <main>
