@@ -31,17 +31,23 @@ class Project extends Model
         }
         else
         {
-            $url = $this->img_landscape_url ? env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$this->img_landscape_url}" : 'https://dummyimage.com/580x362/b8b8b8/2b2b2b.png';
+            $url = $this->img_landscape_url ? env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/thumb_{$this->img_landscape_url}" : 'https://dummyimage.com/580x362/b8b8b8/2b2b2b.png';
         }
 
         return $url;
     }
 
-    public function getImgUrl($orientation='landscape')
+    public function getImgUrl($orientation='landscape', $thumb=false)
     {
     	if ($orientation == 'landscape') 
     	{
-    		$url = $this->img_landscape_url ? env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$this->img_landscape_url}" : 'https://dummyimage.com/580x362/b8b8b8/2b2b2b.png';
+            $img = $thumb ? 'thumb_'.$this->img_landscape_url : $this->img_landscape_url;
+            $url = $this->img_landscape_url ? env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$img}" : 'https://dummyimage.com/580x362/b8b8b8/2b2b2b.png';
+        }
+        else
+        {
+    		$url = $this->img_landscape_url ? env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$this->img_portrait_url}" : 'https://dummyimage.com/580x743/b8b8b8/2b2b2b.png';
+
         }
 
     	return $url;
