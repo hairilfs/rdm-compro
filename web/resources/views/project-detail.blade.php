@@ -37,7 +37,7 @@
 
     <section id="project-intro">
         <div class="section--inner">
-            <figure class="no-margin fullheight-js">
+            <figure class="no-margin">
                 <picture class="image-ad">
                     <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
                     <source media="(min-width: 577px)" srcset="{{ $project->getImgUrl() }}">

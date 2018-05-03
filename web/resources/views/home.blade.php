@@ -226,9 +226,19 @@
                                 </div>
                             </div>
 
-                            <p class="more text-center">
-                                <a href="{{ url('project/ongoing') }}" class="link ls-med small"><i class="icon-right-open-big"></i>LEARN MORE ABOUT LICENSING OPPORTUNITY</a>
-                            </p>
+                            <div class="row row-no-margin">
+                                <div class="col-md-6">
+                                    <p class="more">
+                                        <a href="{{ url('project/ongoing') }}" class="link ls-med small"><i class="icon-right-open-big"></i>LEARN MORE ABOUT LICENSING OPPORTUNITY</a>
+                                    </p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <p class="microsite-jump">
+                                        <a href="http://asiangames2018.onerdm.com/" class="link ls-med small" target="_blank"><i class="icon-right-open-big"></i>ASIAN GAMES 2018 MICROSITE</a>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
