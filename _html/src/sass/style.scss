@@ -243,10 +243,10 @@ body, input, textarea, select, button {
     		}
 
     		.menu-main-list {
-    			margin-top: 1rem;
+    			margin-top: 1.5rem;
 
     			@media (min-width: $bp-md) {
-		    		margin-top: 4.5rem;
+		    		margin-top: 5.5rem;
 		    	}
 
     			li {
@@ -896,8 +896,14 @@ body.home {
 				margin-bottom: 3rem;
 			}
 
-			.more {
+			.more,
+			.microsite-jump {
 				margin-top: 4rem;
+				margin-bottom: 0;
+
+				@media (max-width: $bp-md - 1px) {
+					margin-top: 2rem;
+				}
 
 				a {
 					font-size: 12px;
