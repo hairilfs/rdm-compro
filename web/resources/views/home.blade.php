@@ -44,7 +44,7 @@
                 <p class="small no-margin f-med ls-med">ABOUT US</p>
                 <h5 class="f-reg">{!! getSetting('Home', 'about') !!}</h5>
 
-                <a href="{{ url('about') }}" class="link link-opaque link-white small ls-med"><i class="icon-right-open-big"></i>LEARN MORE</a>
+                <a href="{{ url('about') }}" class="link link-opaque small ls-med"><i class="icon-right-open-big"></i>LEARN MORE</a>
             </div>
         </div>
     </section>

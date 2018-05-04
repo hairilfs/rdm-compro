@@ -29,7 +29,7 @@ class Project extends Model
                 if ($this->img_landscape_url) {
                     $url = env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$this->img_landscape_url}";
                 } else {
-                    $url = 'http://via.placeholder.com/100x150?text=Upload+image';
+                    $url = 'http://via.placeholder.com/150x100?text=Upload+image';
                 }
 
                 break;
@@ -38,7 +38,7 @@ class Project extends Model
                 if ($this->img_portrait_url) {
                     $url = env('WEB_BASE_URL')."uploads/project/{$this->project_cid}/{$this->img_portrait_url}";
                 } else {
-                    $url = 'http://via.placeholder.com/150x100?text=Upload+image';
+                    $url = 'http://via.placeholder.com/100x150?text=Upload+image';
                 }
                 break;
         }

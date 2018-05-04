@@ -117,7 +117,7 @@
             <div class="container has-ver-padding">
                 <div class="talk-holder has-ver-padding">
                     <h3 class="f-reg">Ready to have a chat?</h3>
-                    <a href="#" class="link btn-trigger-talk link-white link-opaque small f-med ls-med"><i class="icon-right-open-big"></i>REACH OUT TO US</a>
+                    <a href="#" class="link btn-trigger-talk link-opaque small f-med ls-med"><i class="icon-right-open-big"></i>REACH OUT TO US</a>
                 </div>
             </div>
         </div>
