@@ -39,8 +39,8 @@
         <div class="section--inner">
             <figure class="no-margin">
                 <picture class="image-ad">
-                    <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                    <source media="(min-width: 577px)" srcset="{{ $project->getImgUrl() }}">
+                    {{-- <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
+                    <source media="(min-width: 577px)" srcset="{{ $project->getImgUrl() }}"> --}}
                     <img src="{{ $project->getImgUrl() }}" alt="">
                 </picture>
             </figure>
