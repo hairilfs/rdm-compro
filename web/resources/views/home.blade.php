@@ -52,6 +52,7 @@
     <section id="home-about-interaction" class="has-ver-padding">
         <a href="#" id="close-interaction" class="css-close close"></a>
         <div class="section--inner has-ver-padding">
+            <div id="particles-js" class="particles"></div>
             <div id="interaction-detail">
                 <div class="detail-item">
                     <div class="detail-item--inner fheight flexed">
