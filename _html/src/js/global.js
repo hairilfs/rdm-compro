@@ -415,7 +415,8 @@ var rdm = (function(){
             player.fancybox({
                 youtube : {
                     controls : 0,
-                    showinfo : 0
+                    showinfo : 0,
+                    closeClickOutside : true
                 }
             });
         };
@@ -424,7 +425,8 @@ var rdm = (function(){
             var item = $('[data-fancybox="project"]');
 
             item.fancybox({
-                buttons: false
+                buttons: false,
+                closeClickOutside : true
             });
         }
     };

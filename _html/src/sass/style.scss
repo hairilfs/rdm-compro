@@ -355,6 +355,10 @@ body, input, textarea, select, button {
 
 			    		address {
 			    			margin-bottom: 0;
+
+			    			br {
+			    				display: none;
+			    			}
 			    		}
 			    	}
 		    	}
@@ -549,6 +553,8 @@ body.home {
 					}
 
 					h1 {
+						font-weight: 400;
+						
 						@media (min-width: $bp-xl) {
 							font-size: 58px;
 						}
