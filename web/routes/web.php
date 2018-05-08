@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::post('/', 'HomeController@subscribe');
 Route::get('/home', 'HomeController@index');
 
 Route::get('/projects', 'ProjectController@index');
