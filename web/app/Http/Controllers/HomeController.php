@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\{ Slider, Project, Partner };
-// use Newsletter;
+use Newsletter;
 
 class HomeController extends Controller
 {	
@@ -24,7 +24,7 @@ class HomeController extends Controller
 	        'email' => 'required|email',
 	    ]);
 
-	    // Newsletter::subscribe($request->input('email'));
+	    $subs = Newsletter::subscribe($request->input('email'));
 	    return redirect('/#home-subscribe')->with('success','Thanks for Subscribing!');
 
     }

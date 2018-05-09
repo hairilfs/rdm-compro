@@ -33,6 +33,8 @@ Route::get('/project', 'ProjectController@index');
 Route::get('/project/datatables', 'ProjectController@datatables');
 Route::get('/project/form/{cid?}', 'ProjectController@show');
 Route::post('/project/form/{cid?}', 'ProjectController@save');
+Route::get('/project/list', 'ProjectController@list');
+Route::post('/project/sort', 'ProjectController@sort');
 
 Route::get('/project-category/list', 'ProjectCategoryController@list');
 Route::post('/project-category/sort', 'ProjectCategoryController@sort');

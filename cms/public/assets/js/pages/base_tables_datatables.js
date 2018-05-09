@@ -43,10 +43,10 @@ var BaseTableDatatables = function() {
                     animation: false
                 });
 
-                if (typeof(dt_conf.formUrl != 'undefined')) {
+                if (dt_conf.formUrl) {
                     var btn_add = '<a href="'+dt_conf.formUrl+'" class="btn btn-success" style="margin-right: 15px;"><i class="fa fa-plus"></i> New</a>';
                     
-                    if (typeof(dt_conf.customButton != 'undefined') && json.data.length) {
+                    if (dt_conf.customButton && json.data.length) {
                         btn_add += dt_conf.customButton;
                     }
 

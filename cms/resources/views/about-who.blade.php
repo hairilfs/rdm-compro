@@ -2,6 +2,10 @@
 
 @section('title', 'About')
 
+@section('head')
+<link rel="stylesheet" href="assets/js/plugins/summernote/summernote.min.css">
+@endsection
+
 @section('content')
 <main id="main-container">
     <!-- Page Header -->
@@ -75,7 +79,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         <div class="form-material" style="padding-top: 10px;">
-                                            <textarea class="ckeditor" name="{{ $value['setting_key'] }}">{{ $value['content'] }}</textarea>
+                                            <textarea class="summernote" name="{{ $value['setting_key'] }}">{{ $value['content'] }}</textarea>
                                             <label for="{{ $value['setting_key'] }}">{{ $value['name'] }}</label>
                                         </div>
                                     </div>
@@ -116,15 +120,23 @@
 @endsection
 
 @push('scripts')
-<script src="assets/js/plugins/ckeditor/ckeditor.js"></script>
+<script src="assets/js/plugins/summernote/summernote.min.js"></script>
 <script type="text/javascript">
-    CKEDITOR.config.toolbar = [
-       ['Format'],
-       ['Bold','Italic','Underline'],
-       ['Source']
-    ];
 
-    CKEDITOR.config.allowedContent = true;
-    CKEDITOR.config.extraAllowedContent = '*(*);*{*}';
+    $(document).ready(function() {
+        $('.summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['style','bold', 'italic', 'underline']],
+                ['misc', ['codeview']]
+            ],
+            callbacks: {
+                onInit: function() {
+                  console.log('Summernote is launched');
+                  $('.note-editor').css({'overflow': 'auto'});
+                }
+            }
+        });
+    });
 </script>
 @endpush

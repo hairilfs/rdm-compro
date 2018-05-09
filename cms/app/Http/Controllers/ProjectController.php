@@ -40,7 +40,7 @@ class ProjectController extends Controller
             ->addColumn('action', function ($data) {
                 $btn_action  = '<div class="btn-group">';
                 $btn_action .=      '<a href="'.url('project/form/'.$data->project_cid).'" class="btn btn-xs btn-primary" data-toggle="tooltip" title="Edit project"><i class="fa fa-pencil"></i></a>';
-                $btn_action .=      '<button class="btn btn-xs btn-danger" type="button" data-toggle="tooltip" title="Remove project" onclick="return deletePopup('.$data->project_cid.');"><i class="fa fa-times"></i></button>';
+                $btn_action .=      '<button class="btn btn-xs btn-danger" type="button" data-toggle="tooltip" title="Remove project" onclick="return deletePopup(\''.$data->project_cid.'\');"><i class="fa fa-times"></i></button>';
                 $btn_action .= '</div>';
 
                 return $btn_action;
@@ -65,7 +65,10 @@ class ProjectController extends Controller
     {
         // dd($request->all());
         $project = $cid ? Project::find($cid) : new Project;
-        if(!$cid) $project->project_cid = str_random(5);
+        if(!$cid) { 
+            $project->project_cid = str_random(5);
+            $project->sort = (int)Project::max('sort') + 1;
+        }
 
         $project->title = $request->input('title');
         $project->slug = str_slug($request->input('title'));
@@ -136,7 +139,7 @@ class ProjectController extends Controller
 
     public function list(Request $request)
     {
-        $list = Project::orderBy('sort')->get();
+        $list = Project::orderBy('sort')->get(['title', 'project_cid']);
         return response()->json($list);
     }
 
