@@ -123,19 +123,6 @@
     <section id="company-nav">
         <div class="section--inner">
             <div class="row row-no-margin">
-                <div class="col-md-6 prev">
-                    <a href="{{ url('about') }}" class="d-block">
-                        <figure class="no-margin">
-                            <img src="{{ getAbout('who-image', 'who_single_img') }}">
-                            <span class="overlay black"></span>
-                        </figure>
-
-                        <div class="nav-text">
-                            <p class="nav-index">02</p>
-                            <p class="nav-title">Who</p>
-                        </div>
-                    </a>
-                </div>
                 <div class="col-md-6 next">
                     <a href="{{ url('about/how') }}" class="d-block">
                         <figure class="no-margin">
@@ -149,6 +136,19 @@
                         </div>
                     </a>
                 </div>
+                <div class="col-md-6 prev">
+                    <a href="{{ url('about') }}" class="d-block">
+                        <figure class="no-margin">
+                            <img src="{{ getAbout('who-hero', 'who_hero_img') }}">
+                            <span class="overlay black"></span>
+                        </figure>
+
+                        <div class="nav-text">
+                            <p class="nav-index">01</p>
+                            <p class="nav-title">Who</p>
+                        </div>
+                    </a>
+                </div>                
             </div>
         </div>
     </section>

@@ -41,6 +41,9 @@
                             <a href="{{ url('about/who-intro') }}">Intro</a>
                         </li>
                         <li>
+                            <a href="{{ url('about/who-hero') }}">Hero Image</a>
+                        </li>
+                        <li>
                             <a href="{{ url('about/who-scope') }}">Scope</a>
                         </li>
                         <li>

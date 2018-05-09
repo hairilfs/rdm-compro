@@ -221,7 +221,7 @@
                 <div class="col-md-6">
                     <a href="{{ url('about') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="{{ $single_img }}">
+                            <img src="{{ getAbout('who-hero', 'who_hero_img') }}">
                             <span class="overlay black"></span>
                         </figure>
 

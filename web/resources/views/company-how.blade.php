@@ -127,28 +127,28 @@
         <div class="section--inner">
             <div class="row row-no-margin">
                 <div class="col-md-6 prev">
-                    <a href="{{ url('about') }}" class="d-block">
+                    <a href="{{ url('about/what') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="{{ getAbout('who-image', 'who_single_img') }}">
+                            <img src="{{ getAbout('what-hero', 'what_hero_img') }}">                            
                             <span class="overlay black"></span>
                         </figure>
 
                         <div class="nav-text">
                             <p class="nav-index">02</p>
-                            <p class="nav-title">Who</p>
+                            <p class="nav-title">What</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-md-6 next">
-                    <a href="{{ url('about/how') }}" class="d-block">
+                    <a href="{{ url('about/why') }}" class="d-block">
                         <figure class="no-margin">
-                            <img src="{{ getAbout('how-hero', 'how_hero_img') }}">
+                            <img src="{{ getAbout('why-hero', 'why_hero_img') }}">
                             <span class="overlay black"></span>
                         </figure>
 
                         <div class="nav-text">
-                            <p class="nav-index">03</p>
-                            <p class="nav-title">How</p>
+                            <p class="nav-index">04</p>
+                            <p class="nav-title">Why</p>
                         </div>
                     </a>
                 </div>

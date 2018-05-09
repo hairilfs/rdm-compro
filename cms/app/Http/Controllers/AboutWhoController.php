@@ -106,6 +106,15 @@ class AboutWhoController extends Controller
                             }
 
                         }
+                        else if($section=='who-hero')
+                        {
+                            if ($image->width() > 1280) {
+                                $image->resize(1280, null, function ($constraint) {
+                                    $constraint->aspectRatio();
+                                });
+                            }
+
+                        }
 
                         $about->size = $image->filesize();
                         $image = $image->stream()->__toString();
