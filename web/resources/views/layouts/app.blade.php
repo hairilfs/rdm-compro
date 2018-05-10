@@ -31,12 +31,11 @@
     <meta name="twitter:description" content="Creativity Meets Reality">
     <meta name="twitter:image" content="http://web.onerdm.com/uploads/slider/home/desk1524737764.jpg">
     @endif
+    <base href="{{ url('/').'/' }}">
 
     <link rel="canonical" href="" />
 
-    <!-- <link rel="icon" type="image/png" href="assets/icon/icon.png"> -->
-
-    <base href="{{ url('/').'/' }}">
+    <link rel="icon" type="image/png" href="assets/icon/icon.png">
 
     <link rel="icon" type="image/png" href="assets/icon/icon-16.png" sizes="16x16">
     <link rel="icon" type="image/png" href="assets/icon/icon-32.png" sizes="32x32">
