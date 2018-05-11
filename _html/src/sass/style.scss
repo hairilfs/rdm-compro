@@ -507,6 +507,11 @@ body, input, textarea, select, button {
 /* CONTENT
 -------------------------------------------- */
 body.home {
+	&.modal-open {
+		overflow: visible;
+		padding-right: 0 !important;
+	}
+
 	main {
 		.about-more-head h4,
 		.home-project-header h4,
@@ -1129,69 +1134,69 @@ body.home {
 			}
 		}
 
-		#home-subscribe {
-			background-color: #000;
+		// #home-subscribe {
+		// 	background-color: #000;
 
-			.section--inner {
-				max-width: 600px;
-				margin-left: auto;
-				margin-right: auto;
-				padding-left: 20px;
-				padding-right: 20px;
+		// 	.section--inner {
+		// 		max-width: 600px;
+		// 		margin-left: auto;
+		// 		margin-right: auto;
+		// 		padding-left: 20px;
+		// 		padding-right: 20px;
 
-				h3 {
-					margin-bottom: 1.5rem;
-				}
+		// 		h3 {
+		// 			margin-bottom: 1.5rem;
+		// 		}
 
-				> p {
-					@media (max-width: $bp-md - 1px) {
-						font-size: 1rem;
-					}
-				}
+		// 		> p {
+		// 			@media (max-width: $bp-md - 1px) {
+		// 				font-size: 1rem;
+		// 			}
+		// 		}
 
-				form#subscribe-form {
-					margin-top: 4rem;
-					max-width: 400px;
-					margin-left: auto;
-					margin-right: auto;
+		// 		form#subscribe-form {
+		// 			margin-top: 4rem;
+		// 			max-width: 400px;
+		// 			margin-left: auto;
+		// 			margin-right: auto;
 
-					.form-group {
-						position: relative;
+		// 			.form-group {
+		// 				position: relative;
 
-						input {
-							display: block;
-							width: 100%;
-							padding-right: 40px;
-							border-bottom: 2px solid #fff !important;
-						}
+		// 				input {
+		// 					display: block;
+		// 					width: 100%;
+		// 					padding-right: 40px;
+		// 					border-bottom: 2px solid #fff !important;
+		// 				}
 
-						button[type="submit"] {
-							background-color: transparent;
-							padding: 1rem 10px;
-							color: $teel;
-							position: absolute;
-							bottom: 0;
-							right: 0;
-							@include transform(translateX(0));
-							@include transition(all 200ms ease-in-out);
+		// 				button[type="submit"] {
+		// 					background-color: transparent;
+		// 					padding: 1rem 10px;
+		// 					color: $teel;
+		// 					position: absolute;
+		// 					bottom: 0;
+		// 					right: 0;
+		// 					@include transform(translateX(0));
+		// 					@include transition(all 200ms ease-in-out);
 
-							&:hover {
-								@include transform(translateX(10px));
-							}
+		// 					&:hover {
+		// 						@include transform(translateX(10px));
+		// 					}
 
-							i {
-								display: block;
+		// 					i {
+		// 						display: block;
 
-								&:before {
-									margin: 0;
-									display: block;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		// 						&:before {
+		// 							margin: 0;
+		// 							display: block;
+		// 						}
+		// 					}
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 	}
 }
 

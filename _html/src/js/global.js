@@ -153,6 +153,8 @@ $(function(){
 
 $(window).load(function(){
     rdm.sizing();
+
+    $('#subscribe-modal').modal('show');
 });
 
 $(window).resize(function(){
@@ -279,6 +281,7 @@ var rdm = (function(){
     var sliderOptions = function(){
         var option1 = {
             items              : 1,
+            margin             : 20,
             animateOut         : 'fadeOut',
 
             autoplay           : true,

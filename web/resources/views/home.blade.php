@@ -6,6 +6,8 @@
 
 @section('content')
 
+@include('partials.modal-subscribe')
+
 <main>
     <section id="home-hero" class="">
         <div class="section--inner">
@@ -318,7 +320,7 @@
         </div>
     </section>
 
-    <section id="home-subscribe" class="has-ver-padding text-center">
+    {{-- <section id="home-subscribe" class="has-ver-padding text-center">
         <div class="section--inner has-ver-padding">
             <h3 class="f-reg">RDM News</h3>
             <p>Sign up today for a chance to win cool gifts and to get the latest news of any campaign or activation that are run by RDM!</p>
@@ -339,7 +341,7 @@
                 @endif
             </form>
         </div>
-    </section>
+    </section> --}}
 </main>
 
 @include('partials.bottom-section')
