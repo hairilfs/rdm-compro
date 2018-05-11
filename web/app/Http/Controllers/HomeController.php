@@ -25,7 +25,7 @@ class HomeController extends Controller
 	    ]);
 
 	    $subs = Newsletter::subscribe($request->input('email'));
-	    return redirect('/#home-subscribe')->with('success','Thanks for Subscribing!');
+	    return redirect('/')->with('success','Thanks for Subscribing!');
 
     }
 }

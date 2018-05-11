@@ -151,6 +151,7 @@
             toolbar: [
                 // [groupName, [list of button]]
                 ['style', ['style','bold', 'italic', 'underline']],
+                ['insert', ['link']],
                 ['misc', ['codeview']]
             ],
             callbacks: {

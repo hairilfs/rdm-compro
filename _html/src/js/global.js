@@ -154,7 +154,7 @@ $(function(){
 $(window).load(function(){
     rdm.sizing();
 
-    $('#subscribe-modal').modal('show');
+    // $('#subscribe-modal').modal('show'); 
 });
 
 $(window).resize(function(){

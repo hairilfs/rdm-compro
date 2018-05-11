@@ -351,10 +351,17 @@
 @endsection
 
 @push('scripts')
-
 <script>
     $(document).ready(function(){
-        
+
+        if(!Cookies.get('popup-news')) {
+            $('#subscribe-modal').modal('show');
+            Cookies.set('popup-news', 'show', { expires: 14 });
+        }
+
+        @if (Session::has('success'))
+        $('#subscribe-modal').modal('show');
+        @endif
     });
 
     $(window).load(function(){
@@ -364,6 +371,7 @@
     $(window).resize(function(){
         
     });
+
 </script>
     
 @endpush

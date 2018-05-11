@@ -36,30 +36,16 @@
                         <div class="col-md-5 col-left">
                             <h4 class="f-reg lh-med ls-med">
                                 Contact Us
-                                <span class="d-block opaque">today to explore solution for your next marketing campaign</span>
+                                <span class="d-block opaque">{{ getSetting('Contact', 'contact_text') }}</span>
                             </h4>
                         </div>
                         <div class="col-md-5 push-md-2 col-right">
                             <div class="contact-reach">
-                                <h5 class="f-reg">New Business</h5>
-                                <p class="f-med">
-                                    PRESS
-                                    <br/>
-                                    <a href="#" class="link link-white link-opaque">press@onerdm.com</a>
-                                    <br/>
-                                    <a href="#" class="link link-white link-opaque">onerdm.com/press</a>
-                                </p>
+                                {!! getSetting('Contact', 'contact_reach_1') !!}
                             </div>
 
                             <div class="contact-reach">
-                                <h5 class="f-reg">General</h5>
-                                <p class="f-med">
-                                    TEAMS
-                                    <br/>
-                                    <a href="#" class="link link-white link-opaque">onerdm.com</a>
-                                    <br/>
-                                    <a href="#" class="link link-white link-opaque">simon@onerdm.com</a>
-                                </p>
+                                {!! getSetting('Contact', 'contact_reach_2') !!}
                             </div>
                         </div>
                     </div>
@@ -70,14 +56,14 @@
                 <div class="mood-holder">
                     <figure class="no-margin">
                         <picture class="image-ad">
-                            <source media="(max-width: 576px)" srcset="uploads/_temp/img-dummy-1-mobile.jpg">
-                            <source media="(min-width: 577px)" srcset="uploads/contact-mood.jpg">
-                            <img class="w-fit" src="uploads/contact-mood.jpg" alt="">
+                            <source media="(max-width: 576px)" srcset="{{ getSetting('Contact', 'contact_image') }}">
+                            <source media="(min-width: 577px)" srcset="{{ getSetting('Contact', 'contact_image') }}">
+                            <img class="w-fit" src="{{ getSetting('Contact', 'contact_image') }}" alt="">
                         </picture>
                         <span class="overlay black"></span>
                     </figure>
                     <div class="mood-text text-center">
-                        <h2 class="f-reg">Imagine the unimaginable with RDM</h2>
+                        <h2 class="f-reg">{{ getSetting('Contact', 'contact_text_image') }}</h2>
                     </div>
                 </div>
             </div>
@@ -96,23 +82,11 @@
                         </div>
                         <div class="col-md-5 push-md-2 col-right">
                             <div class="loc indonesia">
-                                <h5 class="f-reg">Indonesia</h5>
-                                <address>
-                                    <strong class="d-block">RDM HEADQUARTER</strong>
-                                    Rukan Crown Blok H No.1<br/>
-                                    Green Lake City<br/>
-                                    Cipondoh - Tangerang,<br/>
-                                    Indonesia.
-                                </address>
+                                {!! getSetting('Contact', 'contact_loc_indo') !!}
                             </div>
 
                             <div class="loc australia">
-                                <h5 class="f-reg">Australia</h5>
-                                <address>
-                                    <strong class="d-block">RDM AUSTRALIA</strong>
-                                    <a href="#" class="link link-white link-opaque">discover@onerdm.com</a><br/>
-                                    <a href="#" class="link link-white link-opaque">+628172350394</a>
-                                </address>
+                                {!! getSetting('Contact', 'contact_loc_aus') !!}
                             </div>
                         </div>
                     </div>

@@ -24,6 +24,7 @@ gulp.task('js', function(){
             './bower_components/owl.carousel/dist/owl.carousel.min.js',
             './bower_components/isotope-layout/dist/isotope.pkgd.min.js',
             './bower_components/particles.js/particles.min.js',
+            './bower_components/js-cookie/src/js.cookie.js',
 
             './src/js/_lib/fancybox/core.js',
             './src/js/_lib/fancybox/fullscreen.js',
