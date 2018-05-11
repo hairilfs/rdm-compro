@@ -679,6 +679,10 @@ body.home {
 						width: 100%;
 						height: 100%;
 
+						.detail-item--inner {
+							width: 100%;
+						}
+
 						.detail-image,
 						.detail-text {
 							@media (min-width: $bp-lg){

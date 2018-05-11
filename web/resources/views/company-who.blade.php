@@ -174,7 +174,7 @@
         <div class="section--inner">
             <div class="container">
                 <h3 class="f-reg">
-                    We’re everywhere
+                    Location
                     <span class="opaque d-block">Step into our office</span>
                 </h3>
 
