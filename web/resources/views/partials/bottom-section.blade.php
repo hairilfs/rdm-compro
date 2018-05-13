@@ -19,13 +19,13 @@
 
             <div class="social">
                 @if ($ig = getSetting('Social Media', 'ig'))
-                <a href="{{ $ig }}" target="_blank" class="link link-white"><i class="icon-instagram"></i></a>
+                <a href="https://{{ $ig }}" target="_blank" class="link link-white"><i class="icon-instagram"></i></a>
                 @endif
                 @if ($fb = getSetting('Social Media', 'fb'))
-                <a href="{{ $fb }}" target="_blank" class="link link-white"><i class="icon-facebook"></i></a>
+                <a href="https://{{ $fb }}" target="_blank" class="link link-white"><i class="icon-facebook"></i></a>
                 @endif
                 @if ($tw = getSetting('Social Media', 'tw'))
-                <a href="{{ $tw }}" target="_blank" class="link link-white"><i class="icon-twitter"></i></a>
+                <a href="https://{{ $tw }}" target="_blank" class="link link-white"><i class="icon-twitter"></i></a>
                 @endif
             </div>
         </div>

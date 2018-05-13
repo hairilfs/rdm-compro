@@ -307,7 +307,7 @@
                     </div>
 
                     <p class="btn-holder text-center">
-                        <a href="#" class="link ls-med f-med"><i class="icon-right-open-big"></i>VIEW ALL PARTNERS</a>
+                        <a href="{{ url('about#company-partners') }}" class="link ls-med f-med"><i class="icon-right-open-big"></i>VIEW ALL PARTNERS</a>
                     </p>
                 </div>
             </div>

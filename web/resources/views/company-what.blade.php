@@ -27,48 +27,65 @@
     </section>
 
     <section id="company-content">
+        @php
+            $title1 = getAbout('what-content', 'what_title1');
+            $desc1 = getAbout('what-content', 'what_desc1');
+        @endphp
+        @if ($title1 && $desc1)            
         <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title1') }}</h4>
+                        <h4 class="content-header f-reg">{{ $title1 }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            {!! getAbout('what-content', 'what_desc1') !!}
+                            {!! $desc1 !!}
                         </div>            
                     </div>
                 </div>
             </div>
         </div>
+        @endif
 
+        @php
+            $title2 = getAbout('what-content', 'what_title2');
+            $desc2 = getAbout('what-content', 'what_desc2');
+        @endphp
+        @if ($title2 && $desc2)
         <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title2') }}</h4>
+                        <h4 class="content-header f-reg">{{ $title2 }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            {!! getAbout('what-content', 'what_desc2') !!}
+                            {!! $desc2 !!}
                         </div>            
                     </div>
                 </div>
             </div>
         </div>
+        @endif
 
+        @php
+            $title3 = getAbout('what-content', 'what_title3');
+            $desc3 = getAbout('what-content', 'what_desc3');
+        @endphp
+        @if ($title3 && $desc3)
         <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title3') }}</h4>
+                        <h4 class="content-header f-reg">{{ $title3 }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            {!! getAbout('what-content', 'what_desc3') !!}
+                            {!! $desc3 !!}
 
                             <figure>
                                 <img class="w-fit" src="{{ getAbout('what-content', 'what_img3') }}">
@@ -78,38 +95,51 @@
                 </div>
             </div>
         </div>
+        @endif
 
+        @php
+            $title4 = getAbout('what-content', 'what_title4');
+            $desc4 = getAbout('what-content', 'what_desc4');
+        @endphp
+        @if ($title4 && $desc4)
         <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title4') }}</h4>
+                        <h4 class="content-header f-reg">{{ $title4 }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            {!! getAbout('what-content', 'what_desc4') !!}
+                            {!! $desc4 !!}
                         </div>            
                     </div>
                 </div>
             </div>
         </div>
+        @endif
 
+        @php
+            $title5 = getAbout('what-content', 'what_title5');
+            $desc5 = getAbout('what-content', 'what_desc5');
+        @endphp
+        @if ($title5 && $desc5)
         <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 content-head">
-                        <h4 class="content-header f-reg">{{ getAbout('what-content', 'what_title5') }}</h4>
+                        <h4 class="content-header f-reg">{{ $title5 }}</h4>
                     </div>
 
                     <div class="col-md-6 content-body">
                         <div class="content-body--inner">
-                            {!! getAbout('what-content', 'what_desc5') !!}   
+                            {!! $desc5 !!}
                         </div>            
                     </div>
                 </div>
             </div>
         </div>
+        @endif
     </section>
 
     <section id="company-talk" class="has-ver-padding">
