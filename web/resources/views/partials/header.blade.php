@@ -222,11 +222,16 @@
 		                        	<a href="{{ url('/contact') }}" class="link link-white f-med link-opaque">Contact</a>
 		                        </li>
 
-		                        @if ($ph)
+								{{-- BP comment --}}
+		                        {{-- @if ($ph)
 		                        <li>
 		                        	<a href="tel:{{ $ph }}" class="link link-white link-opaque"><i class="icon-phone"></i></a>
 		                        </li>
-								@endif
+								@endif --}}
+
+								<li>
+		                        	<a href="tel:+62215502637" class="link link-white link-opaque"><i class="icon-phone"></i></a>
+		                        </li>
 
 		                        <li>
 		                        	<a href="#" id="trigger-talk" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
