@@ -134,7 +134,7 @@
 
 								@if ($ig = getSetting('Social Media', 'ig'))
 								<li>
-									<a href="{{ $ig }}" class="link link-white f-med" target="_blank">
+									<a href="https://{{ $ig }}" class="link link-white f-med" target="_blank">
 										<i class="icon-instagram"></i>
 										<span class="hidden-sm-down">Instagram</span>
 									</a>
@@ -143,7 +143,7 @@
 
 								@if ($fb = getSetting('Social Media', 'fb'))
 								<li>
-									<a href="{{ $fb }}" class="link link-white f-med" target="_blank">
+									<a href="https://{{ $fb }}" class="link link-white f-med" target="_blank">
 										<i class="icon-facebook"></i>
 										<span class="hidden-sm-down">Facebook</span>
 									</a>
@@ -152,7 +152,7 @@
 
 								@if ($li = getSetting('Social Media', 'li'))
 								<li>
-									<a href="{{ $li }}" class="link link-white f-med" target="_blank">
+									<a href="https://{{ $li }}" class="link link-white f-med" target="_blank">
 										<i class="icon-linkedin"></i>
 										<span class="hidden-sm-down">Linkedin</span>
 									</a>

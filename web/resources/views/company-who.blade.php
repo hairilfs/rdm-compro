@@ -51,7 +51,7 @@
                     @foreach ($scope as $element)
                     <div class="col-md-4 scopes-item">
                         <figure>
-                            <a href="#" class="d-block">
+                            <a href="{{ $element->link_url }}" class="d-block">
                                 <img class="w-fit" src="{{ $element->getImgUrl() }}">
                             </a>
                         </figure>
