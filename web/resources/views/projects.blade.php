@@ -67,9 +67,9 @@
                             @endforeach
                         </div>
 
-                        <div class="more text-center">
+                        {{-- <div class="more text-center">
                             <a href="#" class="link ls-med f-med">+ MORE PROJECTS</a>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

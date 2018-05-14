@@ -116,7 +116,7 @@
 
                 <div class="preview-bottom">
                     <p class="small no-margin">Want to know more? Contact Us.</p>
-                    <p class="small no-margin"><a href="mailto:us@onerdm.com" class="link f-med">us@onerdm.com</a> or <a href="tel:+628171824912839" class="link f-med">+628171824912839</a></p>
+                    <p class="small no-margin"><a href="mailto:info@onerdm.com" class="link f-med">info@onerdm.com</a> or <a href="tel:+62215502637" class="link f-med">+62215502637</a></p>
                 </div>
 
                 <div class="back-to-top text-center">

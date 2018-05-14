@@ -65,6 +65,12 @@
       "css": "linkedin",
       "code": 61665,
       "src": "fontawesome"
+    },
+    {
+      "uid": "47a1f80457068fbeab69fdb83d7d0817",
+      "css": "youtube-play",
+      "code": 61802,
+      "src": "fontawesome"
     }
   ]
 }

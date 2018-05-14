@@ -182,7 +182,7 @@
 
                         <div class="more-item flexed-desktop">
                             <h4 class="f-reg no-margin">How <span class="opaque">we do it</span></h4>
-                            <a href="{{ url('about/how') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR METHODS</a>
+                            <a href="{{ url('about/how') }}" class="link f-med ls-med"><i class="icon-right-open-big"></i>MORE ABOUT OUR PROCESS</a>
                         </div>
 
                         <div class="more-item flexed-desktop">
