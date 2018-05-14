@@ -24,8 +24,8 @@
                 @if ($fb = getSetting('Social Media', 'fb'))
                 <a href="https://{{ $fb }}" target="_blank" class="link link-white"><i class="icon-facebook"></i></a>
                 @endif
-                @if ($tw = getSetting('Social Media', 'tw'))
-                <a href="https://{{ $tw }}" target="_blank" class="link link-white"><i class="icon-twitter"></i></a>
+                @if ($yt = getSetting('Social Media', 'yt'))
+                <a href="https://{{ $yt }}" target="_blank" class="link link-white"><i class="icon-youtube-play"></i></a>
                 @endif
             </div>
         </div>
