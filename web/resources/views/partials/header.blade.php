@@ -170,7 +170,7 @@
 								@endif --}}
 
 								<li>
-		                        	<a href="tel:+62215502637" class="link link-white link-opaque">
+		                        	<a href="tel:+62215502637" class="link link-white f-med">
 		                        		<i class="icon-phone"></i>
 		                        		<span class="hidden-sm-down">Call Us</span>
 		                        	</a>
