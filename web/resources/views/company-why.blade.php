@@ -38,7 +38,7 @@
             </div>
         </div>
 
-        <div class="content-block has-ver-padding">
+        {{-- <div class="content-block has-ver-padding">
             <div class="container">
                 <div class="content-body">
                     <div class="content-body--inner">
@@ -106,7 +106,7 @@
                     </div>            
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
 
     <section id="company-talk" class="has-ver-padding">
