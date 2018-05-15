@@ -707,7 +707,7 @@ var rdm = (function(){
                     "elementType": "geometry.stroke",
                     "stylers": [
                         {
-                            "visibility": "on"
+                            "visibility": "off"
                         }
                     ]
                 },
@@ -734,7 +734,7 @@ var rdm = (function(){
                     "elementType": "geometry.stroke",
                     "stylers": [
                         {
-                            "visibility": "on"
+                            "visibility": "off"
                         }
                     ]
                 },
@@ -761,7 +761,7 @@ var rdm = (function(){
                     "elementType": "all",
                     "stylers": [
                         {
-                            "color": "#ffffff"
+                            "color": "#333333"
                         }
                     ]
                 },

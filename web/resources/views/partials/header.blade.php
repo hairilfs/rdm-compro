@@ -159,14 +159,22 @@
 								</li>
 								@endif
 
-								@if ($ph = getSetting('Contact', 'phone'))
+								{{-- BP comment --}}
+								{{-- @if ($ph = getSetting('Contact', 'phone'))
 								<li>
 		                        	<a href="tel:{{ $ph }}" class="link link-white f-med">
 			                        	<i class="icon-phone"></i>
 			                        	<span class="hidden-sm-down">Call Us</span>
 		                        	</a>
 		                        </li>
-								@endif
+								@endif --}}
+
+								<li>
+		                        	<a href="tel:+62215502637" class="link link-white f-med">
+		                        		<i class="icon-phone"></i>
+		                        		<span class="hidden-sm-down">Call Us</span>
+		                        	</a>
+		                        </li>
 
 		                        <li class="talk-menu">
 		                        	<a href="#" id="trigger-talk" class="btn btn-trigger-talk f-bold btn-border-white curved">Talk to RDM</a>
