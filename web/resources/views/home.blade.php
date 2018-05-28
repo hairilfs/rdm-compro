@@ -161,7 +161,7 @@
         </div>
     </section>
 
-    <section id="home-about-more">
+    {{-- <section id="home-about-more">
         <div class="section--inner has-ver-padding">
             <div class="container">
                 <div class="row">
@@ -192,6 +192,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section> --}}
+
+    <section id="home-about-mood">
+        <div class="section--inner fullheight-js">                
+            <div class="fheight has-bg-ornament bg-holder" style="background-image: url({{ getSetting('Home', 'home_about_image') }});"></div>
         </div>
     </section>
 
