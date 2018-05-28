@@ -1677,6 +1677,30 @@ body.project-detail {
 			}
 		}
 
+		#project-talk {
+			background-color: #1b1b1b;
+			color: #fff;
+			
+			@media (min-width: $bp-md) {
+				min-height: 655px;
+				@extend .flexed-desktop;
+
+				> * {
+					width: 100%;
+				}
+			}
+
+			.talk-holder {
+				h3 {
+					margin-bottom: 40px;
+
+					@media (min-width: $bp-md) {
+						margin-bottom: 60px;
+					}
+				}
+			}
+		}
+
 		#next-project {
 			position: relative;
 			
