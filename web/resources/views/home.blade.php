@@ -31,7 +31,7 @@
             </div>  
 
             <div class="hero-cta text-center">
-                <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a>
+                {{-- <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a> --}}
                 <br/>
                 <a href="#" class="link-scroll link link-white">
                     <span class="d-block">Scroll Down</span>

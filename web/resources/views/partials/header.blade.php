@@ -46,7 +46,7 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">What is your phone number?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="email" class="form-control" name="phone" placeholder="your phone number" required="" />
+			                        <input type="text" class="form-control" name="phone" placeholder="your phone number" required="" />
 
 			                        <p class="input-msg">please enter your phone number</p>
 			                    </div>
@@ -95,7 +95,7 @@
 			        <div class="modal-btn-container">
 			            <a href="#" class="btn btn-next f-med btn-border-white pad-lg curved">Next Step <i class="icon-right"></i></a>
 			            <button type="submit" class="btn btn-submit f-med btn-border-white pad-lg curved">Submit Mail <i class="icon-right"></i></button>
-			            <a href="#" class="link-mail link link-opaque">biz@onerdm.com</a>
+			            <a href="mailto:biz@onerdm.com" target="_blank" class="link-mail link link-opaque">biz@onerdm.com</a>
 			        </div>
 			    </form>
             </div>
