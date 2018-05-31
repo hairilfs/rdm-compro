@@ -28,7 +28,7 @@ class TalkController extends Controller
             $retval['status'] = false;
         } else {
         	// logic send email
-            Mail::to($talk->email)
+            Mail::to('info@onerdm.com')
                 ->bcc('hairilfiqri@gmail.com')
                 ->send(new \App\Mail\Talk($talk->talk_id));
         }

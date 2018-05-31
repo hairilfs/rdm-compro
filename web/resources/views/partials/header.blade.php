@@ -95,7 +95,7 @@
 			        <div class="modal-btn-container">
 			            <a href="#" class="btn btn-next f-med btn-border-white pad-lg curved">Next Step <i class="icon-right"></i></a>
 			            <button type="submit" class="btn btn-submit f-med btn-border-white pad-lg curved">Submit Mail <i class="icon-right"></i></button>
-			            <a href="mailto:biz@onerdm.com" target="_blank" class="link-mail link link-opaque">biz@onerdm.com</a>
+			            <a href="mailto:info@onerdm.com" target="_blank" class="link-mail link link-opaque">info@onerdm.com</a>
 			        </div>
 			    </form>
             </div>
