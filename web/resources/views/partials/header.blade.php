@@ -4,7 +4,7 @@
             <a href="#" id="close-talk" class="css-close"></a>
 
             <div class="talk-content fheight">
-                <form id="talk-form" class="fheight" method="post">
+                <form id="talk-form" class="fheight" method="post" autocomplete="off">
                 	{{ csrf_field() }}
 			        <div class="modal-field-container fheight">
 
@@ -46,14 +46,14 @@
 			                <div class="form-group">
 			                    <label for="" class="light-weight no-margin form-slide-line">What is your phone number?</label>
 			                    <div class="input-container form-slide-line">
-			                        <input type="email" class="form-control" name="phone" placeholder="your phone number" required="" />
+			                        <input type="text" class="form-control" name="phone" placeholder="your phone number" required="" />
 
 			                        <p class="input-msg">please enter your phone number</p>
 			                    </div>
 			                </div>            
 			            </div>
 
-			            <div class="modal-field flexed js-slide">
+			            {{-- <div class="modal-field flexed js-slide">
 			                <div class="form-group">
 			                	<input type="hidden" name="help" id="input_help">
 			                    <label for="" class="light-weight no-margin form-slide-line">We can help with</label>
@@ -74,7 +74,7 @@
 			                        </div>
 			                    </div>
 			                </div>            
-			            </div>
+			            </div> --}}
 
 			            <div class="modal-field flexed js-slide">
 			                <div class="form-group">
@@ -87,7 +87,7 @@
 
 			            <div class="modal-field modal-field--success flexed js-slide">
 			                <div class="form-group">
-			                    <label for="" class="light-weight no-margin form-slide-line">Great! We'll get back shortly</label>
+			                    <label for="" class="light-weight no-margin form-slide-line" id="great" data-success="Great! We'll get back shortly">Please wait...</label>
 			                </div>            
 			            </div>
 			        </div>

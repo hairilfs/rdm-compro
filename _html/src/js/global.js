@@ -515,7 +515,9 @@ var rdm = (function(){
                         e.preventDefault();
                         console.log('enter pressed');
 
-                        nextInput();
+                        setTimeout(function(){
+                            nextInput();
+                        }, 100);
                     }
                 });
 
@@ -528,7 +530,16 @@ var rdm = (function(){
                 function nextInput(){
                     var item = $('.js-slide.is-active');
                     var help = $('#input_help').val();
-                    var curr_val = item.find('.form-control').length ? item.find('.form-control').val() : help;
+                    var the_input = item.find('.form-control');
+                    var curr_val = the_input.length ? the_input.val() : help;
+
+                    if (the_input.attr('name') == 'email' && !validateEmail(curr_val)) {
+                        return false;
+                    }
+
+                    if (the_input.attr('name') == 'phone' && !validatePhone(curr_val)) {
+                        return false;
+                    }
 
                     if (!curr_val.trim()) {
                         return false;
@@ -549,9 +560,11 @@ var rdm = (function(){
 
                     if($('.modal-field--success').hasClass('is-active')){
                         // $('#talk-form').addClass('form-completed');
+                        var great = $('#great').data('success');
 
                         $.post(App.baseUrl+'talk', $('#talk-form').serialize() , function(response){
                             if (response.status) {
+                                $('#great').html(great);
                                 $('#talk-form').addClass('form-completed');
                             } 
                         }, 'json');
@@ -914,3 +927,13 @@ var rdm = (function(){
     }
 
 })();
+
+function validateEmail(email) {
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+}
+
+function validatePhone(phone) {
+    var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    return re.test(phone);
+}

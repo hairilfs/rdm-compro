@@ -19,7 +19,7 @@ class TalkController extends Controller
     	$talk->company = $request->input('company');
     	$talk->email = $request->input('email');
     	$talk->phone = $request->input('phone');
-    	$talk->help = $request->input('help');
+    	// $talk->help = $request->input('help');
     	$talk->description = $request->input('description');
     	$saved = $talk->save();
 
