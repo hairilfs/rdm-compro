@@ -128,6 +128,17 @@
         </div>
     </section>
     @endif
+
+    <section id="project-talk" class="has-ver-padding">
+        <div class="section--inner text-center has-ver-padding">
+            <div class="container has-ver-padding">
+                <div class="talk-holder has-ver-padding">
+                    <h3 class="f-reg">Want to know more?</h3>
+                    <a href="#" class="link btn-trigger-talk link-opaque small f-med ls-med"><i class="icon-right-open-big"></i>REACH US</a>
+                </div>
+            </div>
+        </div>
+    </section>
     
     @if ($other->count())
     <section id="next-project" class="">

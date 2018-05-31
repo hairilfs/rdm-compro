@@ -31,9 +31,10 @@
             </div>  
 
             <div class="hero-cta text-center">
-                <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a>
+                {{-- <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a> --}}
                 <br/>
                 <a href="#" class="link-scroll link link-white">
+                    <span class="d-block">Scroll Down</span>
                     <i class="icon-down-dir"></i>
                 </a>
             </div>
@@ -161,7 +162,7 @@
         </div>
     </section>
 
-    <section id="home-about-more">
+    {{-- <section id="home-about-more">
         <div class="section--inner has-ver-padding">
             <div class="container">
                 <div class="row">
@@ -192,6 +193,12 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section> --}}
+
+    <section id="home-about-mood">
+        <div class="section--inner fullheight-js">                
+            <div class="fheight has-bg-ornament bg-holder" style="background-image: url({{ getSetting('Home', 'home_about_image') }});"></div>
         </div>
     </section>
 
