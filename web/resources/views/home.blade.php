@@ -34,7 +34,7 @@
                 {{-- <a href="{{ url('about/what') }}" class="btn btn-cta f-bold d-block btn-border-white small-text curved">What we can do for you</a> --}}
                 <br/>
                 <a href="#" class="link-scroll link link-white">
-                    <span class="d-block">Scroll Down</span>
+                    <span class="d-block ls-med" style="font-size:12px;">SCROLL DOWN</span>
                     <i class="icon-down-dir"></i>
                 </a>
             </div>
@@ -285,7 +285,7 @@
                             </div>
 
                             <p class="more text-center">
-                                <a href="{{ url('projects') }}" class="btn btn-border-white curved ls-med small"><i class="icon-right-open-big"></i>VIEW MORE</a>
+                                <a href="{{ url('projects') }}" class="link ls-med f-med"><i class="icon-right-open-big"></i>VIEW MORE</a>
                             </p>
                         </div>
                     </div>
