@@ -105,16 +105,56 @@
                 <h3 class="f-reg">Partners</h3>
 
                 <div class="clients-body has-ver-padding">
-                    <div class="row flexed" id="partner_list">
+                    <h6>Brand Partner</h6>
 
-                        @foreach ($partner as $element)
-                        <div class="item">
-                            <figure class="no-margin text-center">
-                                <img src="{{ $element->getImgUrl() }}">
-                            </figure>
+                    <div class="single-level">
+                        <div class="row row-lg has-4-grid flexed" id="partner_brand">
+
+                            @foreach ($partner_brand as $element)
+                            <div class="item">
+                                <figure class="no-margin text-center">
+                                    <img src="{{ $element->getImgUrl() }}">
+                                </figure>
+                            </div>
+                            @endforeach
+                            
                         </div>
-                        @endforeach
-                        
+                    </div>
+                </div>
+
+                <div class="clients-body has-ver-padding">
+                    <h6>Retail Partner</h6>
+
+                    <div class="single-level">
+                        <div class="row row-lg has-4-grid flexed" id="partner_retail">
+
+                            @foreach ($partner_retail as $element)
+                            <div class="item">
+                                <figure class="no-margin text-center">
+                                    <img src="{{ $element->getImgUrl() }}">
+                                </figure>
+                            </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clients-body has-ver-padding">
+                    <h6>License Partner</h6>
+
+                    <div class="single-level">
+                        <div class="row row-lg has-5-grid flexed" id="partner_license">
+                            
+                            @foreach ($partner_license as $element)
+                            <div class="item">
+                                <figure class="no-margin text-center">
+                                    <img src="{{ $element->getImgUrl() }}">
+                                </figure>
+                            </div>
+                            @endforeach
+
+                        </div>
                     </div>
 
                     <p class="btn-holder text-center">
@@ -304,7 +344,9 @@
 
         $.post('{{ url('about/partner') }}', data, function(res){
             if(res) {
-                $('#partner_list').html(res);
+                $('#partner_brand').html(res.partner_brand);
+                $('#partner_retail').html(res.partner_retail);
+                $('#partner_license').html(res.partner_license);
 
                 $(obj).remove();
             }

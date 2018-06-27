@@ -469,6 +469,7 @@ class AboutWhoController extends Controller
 
             $partner = new PartnerWho;
             $partner->img_url = str_replace('.', time().'.', $img_temp->getClientOriginalName());
+            $partner->category = 'brand';
 
             // uploading...
             if (str_contains($file_type, 'image')) {
@@ -483,6 +484,7 @@ class AboutWhoController extends Controller
             return response()->json([
                 'partner_id' => $partner->partner_who_id,
                 'image_url' => env('WEB_BASE_URL')."uploads/partner_who/".$partner->img_url,
+                'category' => 'brand',
             ]);
         }
     }
@@ -495,6 +497,7 @@ class AboutWhoController extends Controller
             $data[] = [
                 'partner_id' => $partner->partner_who_id,
                 'image_url' => env('WEB_BASE_URL')."uploads/partner_who/".$partner->img_url,
+                'category' => $partner->category,
             ];
         }
 
@@ -514,6 +517,17 @@ class AboutWhoController extends Controller
 
         return response()->json([
             'counter' => $counter
+        ]);
+    }
+
+    public function categoryPartner(Request $request)
+    {
+        $partner = PartnerWho::find($request->input('partner_id'));
+        $partner->category = $request->input('category');
+        $partner->save();
+
+        return response()->json([
+            'category' => $partner->category
         ]);
     }
 

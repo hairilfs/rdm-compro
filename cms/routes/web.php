@@ -86,6 +86,7 @@ Route::post('/about/who-scope/form/{id?}', 'AboutWhoController@saveScope');
 // -------------------------
 Route::get('/about/who-partner/list', 'AboutWhoController@listPartner');
 Route::post('/about/who-partner/sort', 'AboutWhoController@sortPartner');
+Route::post('/about/who-partner/category', 'AboutWhoController@categoryPartner');
 Route::post('/about/who-partner/delete', 'AboutWhoController@deletePartner');
 Route::get('/about/who-partner', 'AboutWhoController@indexPartner');
 Route::post('/about/who-partner', 'AboutWhoController@savePartner');

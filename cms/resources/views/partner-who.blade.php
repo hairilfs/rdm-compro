@@ -44,7 +44,7 @@
                     <div class="block-content" id="sortable_wrapper">
                         {{-- <p v-show="empty">No images, please upload &raquo;</p> --}}
 
-                        <div v-for="data in images" class="block block-bordered block-rounded block-partner-item" :data-id="data.id">
+                        <div v-for="(data, key) in images" class="block block-bordered block-rounded block-partner-item" :data-id="data.id">
                             <div class="block-content bg-gray" style="padding-bottom: 20px;">
                                 <ul class="block-options">
                                     <li>
@@ -54,7 +54,37 @@
                                         <i class="fa fa-arrows"></i>
                                     </li>
                                 </ul>
-                                <img :src="data.url">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <img :src="data.url">
+                                        
+                                    </div>
+                                    <div class="col-md-8" style="margin-top: -30px;">
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <div class="radio">
+                                                    <label v-bind:for="'radio-brand-'+key">
+                                                        <input type="radio" v-bind:id="'radio-brand-'+key" :name="'partner-category-'+key" v-on:change="changeCategory" :data-partner="data.id" :checked="data.category == 'brand'" value="brand"> Brand
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label :for="'radio-retail-'+key">
+                                                        <input type="radio" :id="'radio-retail-'+key" :name="'partner-category-'+key" v-on:change="changeCategory" :data-partner="data.id" :checked="data.category == 'retail'" value="retail"> Retail
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label :for="'radio-license-'+key">
+                                                        <input type="radio" :id="'radio-license-'+key" :name="'partner-category-'+key" v-on:change="changeCategory" :data-partner="data.id" :checked="data.category == 'license'" value="license"> License
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                {{-- <input type="radio" name="category" value="brand"> Brand
+                                <input type="radio" name="category" value="retail"> Retail
+                                <input type="radio" name="category" value="license"> License --}}
                             </div>
                         </div>
 
@@ -108,7 +138,7 @@
         init: function() {
             this.on("success", function(file, server) {
                 console.log(file.status, file.name); 
-                vue_partner.images.push({ id: server.partner_id, url: file.dataURL });
+                vue_partner.images.push({ id: server.partner_id, url: file.dataURL, category: 'brand' });
                 setTimeout(function(){
                     vue_partner.sorting();
                 }, 1000);
@@ -133,7 +163,7 @@
                 $.get('{{ url()->current().'/list' }}', function(response){
                     if(response.length) {
                         _.forEach(response, function(value, key){
-                            vue_partner.images.push({ id: value.partner_id, url: value.image_url});
+                            vue_partner.images.push({ id: value.partner_id, url: value.image_url, category: value.category});
                         })
                     }
                 });
@@ -178,6 +208,18 @@
                         }, 'json');
                     }
                 });
+            },
+            changeCategory: function(event) {
+                var el = $(event.target);
+                var new_cat = el.val();
+
+                $.post('{{ url()->current().'/category' }}', { _token: '{{ csrf_token() }}', partner_id: el.data('partner'), category: new_cat }, function(response){
+                    if(response.category) {
+                        popup_notif('fa fa-check', 'Changes saved!', 'success');
+                    }
+                }, 'json');
+
+                
             }
         }
     });
