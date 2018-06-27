@@ -20,7 +20,7 @@ class AboutController extends Controller
             $this->data['people'] = People::publish()->orderBy('sort')->get();          
             
             $allpartner = PartnerWho::orderBy('sort')->get();
-            $this->data['partner_brand'] = $allpartner->where('category', 'brand')->take(4)->all();
+            $this->data['partner_brand'] = $allpartner->where('category', 'brand')->take(5)->all();
             $this->data['partner_retail'] = $allpartner->where('category', 'retail')->take(4)->all();
             $this->data['partner_license'] = $allpartner->where('category', 'license')->take(5)->all();
         }
@@ -32,7 +32,7 @@ class AboutController extends Controller
     {
         if($request->ajax()){
             $allpartner = PartnerWho::orderBy('sort')->get();
-            $partner_brand = $allpartner->where('category', 'brand')->all();
+            $partner_brand = $allpartner->where('category', 'brand')->slice(1)->all();
             $partner_retail = $allpartner->where('category', 'retail')->all();
             $partner_license = $allpartner->where('category', 'license')->all();
 

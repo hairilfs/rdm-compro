@@ -108,9 +108,25 @@
                     <h6>Brand Partner</h6>
 
                     <div class="single-level">
+                        <div class="row row-lg has-4-grid flexed">
+
+                            @foreach ($partner_brand as $element)
+                            <div class="item">
+                                <figure class="no-margin text-center">
+                                    <img src="{{ $element->getImgUrl() }}">
+                                </figure>
+                            </div>
+                            @break($loop->index == 0)
+                            @endforeach
+                            
+                        </div>
+                    </div>
+
+                    <div class="single-level">
                         <div class="row row-lg has-4-grid flexed" id="partner_brand">
 
                             @foreach ($partner_brand as $element)
+                            @continue($loop->index == 0)
                             <div class="item">
                                 <figure class="no-margin text-center">
                                     <img src="{{ $element->getImgUrl() }}">
